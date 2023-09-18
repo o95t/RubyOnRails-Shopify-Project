@@ -1,0 +1,736 @@
+<div class="row">
+
+	<div class="span12 offset1">
+		<h2> Create new Shipment </h2>
+		<%= simple_form_for @shipment, url: '/shipments', html: { method: :post, class: 'form-horizontal', data: {validate: 'parsley'} } do |f| %>
+
+			<fieldset>
+				<legend>Shipper Information</legend>
+				<%= f.input :shipper_person_name, label: "Person Name" %>
+				<%= f.input :shipper_company_name, label: "Company Name" %>
+				<%= f.input :shipper_cellphone, label: "Cellphone" %>
+				<%= f.input :shipper_email, label: "Email" %>
+				<%= f.input :shipper_refer, label: "Reference" %>
+				<%= f.input :shipper_address_line1, label: "Address Line1" %>
+				<%= f.input :shipper_address_line2, label: "Address Line2" %>
+				<%= f.input :shipper_address_line3, label: "Address Line3" %>
+				
+				<div class="control-group">
+					<label class="control-label">Country</label>
+					<div class="controls">
+						<% unless @countries.nil? -%>
+							<%= f.select :shipper_country_code, @countries.map{ |c| [c[:name], c[:code]] } %>
+						<% else -%>
+							<%= country_select("shipment", "shipper_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])   %>
+						<% end -%>
+					</div>
+				</div>
+				<%= f.input :shipper_post_code, label: "Post Code" %>
+				<%= f.input :shipper_city, label: "City" %>
+				<%= f.input :shipper_post_code_required, :as => :hidden %>
+				
+			</fieldset>
+
+			<fieldset>
+				<legend>Receiver Information</legend>
+				<%= f.input :receiver_person_name, label: "Person Name" %>
+				<%= f.input :receiver_company_name, label: "Company Name" %>
+				<%= f.input :receiver_cellphone, label: "Cellphone" %>
+				<%= f.input :receiver_email, label: "Email" %>
+				<%= f.input :receiver_refer, label: "Reference" %>
+				<%= f.input :receiver_address_line1, label: "Address Line1" %>
+				<%= f.input :receiver_address_line2, label: "Address Line2" %>
+				<%= f.input :receiver_address_line3, label: "Address Line3" %>
+
+				<div class="control-group">
+					<label class="control-label">Country</label>
+					<div class="controls">
+						<% unless @countries.nil? -%>
+							<%= f.select :receiver_country_code, @countries.map{ |d| [d[:name], d[:code]] } %>
+						<% else -%>
+							<%= country_select("shipment", "receiver_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])   %>
+						<% end -%>
+						<!-- aramex_country_ar -->
+					</div>
+				</div>
+				<%= f.input :receiver_post_code, label: "Post Code" %>
+				<%= f.input :receiver_city, label: "City" %>
+				<%#= f.input :receiver_city, input_html: { class: "awesomplete", list: "receivercities" } %>
+				<!-- <datalist id="receivercities"></datalist> -->
+				<%= f.input :receiver_post_code_required, :as => :hidden %>
+			</fieldset>
+
+			<% if @shipment.payment_type == "3" -%>
+				<fieldset>
+					<legend>Third Party Information</legend>
+					<%= f.input :third_party_person_name, label: "Person Name" %>
+					<%= f.input :third_party_company_name, label: "Company Name" %>
+					<%= f.input :third_party_cellphone, label: "Cellphone" %>
+					<%= f.input :third_party_email, label: "Email" %>
+					<%= f.input :third_party_address_line1, label: "Address Line1" %>
+					<%= f.input :third_party_address_line2, label: "Address Line2" %>
+					<%= f.input :third_party_address_line3, label: "Address Line3" %>
+					<div class="control-group">
+						<label class="control-label">Country</label>
+						<div class="controls">
+							<% unless @countries.nil? -%>
+								<%= f.select :third_party_country_code, @countries.map{ |e| [e[:name], e[:code]] } %>
+							<% else -%>
+								<%= country_select("shipment", "third_party_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])   %>
+							<% end -%>
+							<!-- aramex_country_ar -->
+						</div>
+					</div>
+					
+					<%= f.input :third_party_post_code, label: "Post Code" %>
+					<%= f.input :third_party_city, label: "City" %>
+					<%= f.input :third_party_post_code_required, :as => :hidden %>
+				</fieldset>
+			<% end -%>
+
+			<fieldset>
+				<legend>Shipment Details</legend>
+<%= f.input :location_id, :as => :hidden %>
+				<%= f.input :shipment_refer1, label: "Reference" %>
+				<%= f.input :product_group, label: "Product Group", collection: Shipment.product_groups_hash.sort.map { |k, v| [k,v] }, selected: @shipment.product_group %>
+				<%= f.input :product_type, label: "Product Type", collection: current_user.default_product_type_hash.sort.map { |k, v| [k,v] }  , selected: 1 %>
+
+				<%#= f.input :product_type, label: "Product Type", collection: @product_type_hash.sort.map { |k, v| [k,v] }, selected: @shipment.product_type %>
+				<%= f.hidden_field :payment_type, label: "Payment Type", collection: Shipment.payment_types_hash.sort.map { |k, v| [k,v] }, selected: @shipment.payment_type, readonly: true %>
+
+				<%#= f.input :payment_type, label: "Payment Type", collection: Shipment.payment_types_hash.sort.map { |k, v| [k,v] }, selected: @shipment.payment_type, disabled: true  %>
+
+				<% unless @shipment.payment_type == "3" %>
+					<%= f.input :payment_options, label: "Payment Method", collection: @payment_options_hash.sort.map { |k,v| [k,v] }, allow_blank: true %>
+
+				<% end %>
+				<%= f.input :description_of_goods, input_html: { maxlength: 100 }, label: "Description Of Goods" %>
+				<%= f.input :actual_weight, value: @shipment.actual_weight, label: 'Weight (in kg)' %>
+				<%#= f.input :services, collection: Shipment.services_hash.sort.map { |k,v| [k,v] }, allow_blank: true, input_html: { multiple: true, class: "selectpicker" } %>
+				
+				<%= f.input :services, label: "Services", collection: current_user.default_services_hash.sort.map { |k, v| [k,v] }, selected: @shipment.cod, allow_blank: true, input_html: { multiple: true } %>
+				
+				<%= f.input :customs_value_amount, label: "Customs Value Amount" %>
+				<%= f.input :customs_currency_code, label: "Customs Currency Code" %>
+				
+
+				<%= f.input :cash_on_delivery, label: "Cash On Delivery" %>
+				<%= f.input :cod_currency_code, label: "COD Currency Code" %>
+
+				<% unless @shipment.payment_type == "3" %>				
+	
+				<% end %>		
+				<%= f.input :insurance_amount, label: "Insurance Amount" %>
+				<%#= f.input :foreign_hawb, label: "Foreign HAWB" %>
+
+				<% if @shipment.payment_type == "C" %>
+					<%= f.input :collect_amount, label: "Collect Amount"%>
+				<% else %>
+					<%= f.hidden_field :collect_amount %>
+				<% end %>
+				
+				<%= f.input :number_pieces, input_html: {value:f.object.number_pieces || "1"}, label: "Number of Pieces" %>
+
+				<%#= f.association :pickup_store, collection: current_user.pickup_stores.where(:pickup_datetime => (DateTime.now..(DateTime.now + 12.months))), label: "Add to Pickup", label_method: :form_label, value_method: :id, allow_blank: true  %>
+
+				<a href="#" class="btn" id="show_attachments_div_btn">Add Attachments</a>
+
+				<div id="attachments_div" data-attachments-count = "3">
+					<%= f.input :attachment1, label: "Attachment 1", as: "file" %>
+					<%= f.input :attachment2, label: "Attachment 2", as: "file" %>
+					<%= f.input :attachment3, label: "Attachment 3", as: "file" %>
+
+					<a href="#" class="btn" id="add_another_attachment_btn">Add Another Attachment</a>
+				</div>
+			</fieldset>
+
+
+			<%= f.hidden_field :num_of_pieces, value: @shipment.num_of_pieces %>
+			<%# f.hidden_field :actual_weight, value: @shipment.actual_weight %>
+			<%= f.hidden_field :order_id, value: @shipment.order_id %>
+			<%= f.hidden_field :order_number, value: @shipment.order_number %>
+
+
+			<%= f.submit "Create Shipment", class: "btn btn-primary btn-large form-submit", disable_with: "Creating..." %>
+
+		<% end -%>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+  var shipper_country_code = $("#shipment_shipper_country_code").val();
+	var receiver_country_code = $("#shipment_receiver_country_code").val();
+	var third_party_country_code = $("#shipment_third_party_country_code").val();
+	$(document).ready( function(){
+		
+		// Starting executing shipper country code on reload window 
+		$.ajax({
+			type: "GET",
+			url: "/pickups/aramex_country_code",
+			data: { country_code : shipper_country_code},
+			dataType: "json",
+			success: function(shipper_country){
+				for( var j in shipper_country){
+					$("#shipment_shipper_post_code_required").val(shipper_country[j][0]) 
+					// console.log(country[j][0]);	
+				}
+			},
+			error: function(request, errorThrown){
+				console.log(request, errorThrown);
+			}
+		});
+
+		// Starting executing Receiver country code on reload window
+
+		$.ajax({
+			type: "GET",
+			url: "/pickups/aramex_country_code",
+			data: { country_code : receiver_country_code},
+			dataType: "json",
+			success: function(receiver_country){
+				for( var k in receiver_country){
+					$("#shipment_receiver_post_code_required").val(receiver_country[k][0]) 
+					// console.log(country[j][0]);	
+				}
+			},
+			error: function(request, errorThrown){
+				console.log(request, errorThrown);
+			}
+		});
+
+		// Starting executing Third party country code on reload window
+
+		$.ajax({
+			type: "GET",
+			url: "/pickups/aramex_country_code",
+			data: { country_code : third_party_country_code},
+			dataTydpe: "json",
+			success: function(third_party_country){
+				for( var l in third_party_country){
+					$("#shipment_third_party_post_code_required").val(third_party_country[l][0]) 
+					// console.log(country[j][0]);	
+				}
+			},
+			error: function(request, errorThrown){
+				console.log(request, errorThrown);
+			}
+		});
+
+		// END with third party country code 
+	});
+	
+	// End of Document on Reload 
+
+	// Start shipment product group on change event
+	$('#shipment_product_group').on('change', function(){
+		var shipment_product = $('#shipment_product_group').val(); 
+		var url = "/users/default_domestic_product/json";
+		var default_type = "default_domestic_product_type";
+		if (shipment_product === "EXP"){
+			url = "/users/default_express_product/json"; 
+			default_type = "default_international_product_type";
+			$.ajax({
+				type: "GET",
+				url:url,
+				dataType: "json",
+				success: function(product){
+					$("#shipment_product_type").empty();
+					for( var i in product){
+						$("#shipment_product_type").append("<option value=" + product[i][1] + ">" + product[i][0] + "</option>");
+						// console.log(" Key = " + userdata[i][0] + " Value = " + userdata[i][1]);
+					}
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});
+
+			$.ajax({
+				type: "GET",
+				url:"/users/default_express_services/json",
+				dataType: "json",
+				success: function(services){
+					// console.log(services)
+					$("#shipment_services").empty();
+					for( var i in services){
+
+						$("#shipment_services").append("<option value=" + services[i][1] + ">" + services[i][0] + "</option>");
+						// console.log(" Key = " + services[i][0] + " Value = " + services[i][1]);
+					}
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});
+			
+
+		}else if(shipment_product == "DOM"){
+
+			$.ajax({
+				type: "GET",
+				url:"/users/default_domestic_product/json",
+				dataType: "json",
+				success: function(product){
+					$("#shipment_product_type").empty();					
+					for( var i in product){
+							$("#shipment_product_type").append("<option value=" + product[i][1] + ">" + product[i][0] + "</option>");
+							// console.log(" Key = " + services[i][0] + " Value = " + services[i][1]);
+					}
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});
+
+			$.ajax({
+				type: "GET",
+				url:"/users/default_domestic_services/json",
+				dataType: "json",
+				success: function(services){
+					$("#shipment_services").empty();
+					for( var i in services){
+						$("#shipment_services").append("<option value=" + services[i][1] + ">" + services[i][0] + "</option>");
+						// console.log(" Key = " + services[i][0] + " Value = " + services[i][1]);
+					}
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});
+
+		}
+	});
+	// End with shipment product group on change event
+  
+
+
+// Executing code on Shipment of Shipper country code change
+  
+	$('#shipment_shipper_country_code').on('change', function(){
+		$("#shipment_shipper_post_code").removeAttr('value');
+		$("#shipment_shipper_city").removeAttr('value'); 
+		$("#shipment_shipper_post_code").val = "";
+		$("#shipment_shipper_city").val = "";
+		var shipper_country_code = $("#shipment_shipper_country_code").val();
+		$.ajax({
+			type: "GET",
+			url: "/pickups/aramex_country_code",
+			data: { country_code : shipper_country_code},
+			dataType: "json",
+			success: function(scountry){
+				for( var j in scountry){
+					$("#shipment_shipper_post_code_required").val(scountry[j][0]);
+				}
+				scode_required = $("#shipment_shipper_post_code_required").val();
+				if(scode_required == 'false'){
+					$("#shipment_shipper_post_code").removeAttr('value');
+					$("#shipment_shipper_city").removeAttr('value');
+
+					// $('#new_pickup .control-group').removeClass('error');			
+					$("#shipment_shipper_city").focus();
+					$("#shipment_shipper_post_code").css("border-color","");
+					$("#shipment_shipper_post_code").css("box-shadow", "");
+
+					$("#shipment_shipper_city").css("border-color","#b94a48");
+					$("#shipment_shipper_city").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+
+				}else{
+					$("#shipment_shipper_post_code").removeAttr('value');
+					$("#shipment_shipper_city").removeAttr('value');
+					
+					$("#shipment_shipper_post_code").focus();
+					$("#shipment_shipper_post_code").css("border-color","#b94a48");
+					$("#shipment_shipper_post_code").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+					
+					$("#shipment_shipper_city").css("border-color","#b94a48");
+					$("#shipment_shipper_city").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+				};
+			},
+			error: function(request, errorThrown){
+				console.log(request, errorThrown);
+			}
+		});	
+
+	});
+
+// Executing code on Shipment of Shipper Post code change
+	$('#shipment_shipper_post_code').on('change', function(){
+		var shipper_post_code_required = $("#shipment_shipper_post_code_required").val();
+		var shipper_country_code = $("#shipment_shipper_country_code").val();
+		if (shipper_post_code_required == 'true' && $(this).val()) {
+			$.ajax({
+				type: "GET",
+				contentType: "application/json; charset=utf-8",
+				url: "/pickups/aramex_address_validate/json",
+				data: { country_code: shipper_country_code, post_code: $(this).val()},
+				dataType: "json",
+				success: function(saddress){
+					var scity_lists = "";
+					var ss = [];
+					for( var sadd in saddress){
+						var sad = saddress[sadd];
+						if(sad['city']){
+							scity_lists = "<option value='" + sad['city'] +"'>" + sad['city'] + "</option>";
+							ss.push(scity_lists);
+						}
+						for(var i = 0; i < sad.length; i++){
+							scity_lists = "<option value='" + sad[i]['city'] +"'>" + sad[i]['city'] + "</option>";
+							ss.push(scity_lists);
+						};
+						var shipcity = document.getElementById("shipment_shipper_city");
+						new Awesomplete(shipcity, {list: ss});
+						shipcity.focus();
+						return false;
+					}
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});	
+		}
+	});	
+
+//End of post code change code
+
+function debounce(fn, delay) {
+  var timer = null;
+  return function () {
+    var context = this, args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      fn.apply(context, args);
+    }, delay);
+  };
+}
+
+
+// Executing code on Shipment of Shipper Fetching City when pickup post code not required
+	
+$('input#shipment_shipper_city').keypress(debounce(function(event){
+	shipper_code_required = $("#shipment_shipper_post_code_required").val();
+	var shipper_country_code = $("#shipment_shipper_country_code").val();
+	if (shipper_code_required == 'false') {
+		var shipper_city = document.getElementById("shipment_shipper_city");
+		var shipawesome = new Awesomplete(shipper_city);
+		var shipval = $('#shipment_shipper_city ').val().replace(/ /g, '').length;
+		if(shipval > 3){
+  		$.ajax({
+				type: "GET",
+				contentType: "application/json; charset=utf-8",
+				url: "/pickups/aramex_country_city/json",
+				data: { country_code: shipper_country_code, country_city: $(this).val() },
+				dataType: "json",
+				success: function(scities){
+					var scitylist = [];
+					if(scities == null ){
+						return false;
+					}
+					if (typeof scities == 'object') {
+						$.each(scities, function(sk,sv){
+							scitylist.push(sv);
+						}); 	
+						shipawesome.list = scitylist;
+					}else{
+						if(scities === false){
+							console.log(scities);
+						}else{
+							scitylist.push(scities);
+							shipawesome.list = scitylist;
+						}
+					};
+					
+					return false;
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});	
+			$("#shipment_shipper_city").focus();
+  	}
+	} 
+}, 700));	
+				
+// Start with Pickup Post code on Change event
+
+
+////////////////////    Receiver     /////////////////////////
+
+
+// Executing code on Shipment of receiver country code change
+  
+	$('#shipment_receiver_country_code').on('change', function(){
+		$("#shipment_receiver_post_code").removeAttr('value');
+		$("#shipment_receiver_city").removeAttr('value'); 
+		$("#shipment_receiver_post_code").val = "";
+		$("#shipment_receiver_city").val = "";
+		var receiver_country_code = $("#shipment_receiver_country_code").val();
+		$.ajax({
+			type: "GET",
+			url: "/pickups/aramex_country_code",
+			data: { country_code : receiver_country_code},
+			dataType: "json",
+			success: function(rcountry){
+				for( var j in rcountry){
+					$("#shipment_receiver_post_code_required").val(rcountry[j][0]);
+				}
+				rcode_required = $("#shipment_receiver_post_code_required").val();
+				if(rcode_required == 'false'){
+					$("#shipment_receiver_post_code").removeAttr('value');
+					$("#shipment_receiver_city").removeAttr('value');
+
+					// $('#new_pickup .control-group').removeClass('error');			
+					$("#shipment_receiver_city").focus();
+					$("#shipment_receiver_post_code").css("border-color","");
+					$("#shipment_receiver_post_code").css("box-shadow", "");
+
+					$("#shipment_receiver_city").css("border-color","#b94a48");
+					$("#shipment_receiver_city").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+
+				}else{
+					$("#shipment_receiver_post_code").removeAttr('value');
+					$("#shipment_receiver_city").removeAttr('value');
+					
+					$("#shipment_receiver_post_code").focus();
+					$("#shipment_receiver_post_code").css("border-color","#b94a48");
+					$("#shipment_receiver_post_code").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+					
+					$("#shipment_receiver_city").css("border-color","#b94a48");
+					$("#shipment_receiver_city").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+				};
+			},
+			error: function(request, errorThrown){
+				console.log(request, errorThrown);
+			}
+		});	
+
+	});
+
+// Executing code on Shipment of receiver Post code change
+	$('#shipment_receiver_post_code').on('change', function(){
+		var receiver_post_code_required = $("#shipment_receiver_post_code_required").val();
+		var receiver_country_code = $("#shipment_receiver_country_code").val();
+		if (receiver_post_code_required == 'true' && $(this).val()) {
+			$.ajax({
+				type: "GET",
+				contentType: "application/json; charset=utf-8",
+				url: "/pickups/aramex_address_validate/json",
+				data: { country_code: receiver_country_code, post_code: $(this).val()},
+				dataType: "json",
+				success: function(raddress){
+					var rcity_lists = "";
+					var sr = [];
+					for( var radd in raddress){
+						var rad = raddress[radd];
+						if(rad['city']){
+							rcity_lists = "<option value='" + rad['city'] +"'>" + rad['city'] + "</option>";
+							sr.push(rcity_lists);
+						}
+						for(var i = 0; i < rad.length; i++){
+							rcity_lists = "<option value='" + rad[i]['city'] +"'>" + rad[i]['city'] + "</option>";
+							sr.push(rcity_lists);
+						};
+						var reccity = document.getElementById("shipment_receiver_city");
+						new Awesomplete(reccity, {list: sr});
+						reccity.focus();
+						return false;
+					}
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});	
+		}
+	});	
+
+//End of post code change code
+
+// Executing code on Shipment of receiver Fetching City when pickup post code not required
+	
+$('input#shipment_receiver_city').keypress(debounce(function(event){
+	receiver_code_required = $("#shipment_receiver_post_code_required").val();
+	var receiver_country_code = $("#shipment_receiver_country_code").val();
+	if (receiver_code_required == 'false') {
+		var receiver_city = document.getElementById("shipment_receiver_city");
+		var recawesome = new Awesomplete(receiver_city);
+		var recval = $('#shipment_receiver_city ').val().replace(/ /g, '').length;
+		if(recval > 3){
+  		$.ajax({
+				type: "GET",
+				contentType: "application/json; charset=utf-8",
+				url: "/pickups/aramex_country_city/json",
+				data: { country_code: receiver_country_code, country_city: $(this).val() },
+				dataType: "json",
+				success: function(rcities){
+					var rcitylist = [];
+					if(rcities == null ){
+						return false;
+					}
+					if (typeof rcities == 'object') {
+						$.each(rcities, function(rk,rv){
+							rcitylist.push(rv);
+						}); 	
+						recawesome.list = rcitylist;
+					}else{
+						if(rcities === false){
+							console.log(rcities);
+						}else{
+							rcitylist.push(rcities);
+							recawesome.list = rcitylist;
+						}
+					};
+					
+					return false;
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});	
+			$("#shipment_receiver_city").focus();
+  	}
+	} 
+}, 700));	
+				
+
+
+
+
+/////////////////////////   Third party code ////////////////////////////
+
+// Executing code on Shipment of third_party country code change
+  
+	$('#shipment_third_party_country_code').on('change', function(){
+		$("#shipment_third_party_post_code").removeAttr('value');
+		$("#shipment_third_party_city").removeAttr('value'); 
+		$("#shipment_third_party_post_code").val = "";
+		$("#shipment_third_party_city").val = "";
+		var third_party_country_code = $("#shipment_third_party_country_code").val();
+		$.ajax({
+			type: "GET",
+			url: "/pickups/aramex_country_code",
+			data: { country_code : third_party_country_code},
+			dataType: "json",
+			success: function(thcountry){
+				for( var j in thcountry){
+					$("#shipment_third_party_post_code_required").val(thcountry[j][0]);
+				}
+				thcode_required = $("#shipment_third_party_post_code_required").val();
+				if(thcode_required == 'false'){
+					$("#shipment_third_party_post_code").removeAttr('value');
+					$("#shipment_third_party_city").removeAttr('value');
+
+					// $('#new_pickup .control-group').removeClass('error');			
+					$("#shipment_third_party_city").focus();
+					$("#shipment_third_party_post_code").css("border-color","");
+					$("#shipment_third_party_post_code").css("box-shadow", "");
+
+					$("#shipment_third_party_city").css("border-color","#b94a48");
+					$("#shipment_third_party_city").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+
+				}else{
+					$("#shipment_third_party_post_code").removeAttr('value');
+					$("#shipment_third_party_city").removeAttr('value');
+					
+					$("#shipment_third_party_post_code").focus();
+					$("#shipment_third_party_post_code").css("border-color","#b94a48");
+					$("#shipment_third_party_post_code").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+					
+					$("#shipment_third_party_city").css("border-color","#b94a48");
+					$("#shipment_third_party_city").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+				};
+			},
+			error: function(request, errorThrown){
+				console.log(request, errorThrown);
+			}
+		});	
+
+	});
+
+// Executing code on Shipment of third_party Post code change
+	$('#shipment_third_party_post_code').on('change', function(){
+		var third_party_post_code_required = $("#shipment_third_party_post_code_required").val();
+		var third_party_country_code = $("#shipment_third_party_country_code").val();
+		if (third_party_post_code_required == 'true' && $(this).val()) {
+			$.ajax({
+				type: "GET",
+				contentType: "application/json; charset=utf-8",
+				url: "/pickups/aramex_address_validate/json",
+				data: { country_code: third_party_country_code, post_code: $(this).val()},
+				dataType: "json",
+				success: function(thaddress){
+					var thcity_lists = "";
+					var sth = [];
+					for( var thadd in thaddress){
+						var thad = thaddress[thadd];
+						if(thad['city']){
+							thcity_lists = "<option value='" + thad['city'] +"'>" + thad['city'] + "</option>";
+							sth.push(thcity_lists);
+						}
+						for(var i = 0; i < thad.length; i++){
+							thcity_lists = "<option value='" + thad[i]['city'] +"'>" + thad[i]['city'] + "</option>";
+							sth.push(thcity_lists);
+						};
+						var thirdcity = document.getElementById("shipment_third_party_city");
+						new Awesomplete(thirdcity, {list: sth});
+						thirdcity.focus();
+						return false;
+					}
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});	
+		}
+	});	
+
+//End of post code change code
+
+// Executing code on Shipment of third_party Fetching City when pickup post code not required
+	$('input#shipment_third_party_city').keypress(debounce(function(event){
+	third_party_code_required = $("#shipment_third_party_post_code_required").val();
+	var third_party_country_code = $("#shipment_third_party_country_code").val();
+	if (third_party_code_required == 'false') {
+		var third_party_city = document.getElementById("shipment_third_party_city");
+		var thirdawesome = new Awesomplete(third_party_city);
+		var thirdval = $('#shipment_third_party_city ').val().replace(/ /g, '').length;
+		if(thirdval > 3){
+  		$.ajax({
+				type: "GET",
+				contentType: "application/json; charset=utf-8",
+				url: "/pickups/aramex_country_city/json",
+				data: { country_code: third_party_country_code, country_city: $(this).val() },
+				dataType: "json",
+				success: function(thcities){
+					var thcitylist = [];
+					if(thcities == null ){
+						return false;
+					}
+					if (typeof thcities == 'object') {
+						$.each(thcities, function(thk,thv){
+							thcitylist.push(thv);
+						}); 	
+						thirdawesome.list = thcitylist;
+					}else{
+						if(thcities === false){
+							console.log(thcities);
+						}else{
+							thcitylist.push(thcities);
+							thirdawesome.list = thcitylist;
+						}
+					};
+					
+					return false;
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});	
+			$("#shipment_third_party_city").focus();
+  	}
+	} 
+}, 700));	
+				
+
+/////// End Third party Code //////////
+
+</script>

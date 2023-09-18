@@ -1,0 +1,29 @@
+<div class="step-tab">
+
+<% provide(:title, "Login") %>
+
+<div class="page-header" id="login-header">
+  <h1>Login to Aramex Shopify App</h1>
+  <h1><small>This app requires you to login to start using it.</small></h1>
+</div>
+
+<div style="width:340px; margin:0 auto;">
+  <%= form_tag login_path, :class => 'form-search' do %>
+    <%= text_field_tag 'shop', nil, :placeholder => 'Shop URL', :class => 'btn-large' %>
+    <%= submit_tag 'Login', :class => 'btn btn-primary btn-large' %>
+  <% end %>
+</div>
+
+<div id="contact-support">
+  <p>Aramex offers a wide range of customized solutions for e-commerce ventures, from delivery-fulfillment to warehousing to customs clearance. In order to start shipping with Aramex, you first need to setup a corporate account. Please fill in the details in the form below and our representative will contact you to complete your new account process.
+    
+  <a href="http://www.aramex.com/e-commerce/request.aspx?q=c291cmNlPXN0YXJ0dXAm-yaQia7kn2bo%3d" class="">Submit your Business Profile Form to get contacted by Aramex representative </a>
+  </p>
+</div>
+
+<p align="center" style="margin-top:30px">
+  <%= image_tag 'shopify.png' %>
+</p>
+
+<br/>
+</div>

@@ -1,0 +1,718 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Pickup
+  
+    &mdash; Documentation by YARD 0.8.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!Pickup.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (P)</a> &raquo;
+    
+    
+    <span class="title">Pickup</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Pickup
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
+          
+            <li class="next">Pickup</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/models/pickup.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h2>Schema Information</h2>
+
+<p>Table name: pickups</p>
+
+<pre class="code ruby"><code class="ruby">id                   :integer          not null, primary key
+pickup_address_line1 :string(255)
+pickup_address_line2 :string(255)
+pickup_address_line3 :string(255)
+pickup_cellphone     :string(255)
+pickup_company_name  :string(255)
+pickup_country_code  :string(255)
+pickup_email         :string(255)
+pickup_post_code     :string(255)
+pickup_person_name   :string(255)
+pickup_location      :string(255)
+pickup_datetime      :datetime
+ready_time           :datetime
+last_pickup_time     :datetime
+closing_time         :datetime
+reference1           :string(255)
+status               :string(255)
+product_group        :string(255)
+number_of_shipments  :string(255)
+number_of_pieces     :string(255)
+payment              :string(255)
+shipment_weight      :string(255)
+shipment_volume      :string(255)
+created_at           :datetime         not null
+updated_at           :datetime         not null
+pickup_city          :string(255)
+product_type         :string(255)</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#format_params-class_method" title="format_params (class method)">+ (Object) <strong>format_params</strong>(params) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Will take the form params, fix them -- this will make the ready time and
+closing time dates to be the same as that of the pickup date.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#closing_time_greater_than_ready_time-instance_method" title="#closing_time_greater_than_ready_time (instance method)">- (Object) <strong>closing_time_greater_than_ready_time</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#format_datetimes-instance_method" title="#format_datetimes (instance method)">- (Object) <strong>format_datetimes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#one_of_post_code_and_city_must_be_present-instance_method" title="#one_of_post_code_and_city_must_be_present (instance method)">- (Object) <strong>one_of_post_code_and_city_must_be_present</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Either post code or city must be present.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#savon_hash-instance_method" title="#savon_hash (instance method)">- (Object) <strong>savon_hash</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="format_params-class_method">
+  
+    + (<tt>Object</tt>) <strong>format_params</strong>(params) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Will take the form params, fix them -- this will make the ready time and
+closing time dates to be the same as that of the pickup date. By default,
+they will be current date and return. These times are converted to UTC
+before being sent to Aramex API</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/pickup.rb', line 75</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_format_params'>format_params</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+  <span class='comment'># Set the date for ready_time and closing_time same as pickup_date
+</span>
+  <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ready_time(1i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>closing_time(1i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pickup_datetime(1i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ready_time(2i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>closing_time(2i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pickup_datetime(2i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ready_time(3i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>closing_time(3i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pickup_datetime(3i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> 
+
+  <span class='comment'># Sets the default pickup_datetime's time to 00:01
+</span>  <span class='comment'># Without this, pickup_date moves to the next day
+</span>  <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pickup_datetime(4i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>00</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:pickup</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pickup_datetime(5i)</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>01</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id identifier rubyid_params'>params</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="closing_time_greater_than_ready_time-instance_method">
+  
+    - (<tt>Object</tt>) <strong>closing_time_greater_than_ready_time</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/pickup.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_closing_time_greater_than_ready_time'>closing_time_greater_than_ready_time</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_closing_time'>closing_time</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_ready_time'>ready_time</span>
+    <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='symbol'>:closing_time</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> Closing Time should be after Ready Time.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="format_datetimes-instance_method">
+  
+    - (<tt>Object</tt>) <strong>format_datetimes</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/pickup.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_format_datetimes'>format_datetimes</span>
+  <span class='id identifier rubyid_pickup_date'>pickup_date</span> <span class='op'>=</span> <span class='ivar'>@pickup_datetime</span><span class='period'>.</span><span class='id identifier rubyid_to_date'>to_date</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+
+  <span class='id identifier rubyid_ready_time_only'>ready_time_only</span> <span class='op'>=</span> <span class='ivar'>@ready_time</span><span class='period'>.</span><span class='id identifier rubyid_to_time'>to_time</span><span class='period'>.</span><span class='id identifier rubyid_to_formatted_s'>to_formatted_s</span><span class='lparen'>(</span><span class='symbol'>:time</span><span class='rparen'>)</span> <span class='comment'># Returns Time only in UTC
+</span>
+  <span class='comment'># This takes pickup's date and then combines it with ready time
+</span>  <span class='id identifier rubyid_correct_ready_datetime'>correct_ready_datetime</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_zone'>zone</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_date'>pickup_date</span><span class='rbrace'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ready_time_only'>ready_time_only</span><span class='rbrace'>}</span><span class='tstring_content'> UTC</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='ivar'>@ready_time</span> <span class='op'>=</span> <span class='id identifier rubyid_correct_ready_datetime'>correct_ready_datetime</span> 
+
+  <span class='id identifier rubyid_closing_time_only'>closing_time_only</span> <span class='op'>=</span> <span class='ivar'>@closing_time</span><span class='period'>.</span><span class='id identifier rubyid_to_time'>to_time</span><span class='period'>.</span><span class='id identifier rubyid_to_formatted_s'>to_formatted_s</span><span class='lparen'>(</span><span class='symbol'>:time</span><span class='rparen'>)</span> <span class='comment'># Returns Time only in UTC
+</span>
+  <span class='comment'># This takes pickup's date and then combines it with closing time
+</span>  <span class='id identifier rubyid_correct_closing_datetime'>correct_closing_datetime</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_zone'>zone</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_date'>pickup_date</span><span class='rbrace'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_closing_time_only'>closing_time_only</span><span class='rbrace'>}</span><span class='tstring_content'> UTC</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='ivar'>@closing_time</span> <span class='op'>=</span> <span class='id identifier rubyid_correct_closing_datetime'>correct_closing_datetime</span> 
+
+  <span class='ivar'>@last_pickup_time</span> <span class='op'>=</span> <span class='ivar'>@closing_time</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="one_of_post_code_and_city_must_be_present-instance_method">
+  
+    - (<tt>Object</tt>) <strong>one_of_post_code_and_city_must_be_present</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Either post code or city must be present</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/pickup.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_one_of_post_code_and_city_must_be_present'>one_of_post_code_and_city_must_be_present</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_pickup_post_code'>pickup_post_code</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_pickup_city'>pickup_city</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+    <span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span> <span class='symbol'>:pickup_city</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Either city or post code must be filled.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="savon_hash-instance_method">
+  
+    - (<tt>Object</tt>) <strong>savon_hash</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/pickup.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_savon_hash'>savon_hash</span>
+	<span class='lbrace'>{</span> 	<span class='label'>transaction:</span> 
+  		<span class='lbrace'>{</span>
+  			<span class='label'>reference1:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  			<span class='label'>reference2:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  			<span class='label'>reference3:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  			<span class='label'>reference4:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  			<span class='label'>reference5:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+  		<span class='rbrace'>}</span><span class='comma'>,</span>
+  		<span class='label'>pickup:</span>
+  		<span class='lbrace'>{</span>
+  			<span class='label'>pickup_address:</span> 
+  			<span class='lbrace'>{</span>
+  				<span class='label'>line1:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_address_line1'>pickup_address_line1</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  				<span class='label'>line2:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_address_line2'>pickup_address_line2</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  				<span class='label'>line3:</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_address_line3'>pickup_address_line3</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  				<span class='label'>city:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_city'>pickup_city</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  				<span class='label'>state_or_province_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  				<span class='label'>post_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_post_code'>pickup_post_code</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  				<span class='label'>country_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_country_code'>pickup_country_code</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  			<span class='rbrace'>}</span><span class='comma'>,</span>
+  			<span class='label'>pickup_contact:</span>
+ 			  	<span class='lbrace'>{</span>
+ 			  		<span class='label'>department:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>person_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_person_name'>pickup_person_name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>title:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>company_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_company_name'>pickup_company_name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>phone_number1:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_cellphone'>pickup_cellphone</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>phone_number1_ext:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>phone_number2:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>phone_number2_ext:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>fax_number:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>cell_phone:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_cellphone'>pickup_cellphone</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>email_address:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_email'>pickup_email</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  		<span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+ 			  	<span class='rbrace'>}</span><span class='comma'>,</span>
+ 			  	<span class='label'>pickup_location:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_location'>pickup_location</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  	<span class='label'>pickup_date:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pickup_datetime'>pickup_datetime</span><span class='period'>.</span><span class='id identifier rubyid_utc'>utc</span><span class='period'>.</span><span class='id identifier rubyid_xmlschema'>xmlschema</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  	<span class='label'>ready_time:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ready_time'>ready_time</span><span class='period'>.</span><span class='id identifier rubyid_utc'>utc</span><span class='period'>.</span><span class='id identifier rubyid_xmlschema'>xmlschema</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  	<span class='label'>last_pickup_time:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_last_pickup_time'>last_pickup_time</span><span class='period'>.</span><span class='id identifier rubyid_utc'>utc</span><span class='period'>.</span><span class='id identifier rubyid_xmlschema'>xmlschema</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  	<span class='label'>closing_time:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_closing_time'>closing_time</span><span class='period'>.</span><span class='id identifier rubyid_utc'>utc</span><span class='period'>.</span><span class='id identifier rubyid_xmlschema'>xmlschema</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  	<span class='label'>comments:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  	<span class='label'>reference1:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_reference1'>reference1</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  	<span class='label'>reference2:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  	<span class='label'>vehicle:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='comment'># Ignoring shipments after this
+</span> 			  	<span class='label'>pickup_items:</span> 
+ 			  	<span class='lbrace'>{</span>
+ 			  		<span class='label'>pickup_item_detail:</span>
+ 			  		<span class='lbrace'>{</span>
+ 			  			<span class='label'>product_group:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_product_group'>product_group</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  			<span class='label'>product_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_product_type'>product_type</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  			<span class='label'>number_of_shipments:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_number_of_shipments'>number_of_shipments</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  			<span class='label'>package_type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  			<span class='label'>payment:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_payment'>payment</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>   			  			
+ 			  			<span class='label'>shipment_weight:</span>
+ 			  			<span class='lbrace'>{</span>
+ 			  				<span class='label'>unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>KG</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  				<span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1</span><span class='tstring_end'>&quot;</span></span>
+ 			  			<span class='rbrace'>}</span><span class='comma'>,</span>
+ 			  			<span class='label'>shipment_volume:</span>
+ 			  			<span class='lbrace'>{</span>
+ 			  				<span class='label'>unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Cm3</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  				<span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1</span><span class='tstring_end'>&quot;</span></span>
+ 			  			<span class='rbrace'>}</span><span class='comma'>,</span>
+ 			  			<span class='label'>number_of_pieces:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_number_of_pieces'>number_of_pieces</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  			<span class='label'>cash_amount:</span> 
+ 			  			<span class='lbrace'>{</span>
+ 			  				<span class='label'>currency_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INR</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  				<span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.00</span><span class='tstring_end'>&quot;</span></span>
+ 			  			<span class='rbrace'>}</span><span class='comma'>,</span> 
+ 			  			<span class='label'>extra_charges:</span> 
+ 			  			<span class='lbrace'>{</span>
+ 			  				<span class='label'>currency_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INR</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+ 			  				<span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.00</span><span class='tstring_end'>&quot;</span></span>
+ 			  			<span class='rbrace'>}</span><span class='comma'>,</span>
+ 			  			<span class='label'>shipment_dimensions:</span> 
+  		  			<span class='lbrace'>{</span>
+  		  				<span class='label'>length:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  		  				<span class='label'>width:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  		  				<span class='label'>height:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  		  				<span class='label'>unit:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cm</span><span class='tstring_end'>&quot;</span></span>
+  		  			<span class='rbrace'>}</span><span class='comma'>,</span>
+ 			  			<span class='label'>comments:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+ 			  		<span class='rbrace'>}</span>
+ 			  	<span class='rbrace'>}</span><span class='comma'>,</span>
+ 			  	<span class='label'>status:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_status'>status</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  		<span class='rbrace'>}</span> <span class='comment'># Ignoring label_info
+</span>  	<span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Jul  8 14:12:08 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.4 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

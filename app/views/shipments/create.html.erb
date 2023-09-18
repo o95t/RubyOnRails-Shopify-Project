@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="span12">
+		<h2>Your shipment was successful</h2>
+
+		<p> The AWB number for your shipment is <strong><%= @shipment_store.awb %></strong> </p>
+
+		<div id="action_successful_buttons_container">
+			<a href="<%= @shipment_store.label_url %>" class="btn btn-primary" target="_blank">
+				Print Label PDF 
+			</a>
+
+			<%= link_to "Back to Order", orders_path(shop: current_user.shop_url, id: @shipment_store.order_id ), class: "btn"  %>
+
+			<a href="/" class="btn">Back to home</a>
+		</div>
+	</div>
+</div>

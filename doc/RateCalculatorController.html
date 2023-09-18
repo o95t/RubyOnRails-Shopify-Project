@@ -1,0 +1,574 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: RateCalculatorController
+  
+    &mdash; Documentation by YARD 0.8.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!RateCalculatorController.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (R)</a> &raquo;
+    
+    
+    <span class="title">RateCalculatorController</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: RateCalculatorController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
+          
+            <li class="next">RateCalculatorController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/controllers/rate_calculator_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-instance_method" title="#create (instance method)">- (Object) <strong>create</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#select_shipment_type-instance_method" title="#select_shipment_type (instance method)">- (Object) <strong>select_shipment_type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#calculate_total_quantity_from_order-instance_method" title="ApplicationController#calculate_total_quantity_from_order (method)">#calculate_total_quantity_from_order</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="SessionsHelper.html" title="SessionsHelper (module)">SessionsHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SessionsHelper.html#current_user-instance_method" title="SessionsHelper#current_user (method)">#current_user</a></span>, <span class='object_link'><a href="SessionsHelper.html#current_user%3D-instance_method" title="SessionsHelper#current_user= (method)">#current_user=</a></span>, <span class='object_link'><a href="SessionsHelper.html#current_user%3F-instance_method" title="SessionsHelper#current_user? (method)">#current_user?</a></span>, <span class='object_link'><a href="SessionsHelper.html#logged_in%3F-instance_method" title="SessionsHelper#logged_in? (method)">#logged_in?</a></span>, <span class='object_link'><a href="SessionsHelper.html#logged_in_user-instance_method" title="SessionsHelper#logged_in_user (method)">#logged_in_user</a></span>, <span class='object_link'><a href="SessionsHelper.html#login-instance_method" title="SessionsHelper#login (method)">#login</a></span>, <span class='object_link'><a href="SessionsHelper.html#logout-instance_method" title="SessionsHelper#logout (method)">#logout</a></span>, <span class='object_link'><a href="SessionsHelper.html#redirect_back_or-instance_method" title="SessionsHelper#redirect_back_or (method)">#redirect_back_or</a></span>, <span class='object_link'><a href="SessionsHelper.html#store_location-instance_method" title="SessionsHelper#store_location (method)">#store_location</a></span>, <span class='object_link'><a href="SessionsHelper.html#valid_shopify_session-instance_method" title="SessionsHelper#valid_shopify_session (method)">#valid_shopify_session</a></span></p>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="create-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rate_calculator_controller.rb', line 86</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span> 
+	<span class='ivar'>@has_error</span> <span class='op'>=</span> <span class='kw'>false</span> 
+	<span class='ivar'>@aramex_error_msg</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+
+	<span class='ivar'>@rate_calculator_form</span> <span class='op'>=</span> <span class='const'>RateCalculatorForm</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:rate_calculator_form</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+	<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_goods_origin_country'>goods_origin_country</span> <span class='op'>=</span> <span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_country_code'>origin_country_code</span>
+
+	<span class='ivar'>@order_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:rate_calculator_form</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:order_id</span><span class='rbracket'>]</span>
+
+	<span class='comment'># debugger if Rails.env.development?
+</span>
+	<span class='kw'>if</span> <span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+		<span class='ivar'>@message_hash</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>client_info:</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_savon_hash'>savon_hash</span>  <span class='rbrace'>}</span>
+		<span class='ivar'>@message_hash</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span>  <span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_savon_hash'>savon_hash</span>
+
+		<span class='id identifier rubyid_rate_calculator_client'>rate_calculator_client</span> <span class='op'>=</span> <span class='const'>Savon</span><span class='period'>.</span><span class='id identifier rubyid_client'>client</span> <span class='kw'>do</span>
+				<span class='id identifier rubyid_wsdl'>wsdl</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>ShopifyAramex</span><span class='op'>::</span><span class='const'>Application</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_rate_calculator_wsdl'>rate_calculator_wsdl</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+				<span class='id identifier rubyid_convert_request_keys_to'>convert_request_keys_to</span> <span class='symbol'>:camelcase</span>
+			<span class='kw'>end</span>
+		
+			<span class='ivar'>@response</span> <span class='op'>=</span> <span class='id identifier rubyid_rate_calculator_client'>rate_calculator_client</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='symbol'>:calculate_rate</span><span class='comma'>,</span> <span class='label'>message:</span> <span class='ivar'>@message_hash</span><span class='rparen'>)</span>
+
+			<span class='comment'># Check if the response has errors 
+</span>			<span class='kw'>if</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='symbol'>:rate_calculator_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:has_errors</span><span class='rbracket'>]</span> 				
+				<span class='ivar'>@has_error</span> <span class='op'>=</span> <span class='kw'>true</span>
+				<span class='ivar'>@notifications</span> <span class='op'>=</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='symbol'>:rate_calculator_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:notifications</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:notification</span><span class='rbracket'>]</span>
+
+				<span class='comment'># When there is only one error, response gives us a hash but for multiple errors, we 
+</span>				<span class='comment'># get an array of hashes. So, we convert hash in to array of hashes 
+</span>				<span class='kw'>if</span> <span class='ivar'>@notifications</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span>
+					<span class='ivar'>@notifications</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@notifications</span>
+				<span class='kw'>end</span>
+				<span class='ivar'>@notifications</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_notification'>notification</span><span class='op'>|</span>
+					<span class='ivar'>@aramex_error_msg</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_notification'>notification</span><span class='lbracket'>[</span><span class='symbol'>:code</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'>  </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_notification'>notification</span><span class='lbracket'>[</span><span class='symbol'>:message</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'> \n</span><span class='tstring_end'>&quot;</span></span>
+				<span class='kw'>end</span>	
+			<span class='kw'>else</span>
+				<span class='ivar'>@currency_code</span> <span class='op'>=</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='symbol'>:rate_calculator_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:total_amount</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:currency_code</span><span class='rbracket'>]</span>
+				<span class='ivar'>@amount</span> <span class='op'>=</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='symbol'>:rate_calculator_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:total_amount</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:value</span><span class='rbracket'>]</span>
+		<span class='kw'>end</span>
+	<span class='kw'>else</span>
+		<span class='ivar'>@has_error</span> <span class='op'>=</span> <span class='kw'>true</span>
+	<span class='kw'>end</span>
+
+	<span class='kw'>if</span> <span class='ivar'>@has_error</span>
+		<span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Error in calculating the rate. Please try again. 
+						&lt;p&gt;&lt;strong&gt;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@aramex_error_msg</span><span class='rbrace'>}</span><span class='tstring_content'>&lt;/strong&gt;&lt;/p&gt;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>if</span> <span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_product_group'>product_group</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DOM</span><span class='tstring_end'>&quot;</span></span>
+		 	<span class='ivar'>@product_type_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_domestic_product_type_hash'>domestic_product_type_hash</span>
+		<span class='kw'>else</span>
+			<span class='ivar'>@product_type_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_express_product_type_hash'>express_product_type_hash</span>
+		<span class='kw'>end</span>
+
+		<span class='ivar'>@order</span> <span class='op'>=</span> <span class='const'>ShopifyAPI</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='ivar'>@order_id</span><span class='rparen'>)</span>
+
+		<span class='id identifier rubyid_render'>render</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>new</span><span class='tstring_end'>'</span></span>
+	<span class='kw'>end</span>
+	<span class='comment'># debugger
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="new-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rate_calculator_controller.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
+	<span class='comment'># Get the order from order id
+</span>	<span class='ivar'>@order</span> <span class='op'>=</span> <span class='const'>ShopifyAPI</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:order_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+	<span class='ivar'>@payment_type</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:payment_type</span><span class='rbracket'>]</span>
+
+	
+	<span class='ivar'>@rate_calculator_form</span> <span class='op'>=</span> <span class='const'>RateCalculatorForm</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>nil</span><span class='rparen'>)</span>
+	
+	<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span> <span class='op'>=</span> <span class='ivar'>@payment_type</span>
+
+	<span class='comment'># Set values for origin 
+</span>
+	<span class='kw'>case</span> <span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span>
+	<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>P</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@origin_address</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span>
+		<span class='ivar'>@destination_address</span> <span class='op'>=</span> <span class='const'>Address</span><span class='period'>.</span><span class='id identifier rubyid_from_order'>from_order</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_shipping_address'>shipping_address</span><span class='comma'>,</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_customer'>customer</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+	<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>C</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@origin_address</span> <span class='op'>=</span> <span class='const'>Address</span><span class='period'>.</span><span class='id identifier rubyid_from_order'>from_order</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_shipping_address'>shipping_address</span><span class='comma'>,</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_customer'>customer</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+		<span class='ivar'>@destination_address</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span>
+	<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>3</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@destination_address</span> <span class='op'>=</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_shipping_address'>shipping_address</span>
+		<span class='comment'># @third_party_address = @order.customer.default_address
+</span>	<span class='kw'>end</span>
+
+	<span class='comment'># Lets set the origin address to origin in case of P and destination in case of C
+</span>	<span class='comment'># In case of 3, origin address will be blank. 
+</span>	<span class='kw'>unless</span> <span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>3</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_address_line1'>origin_address_line1</span> <span class='op'>=</span> <span class='ivar'>@origin_address</span><span class='period'>.</span><span class='id identifier rubyid_address1'>address1</span>
+		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_address_line2'>origin_address_line2</span> <span class='op'>=</span> <span class='ivar'>@origin_address</span><span class='period'>.</span><span class='id identifier rubyid_address2'>address2</span>
+		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_city'>origin_city</span> <span class='op'>=</span> <span class='ivar'>@origin_address</span><span class='period'>.</span><span class='id identifier rubyid_city'>city</span>
+		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_post_code'>origin_post_code</span> <span class='op'>=</span> <span class='ivar'>@origin_address</span><span class='period'>.</span><span class='id identifier rubyid_zip'>zip</span>
+		<span class='comment'># @rate_calculator_form.origin_state_code = @origin_address.province_code
+</span>		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_country_code'>origin_country_code</span> <span class='op'>=</span> <span class='ivar'>@origin_address</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span>
+	<span class='kw'>else</span>
+		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_address_line1'>origin_address_line1</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_address_line2'>origin_address_line2</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_city'>origin_city</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_post_code'>origin_post_code</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='comment'># @rate_calculator_form.origin_state_code = &quot;&quot;
+</span>		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_country_code'>origin_country_code</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+	<span class='kw'>end</span>
+
+	<span class='comment'># Set values for destination address
+</span>	<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_destination_address_line1'>destination_address_line1</span> <span class='op'>=</span> <span class='ivar'>@destination_address</span><span class='period'>.</span><span class='id identifier rubyid_address1'>address1</span>
+	<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_destination_address_line2'>destination_address_line2</span> <span class='op'>=</span> <span class='ivar'>@destination_address</span><span class='period'>.</span><span class='id identifier rubyid_address2'>address2</span>
+	<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_destination_city'>destination_city</span> <span class='op'>=</span> <span class='ivar'>@destination_address</span><span class='period'>.</span><span class='id identifier rubyid_city'>city</span>
+	<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_destination_post_code'>destination_post_code</span> <span class='op'>=</span> <span class='ivar'>@destination_address</span><span class='period'>.</span><span class='id identifier rubyid_zip'>zip</span>
+	<span class='comment'># @rate_calculator_form.destination_state_code = @destination_address.province_code
+</span>	<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_destination_country_code'>destination_country_code</span> <span class='op'>=</span> <span class='ivar'>@destination_address</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span>
+
+	
+	<span class='comment'># To control what options product type select shows. Will only select the right 
+</span>	<span class='comment'># value in case of rate_calculator_form types P and C 
+</span>	<span class='kw'>if</span> <span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_origin_country_code'>origin_country_code</span> <span class='op'>==</span> <span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_destination_country_code'>destination_country_code</span>
+		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_product_group'>product_group</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DOM</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@product_type_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_domestic_product_type_hash'>domestic_product_type_hash</span>
+	<span class='kw'>else</span>
+		<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_product_group'>product_group</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EXP</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@product_type_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_express_product_type_hash'>express_product_type_hash</span>
+	<span class='kw'>end</span>
+
+	<span class='comment'># Set the description from the line_items received from Shopify
+</span>	<span class='ivar'>@description</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+	<span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_line_items'>line_items</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_item'>item</span><span class='op'>|</span>
+		<span class='ivar'>@description</span> <span class='op'>+=</span> <span class='id identifier rubyid_item'>item</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span>
+	<span class='kw'>end</span>
+
+	<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_description_of_goods'>description_of_goods</span> <span class='op'>=</span> <span class='ivar'>@description</span>
+
+	<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_num_of_pieces'>num_of_pieces</span> <span class='op'>=</span> <span class='id identifier rubyid_calculate_total_quantity_from_order'>calculate_total_quantity_from_order</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='rparen'>)</span>
+	<span class='ivar'>@rate_calculator_form</span><span class='period'>.</span><span class='id identifier rubyid_actual_weight'>actual_weight</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_total_weight'>total_weight</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>1000</span> <span class='comment'># shopify returns wight in grams
+</span>
+	<span class='comment'># debugger
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="select_shipment_type-instance_method">
+  
+    - (<tt>Object</tt>) <strong>select_shipment_type</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/rate_calculator_controller.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_select_shipment_type'>select_shipment_type</span>
+	<span class='ivar'>@order_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:order_id</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Jul  8 14:12:09 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.4 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

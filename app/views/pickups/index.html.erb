@@ -1,0 +1,404 @@
+<div class="top-line">
+
+<%= form_tag(pickups_path, :method => "get") do %>
+    <div class="filter-block">
+        <label for="dateSelect">Date</label>
+        <div class="filter-block-select">
+          <%#= text_field_tag :time, params[:time], class: 'inner-select inline-block', id: 'datepicker' %>
+
+         <input type="text" class="inner-select inline-block" id="datepicker">
+
+<div style="display:none">
+              <%= text_field_tag :datepicker_start_year, params[:datepicker_start_year], class: 'inner-select inline-block', id: "datepicker_start_year" %>
+              <%= text_field_tag :datepicker_start_month, params[:datepicker_start_month], class: 'inner-select inline-block', id: "datepicker_start_month" %>
+              <%= text_field_tag :datepicker_start_day, params[:datepicker_start_day], class: 'inner-select inline-block', id: "datepicker_start_day" %>  
+                          
+              <%= text_field_tag :datepicker_finish_year, params[:datepicker_finish_year], class: 'inner-select inline-block', id: "datepicker_finish_year" %>
+              <%= text_field_tag :datepicker_finish_month, params[:datepicker_finish_month], class: 'inner-select inline-block', id: "datepicker_finish_month" %>
+              <%= text_field_tag :datepicker_finish_day, params[:datepicker_finish_day], class: 'inner-select inline-block', id: "datepicker_finish_day" %>  
+              <%= text_field_tag :datepicker_total, params[:datepicker_total], class: 'inner-select inline-block', id: "datepicker_total" %> 
+</div>
+
+          <%= image_tag("arr.png", class: "arr") %> 
+        </div>
+    </div>
+
+    <div class="filter-block-right">
+        <p class="export" data-toggle="modal" data-target="#exampleModal"><%= image_tag("export.png", alt: "Aramex Logo") %>Export</p>
+        <input class="main-red-button" type="button" onclick="window.location = '/shipments/new';" value="Create New Label"/>
+        <input class="main-grey-button" type="button" onclick="window.location = '/pickups/new';" value="Create pickup"/>
+
+    </div>
+</div>
+<div class="filter-block-tab">
+    <ul class='filter-tab'>
+        <li class='first first_pickedup'>
+            <% unless params[:status] %>
+                <p class="active"><%= link_to "All", pickups_path, class: 'active' %></p>
+            <% else %>
+                <p><%= link_to "All", pickups_path %></p>
+            <% end %>
+        </li>
+        <li class='second second_pickedup'>
+            <% if params[:status] == "Picked-up" %>
+                <p class="active"><%= link_to "Picked-up", pickups_path(status: 'Picked-up'), class: 'active' %></p>
+            <% else %>
+                <p><%= link_to "Picked-up", pickups_path(status: 'Picked-up') %></p>
+            <% end %>
+        </li>
+        <li class='third third_pickedup'>  
+            <% if params[:status] == "Pending" %>
+                <p class="active"><%= link_to "Pending", pickups_path(status: 'Pending'), class: 'active' %></p>
+            <% else %>
+                <p><%= link_to "Pending", pickups_path(status: 'Pending') %></p>
+            <% end %> 
+        </li>
+    </ul>
+</div>
+
+<div class="search-block">
+    <div class="search-block-left">
+        <p class='order-number'>Reference no</p>
+        <p class='triangle'></p>
+    </div>
+    <div class="search-block-right">
+   
+        <%= image_tag("search.png", alt: "Search", class: "lupa") %>
+        <%= text_field_tag :reference1, params[:reference1], class: 'search', size:40, placeholder: "Search" %>
+        <%= submit_tag "Search", style: 'display:none' %>
+    
+    <div>
+    </div>
+</div>
+<% end %>
+<div class="table-responsive">
+    <table class="table table-sm table-shipment">
+        <thead>
+            <tr>
+                <th><label class="containerCheckbox">
+                        <input id="checkedAll" type="checkbox" >
+                        <span class="checkmark"></span>
+                    </label>
+                </th>
+                <th>Pickup Reference</th>
+                <th>Creation Date</th>
+                <th>Collection Date</th>
+                <th>Shipment Number</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @pickups.each do |pickup| %>
+            <tr>
+                <td><label class="containerCheckbox">
+                        <input class="checkSingle" type="checkbox" >
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+                <td><%= pickup.reference1 %></td>
+                <td><%= pickup.created_at.strftime("%d/%m/%Y")  %></td>
+                <td><%= pickup.closing_time.strftime("%d/%m/%Y")  %></td>
+                <td><a href="#"><%= pickup.number_of_shipments %></a></td>
+                <td><span class='red'><%= pickup.status %></span></td>
+            </tr>
+          <% end %>                                                                                                                                                      
+        </tbody>
+
+    </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center pagination-shipping">
+            <li class="page-item">
+                <%
+                    if params[:page].to_i == 1 || !params[:page]
+                        go_to_back = 1
+                    else
+                        go_to_back = params[:page].to_i - 1
+                    end    
+                %>
+                <%= link_to "/pickups?page=#{go_to_back}", class: "page-link" do %>
+                    <div class="arrow-left"></div>
+                <% end %>
+            </li>
+            <% @count_of_pages.times do |s| %>
+                <% if params[:page].to_i == s + 1 %>
+                <li class="page-item active">
+                <% else %>
+                <li class="page-item">
+                <% end %>
+                    <%= link_to "#{s + 1}", "/pickups?page=#{s+ 1}", class: "page-link" %>
+                </li>
+            <% end %>
+            <li class="page-item">
+                <%
+                    if params[:page].to_i == @count_of_pages 
+                        go_to_next = @count_of_pages
+                    elsif !params[:page]
+                        go_to_next = 2
+                    else    
+                        go_to_next = params[:page].to_i + 1
+                    end
+                %>
+                <%= link_to "/pickups?page=#{go_to_next}", class: "page-link" do %>
+                    <div class="arrow-right"></div>
+                <% end %>
+            </li>
+        </ul>
+    </nav>       
+</div>
+<!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Export</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn modal-button">Export</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<script>
+    $(document).ready(function () {
+        $(".lupa").click(function () {
+            var str = getAllValues();
+            window.location.href = "pickups.html?"+ str;
+        });
+        $(".main-red-button").click(function () {
+            event.preventDefault();
+            var strFromTable = getAllValuesFromTable();
+           if(strFromTable === ""){
+                alert("Select orders, please.");
+                return
+            }
+            window.location.href = "pickups.html?"+ strFromTable;
+        });
+        
+        $(".main-grey-button").click(function () {
+            event.preventDefault();
+            var strFromTable = getAllValuesFromTable();
+           if(strFromTable === ""){
+                alert("Select orders, please.");
+                return
+            }
+            window.location.href = "pickups.html?"+ strFromTable;
+        });
+        function getAllValuesFromTable() {
+            var tableShipment =[];
+                $(".table-shipment tbody tr td input").each(function () {
+                    if (this.checked) {
+                        var nameInput = $(this).attr("data-type");
+                        tableShipment.push(nameInput); 
+                    } 
+                });
+
+            var params = "";
+            for (var i = tableShipment.length - 1; i > -1; i--) {
+                    params += 'operations[]='+tableShipment[i]+'&';
+
+            };
+            return params.slice(0,-1);
+        }
+
+        $(".first_pickedup p").click(function () {
+            clearActive();
+            $(this).addClass("active");
+            var str = getAllValues();
+            window.location.href = "pickups.html?"+ str;
+        });
+
+        $(".second_pickedup p").click(function () {
+            clearActive();
+            $(this).addClass("active");
+            var str = getAllValues();
+            window.location.href = "pickups.html?"+ str;
+        });     
+
+        $(".third_pickedup p").click(function () {
+            clearActive();
+            $(this).addClass("active");
+            var str = getAllValues();
+            window.location.href = "pickups.html?"+ str;
+        });
+
+        function clearActive() {
+                $(".filter-tab li p").each(function () {
+                    if($(this).hasClass("active")){
+                        $(this).removeClass("active");
+                    }
+                });
+        }
+
+        function getAllValues() {
+            var date = $("#datepicker").val();
+            var search = $(".search").val();
+            var pickups;
+                $(".filter-tab li p").each(function () {
+                    if($(this).hasClass("active")){
+                        pickups = $(this).text();
+                    }
+                });
+            var params = { 
+                date:encodeURIComponent(date),
+                pickups:pickups,
+                search:search
+            };
+            var str = $.param( params );
+            return str;
+        }
+
+
+
+
+        $(".paymentStatus-select-show").change(function () {
+            var boxes = $('.paymentStatus-select-show .checkbox-select-show:checked');
+            if (boxes.length > 0) {
+                $('.paymentStatus-select-show .select-show-done').removeClass('passive')
+            } else {
+                $('.paymentStatus-select-show .select-show-done').addClass('passive')
+            }
+
+        });
+        $(".productGroupSelect-select-show").change(function () {
+            var boxes = $('.productGroupSelect-select-show .checkbox-select-show:checked');
+            if (boxes.length > 0) {
+                $('.productGroupSelect-select-show .select-show-done').removeClass('passive')
+            } else {
+                $('.productGroupSelect-select-show .select-show-done').addClass('passive')
+            }
+
+        });
+
+        $(".additionalServices-select-show").change(function () {
+            var boxes = $('.additionalServices-select-show .checkbox-select-show:checked');
+            if (boxes.length > 0) {
+                $('.additionalServices-select-show .select-show-done').removeClass('passive')
+            } else {
+                $('.additionalServices-select-show .select-show-done').addClass('passive')
+            }
+
+        });
+
+        $("#checkedAll").change(function () {
+            if (this.checked) {
+                $(".checkSingle").each(function () {
+                    this.checked = true;
+                    $(this).parent().parent().parent().addClass('grey-row')
+                })
+            } else {
+                $(".checkSingle").each(function () {
+                    this.checked = false;
+                    $(this).parent().parent().parent().removeClass('grey-row')
+                })
+            }
+            checkAll();
+        });
+
+        $(".checkSingle").change(function () {
+            if (this.checked) {
+                $(this).parent().parent().parent().addClass('grey-row')
+            } else {
+                $(this).parent().parent().parent().removeClass('grey-row')
+            }
+            
+            checkAll();
+
+        });
+
+        $(".checkSingle").click(function () {
+            if ($(this).attr('checked') !== "checked") {
+                $(this).attr('checked', true);
+            }else{
+                $(this).attr('checked', false); 
+            }
+        }); 
+        
+        function checkAll() {
+            var boxes = $('.checkSingle');
+            var checkedd = 0;
+            boxes.each(function () {
+                if (this.checked === true) {
+                    checkedd = checkedd + 1;
+                }
+            })
+            $('.items-selected span').text(checkedd)
+        }
+/*
+$('#datepicker').daterangepicker({
+    //"autoApply": true,
+    "startDate": moment(),
+    "endDate": moment().add(7,'days'),
+     "locale": {
+      format: 'DD MMM'
+    }
+}, function(start, end, label) {
+  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+});
+*/
+var settings = {
+    "startDate": moment(),
+    "endDate": moment().add(7,'days'),
+     "locale": {
+      format: 'DD MMM'
+    }
+}
+
+
+        $('#datepicker').daterangepicker(settings, function (start, end, label) {
+
+            var year  = start.format('YYYY');
+            var month = start.format('MM').replace(/^0+/, '');
+            var day = start.format('DD').replace(/^0+/, '');
+
+            var year_end  = end.format('YYYY');
+            var month_end = end.format('MM').replace(/^0+/, '');
+            var day_end = end.format('DD').replace(/^0+/, '');
+
+            $("#datepicker_start_year").val(year);
+            $("#datepicker_start_month").val(month);
+            $("#datepicker_start_day").val(day);
+
+            $("#datepicker_finish_year").val(year_end);
+            $("#datepicker_finish_month").val(month_end);
+            $("#datepicker_finish_day").val(day_end);
+            $("#datepicker_total").val(year + "/" + month + "/" + day + "-" + year_end + "/" + month_end + "/" + day_end);
+            console.log('New date range selected: ' + start.format('DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+
+            var year  = moment().format('YYYY');
+            var month = moment().format('MM').replace(/^0+/, '');
+            var day = moment().format('DD').replace(/^0+/, '');
+
+            var year_end  = moment().add(7,'days').format('YYYY');
+            var month_end = moment().add(7,'days').format('MM').replace(/^0+/, '');
+            var day_end = moment().add(7,'days').format('DD').replace(/^0+/, '');
+
+            $("#datepicker_start_year").val(year);
+            $("#datepicker_start_month").val(month);
+            $("#datepicker_start_day").val(day);
+
+            $("#datepicker_finish_year").val(year_end);
+            $("#datepicker_finish_month").val(month_end);
+            $("#datepicker_finish_day").val(day_end);
+
+
+            $("#datepicker_total").val(year + "/" + month + "/" + day + "-" + year_end + "/" + month_end + "/" + day_end);
+
+            console.log('New date range selected:');
+
+
+
+
+    });
+
+
+
+</script>

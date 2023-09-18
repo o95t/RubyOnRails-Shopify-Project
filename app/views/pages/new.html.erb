@@ -1,0 +1,33 @@
+<div class="row" style="padding: 30px;">
+<h1>Rate Calculator Installation Guide</h1>
+<p></p>
+<h2>Rate Calculator on "checkout" page</h2>
+<p style="color:red;">The store installing your carrier service must meet one of the following requirements: </p>
+<ul style="color:red">
+<li>It is only <b>Shopify Plus</b> plan.</li>
+</ul>
+
+
+<img src="https://shopify-optilog.aramex.com/1.png" alt="">
+<h2>Rate Calculator in minutes</h2>
+
+<h4>1. Copy and paste the JavaScript below to <b>checkout.liquid</b>.</h4>
+<pre>if(typeof Checkout==='object'){if(typeof Checkout.$==='function'){(function(){var loadScript=function(url,callback){var script=document.createElement("script");script.type="text/javascript";script.async=!0;if(script.readyState){script.onreadystatechange=function(){if(script.readyState=="loaded"||script.readyState=="complete"){script.onreadystatechange=null;callback()}}}
+else{script.onload=function(){callback()}}
+script.src=url;document.getElementsByTagName("head")[0].appendChild(script)};var loadCss=function(url,callback){var links=document.createElement('link');links.rel="stylesheet";links.type="text/css";links.href=url;document.getElementsByTagName("head")[0].appendChild(links)};var myCode=function($){var type='shipping';var button_s='.step__footer__continue-btn';bindIvents(type,button_s);addressApiValidation(type,button_s);function bindIvents(type,button_s){$('.section--'+type+'-address').find('#checkout_'+type+'_address_city').blur(function(){addressApiValidation(type,button_s)});$('.section--'+type+'-address').find('#checkout_'+type+'_address_address1').blur(function(){addressApiValidation(type,button_s)});$('.section--'+type+'-address').find('#checkout_'+type+'_address_zip').blur(function(){addressApiValidation(type,button_s)})}
+function addressApiValidation(type,button_s){var chk_city=$('.section--'+type+'-address').find('#checkout_'+type+'_address_city').val();var chk_region_id=$('.section--'+type+'-address').find('#checkout_'+type+'_address_address1').val();var chk_postcode=$('.section--'+type+'-address').find('#checkout_'+type+'_address_zip').val();var country_code=$('.section--'+type+'-address').find('#checkout_'+type+'_address_country').find(':selected').attr("data-code");if(chk_region_id==''||chk_city==''||chk_city===undefined){return!1}else{$(button_s).prop("disabled",!0);$(button_s).addClass("btn--disabled");$(button_s).addClass("btn--loading");$.post({url:"https://shopify.aramex.com/apilocationvalidator",data:{city:chk_city,post_code:chk_postcode,country_code:country_code,shop:Shopify.Checkout.apiHost},success:function(response){console.log(response[0][1])
+if(response[0][1]!==!0){console.log(response[0][1])
+console.log(response[1][1])
+console.log(response[2][1])
+if(!(response[1][1])&&response[2][1]!=''&&response[2][1]!==undefined){if(response[2][1].indexOf("City")!=-1){if($('.section--'+type+'-address').find('#checkout_'+type+'_address_city').val()!=""){if(response[2][1]!==undefined){alert(response[2][1])}}
+$('.section--'+type+'-address').find('#checkout_'+type+'_address_city').val("")}
+if(response[2][1].indexOf("zip")!=-1||response[2][1].indexOf("Zipcode")!=-1){if($('.section--'+type+'-address').find('#checkout_'+type+'_address_zip').val()!=""){if(response[2][1]!==undefined){alert(response[2][1])}}
+$('.section--'+type+'-address').find('#checkout_'+type+'_address_zip').val("")}}else if(response[1][1]){alert(response[2][1]);$('.section--'+type+'-address').find('#checkout_'+type+'_address_city').val("")}}
+$(button_s).prop("disabled",!1);$(button_s).removeClass("btn--disabled");$(button_s).removeClass("btn--loading")}})}}
+$('.heading-1').css('color','red');var type='.section--shipping-address';setAutocomplate(type);function setAutocomplate(type){var shippingAramexCitiesObj;var shipping_aramex_cities_temp;var billing_aramex_cities='';var shipping_aramex_cities=billing_aramex_cities;shipping_aramex_cities_temp=shipping_aramex_cities;shippingAramexCitiesObj=AutoSearchControls(type,shipping_aramex_cities);$(type).find("#checkout_shipping_address_country").change(function(){getAllCitiesJson(type,shippingAramexCitiesObj)});getAllCitiesJson(type,shippingAramexCitiesObj);function AutoSearchControls(type,search_city){return $(type).find("#checkout_shipping_address_city").autocomplete({minLength:3,scroll:!0,source:function(req,responseFn){var re=$.ui.autocomplete.escapeRegex(req.term);var matcher=new RegExp("^"+re,"i");var a=$.grep(search_city,function(item,index){return matcher.test(item)});responseFn(a)},search:function(event,ui){$('.step__footer__continue-btn').addClass("btn--loading");$('.step__footer__continue-btn').addClass("btn--disabled");$('.step__footer__continue-btn').prop("disabled",!0)},response:function(event,ui){var temp_arr=[];$(ui.content).each(function(i,v){temp_arr.push(v.value)});$('.step__footer__continue-btn').prop("disabled",!1);$('.step__footer__continue-btn').removeClass("btn--disabled");$('.step__footer__continue-btn').removeClass("btn--loading");$('.ui-autocomplete').css('max-height','150px');$('.ui-autocomplete').css('overflow-y','auto');$('.ui-autocomplete').css('overflow-x','hidden');return temp_arr}})}
+function getAllCitiesJson(type,aramexCitiesObj){var country_code=$(type).find("#checkout_shipping_address_country").find(':selected').attr("data-code");var url_check='https://shopify.aramex.com/serchautocity?country_code='+country_code+'&shop='+Shopify.Checkout.apiHost;shipping_aramex_cities_temp='';aramexCitiesObj.autocomplete("option","source",url_check)}}};loadCss('//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css',function(){});if(typeof jQuery==='undefined'){loadScript('//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js',function(){loadScript('//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js',function(){jQuery191=jQuery.noConflict(!0);myCode(jQuery191)})})}else{loadScript('//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js',function(){myCode(jQuery)})}})()}}</pre>
+
+<h4>2. Under "Account Information" page of Aramex plugin fill in your e-shop url.</h4>
+<img src="https://shopify-optilog.aramex.com/6.png" alt="">
+
+</div>

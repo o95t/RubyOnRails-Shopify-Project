@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="span12">
+		<h2>Your pickup creation was successful</h2>
+
+		<p><strong>Pickup Details</strong>:
+			<br />Collection Reference Number: <%= @pickup_store.aramex_id %>
+			<br />Unique GUID: <%= @pickup_store.guid %>
+			<br />Product Group: <%= @pickup_store.product_group %>
+			<br />Reference :<%= @pickup_store.reference1 %>
+			<br />Datetime: <%= @pickup_store.pickup_datetime %>
+		</p>
+
+		<p><strong>You can now add a shipment to this pickup while creating a shipment.</strong></p>
+
+		<div id="action_successful_buttons_container">
+			<%= link_to "Back to Home", root_url, class: "btn" %>
+			<%= link_to "Create another pickup", new_pickup_path, class: "btn" %>
+		</div>
+	</div>
+</div>

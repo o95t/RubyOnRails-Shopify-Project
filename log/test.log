@@ -1,0 +1,2 @@
+Connecting to database specified by database.yml
+Started GET "/rate-calculator/new?payment_type=P&order_id=4775798218&commit=Continue" for 127.0.0.1 at 2016-11-25 17:19:29 +0200

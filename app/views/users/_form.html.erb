@@ -1,0 +1,86 @@
+
+	<%= simple_form_for(@user, html: { class: 'form-horizontal', data: {validate: 'parsley'}}) do |f| %>
+		<fieldset>
+			<legend>Aramex Information</legend>
+			<%= f.input :email, label: 'Email' %>
+			<%= f.input :password %>
+			<%= f.input :account_number, label: 'Account Number' %>
+			<%= f.input :account_pin, label: 'Account Pin' %>
+			<%= f.input :account_entity, label: 'Account Entity', :input_html => { maxlength: 3, minlength: 3 } %>
+		 	<%#= f.input :account_country_code, as: :string, label: 'Account Country Code' %>
+		 	<%#= f.input :account_country_code, collection: User.all_country_hash.sort.map{ |k, v| [k,v] },
+				hint: "Please select your country" %>
+			<div class="control-group">
+				<label class="control-label">Account Country</label>
+				<div class="controls">
+					<%= country_select("user", "account_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])  %>
+				</div>
+			</div>
+			<!-- Updated with new county -->
+			<!-- <div class="control-group">
+				<label class="control-label">Pickup Country Code</label>
+				<div class="controls">
+					<%#= country_select("pickup", "pickup_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])  %>
+					<%# unless aramex_country_ar.nil? -%>
+						<%#= f.select :account_country_code, aramex_country_ar.map{ |c| [c[:name], c[:code]] } %>
+					<%# else -%>
+						<%#= country_select("user", "account_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])   %>
+					<%# end -%>
+					<!- aramex_country_ar -->
+<!-- 				</div>
+			</div>
+			<%#= f.input :post_code %>
+			<%#= f.input :city, input_html: { class: "awesomplete", list: "cities" } %>
+			<datalist id="cities"></datalist>
+			<%#= f.input :post_code_required %>
+ -->
+		<!-- Ends with Country -->
+			<%#= f.hidden_field :user_refer, label: 'Reference' %>
+		</fieldset>
+
+		<fieldset>
+			<legend>Shipping Defaults</legend>
+			<%= f.input :default_payment_type, collection: Shipment.payment_types_hash.sort.map { |k, v| [k,v] } %>
+			<%= f.input :default_product_group, collection: Shipment.product_groups_hash.sort.map { |k, v| [k,v] }, hint: "Leave this blank unless you have specific instructions to select one of the options" %>
+			<%= f.input :default_domestic_product_type, input_html: { multiple: true, class: "selectpicker" }, collection: Shipment.domestic_product_type_hash.sort.map { |k, v| [k,v] }, selected: "OND" %>
+			<%= f.input :default_international_product_type, input_html: { multiple: true, class: "selectpicker" }, collection: Shipment.express_product_type_hash.sort.map { |k, v| [k,v] }, selected: "PPX" %>
+			<%= f.input :default_domestic_services, input_html: { multiple: true, class: "selectpicker" }, collection: Shipment.domestic_services_hash.sort.map { |k, v| [k,v] }, selected: "OND" %>
+			<%= f.input :default_international_services, input_html: { multiple: true, class: "selectpicker" }, collection: Shipment.express_services_hash.sort.map { |k, v| [k,v] }, selected: "PPX" %>
+
+			<%# We are setting payment option default only for prepaid , not for consignee since it only has one option %>
+			<%= f.input :default_prepaid_payment_option, label: 'Default Payment Method',	 collection: Shipment.shipper_payment_options_hash, allow_blank: true %>
+						<%= f.input :mode, hint: 'Leave this blank unless you want to use this option', label: 'Url for "frontend rate calculator" on checkout page. Example: mysite.myshopify.com' %>
+			<%= f.label :auto, label: 'Auto fulfilment'%>
+			<%# <%= f.check_box :auto, class: "form-check-input", style: "margin-left:20px;"  %> %>
+		</fieldset>
+		<%= f.button :submit, 'Submit', id: 'submit' %>
+	<% end %>
+	<%
+		# This variable is used for showing model box for new user
+		if @box === 0
+	%>
+		<div id="accountinfo" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header" style="padding: 6px 16px 21px 1px;">
+		        <button type="button" class="close" data-dismiss="modal">
+		        	<span aria-hidden="true">&times;</span>
+		        	<!-- <span class="sr-only">close</span> -->
+		        </button>
+		        <h4 class="modal-title"><p></p></h4>
+		      </div>
+		      <div class="modal-body">
+		        <p>Do you have <b>ARAMEX</b> account?</p>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+		        <!-- <button type="button" class="btn btn-primary"><No</button> -->
+		        <a href="http://www.aramex.com/e-commerce/request.aspx?q=c291cmNlPXN0YXJ0dXAm-yaQia7kn2bo%3d" class="btn btn-primary btn-info" name="noaccount"id="noaccount">No</a>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div> <!-- /.modal-dialog-->
+		</div><!-- /.modal -->
+	<%
+		end
+	%>
+</div>

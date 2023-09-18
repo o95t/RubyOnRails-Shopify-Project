@@ -1,0 +1,38 @@
+# Read about factories at https://github.com/thoughtbot/factory_girl
+
+FactoryGirl.define do
+  factory :shipment do
+    payment_type "MyString"
+    payment_options "MyString"
+    shipper_person_name "MyString"
+    shipper_company_name "MyString"
+    shipper_cellphone "MyString"
+    shipper_email "MyString"
+    shipper_address_line1 "MyString"
+    shipper_address_line2 "MyString"
+    shipper_address_line3 "MyString"
+    shipper_city "MyString"
+    shipper_state_code "MyString"
+    shipper_post_code "MyString"
+    shipper_country_code "MyString"
+    receiver_person_name "MyString"
+    receiver_company_name "MyString"
+    receiver_cellphone "MyString"
+    receiver_email "MyString"
+    receiver_address_line1 "MyString"
+    receiver_address_line2 "MyString"
+    receiver_address_line3 "MyString"
+    receiver_city "MyString"
+    receiver_state_code "MyString"
+    receiver_post_code "MyString"
+    receiver_country_code "MyString"
+    shipping_datetime "MyString"
+    due_datetime "MyString"
+    num_of_pieces "MyString"
+    actual_weight "MyString"
+    product_group "MyString"
+    product_type "MyString"
+    description_of_goods "MyString"
+    goods_origin_country "MyString"
+  end
+end

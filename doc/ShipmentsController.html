@@ -1,0 +1,940 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: ShipmentsController
+  
+    &mdash; Documentation by YARD 0.8.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!ShipmentsController.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (S)</a> &raquo;
+    
+    
+    <span class="title">ShipmentsController</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: ShipmentsController
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next"><span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
+          
+            <li class="next">ShipmentsController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/controllers/shipments_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-instance_method" title="#create (instance method)">- (Object) <strong>create</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">- (Object) <strong>new</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#print_label-instance_method" title="#print_label (instance method)">- (Object) <strong>print_label</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#select_shipment_type-instance_method" title="#select_shipment_type (instance method)">- (Object) <strong>select_shipment_type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#calculate_total_quantity_from_order-instance_method" title="ApplicationController#calculate_total_quantity_from_order (method)">#calculate_total_quantity_from_order</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="SessionsHelper.html" title="SessionsHelper (module)">SessionsHelper</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SessionsHelper.html#current_user-instance_method" title="SessionsHelper#current_user (method)">#current_user</a></span>, <span class='object_link'><a href="SessionsHelper.html#current_user%3D-instance_method" title="SessionsHelper#current_user= (method)">#current_user=</a></span>, <span class='object_link'><a href="SessionsHelper.html#current_user%3F-instance_method" title="SessionsHelper#current_user? (method)">#current_user?</a></span>, <span class='object_link'><a href="SessionsHelper.html#logged_in%3F-instance_method" title="SessionsHelper#logged_in? (method)">#logged_in?</a></span>, <span class='object_link'><a href="SessionsHelper.html#logged_in_user-instance_method" title="SessionsHelper#logged_in_user (method)">#logged_in_user</a></span>, <span class='object_link'><a href="SessionsHelper.html#login-instance_method" title="SessionsHelper#login (method)">#login</a></span>, <span class='object_link'><a href="SessionsHelper.html#logout-instance_method" title="SessionsHelper#logout (method)">#logout</a></span>, <span class='object_link'><a href="SessionsHelper.html#redirect_back_or-instance_method" title="SessionsHelper#redirect_back_or (method)">#redirect_back_or</a></span>, <span class='object_link'><a href="SessionsHelper.html#store_location-instance_method" title="SessionsHelper#store_location (method)">#store_location</a></span>, <span class='object_link'><a href="SessionsHelper.html#valid_shopify_session-instance_method" title="SessionsHelper#valid_shopify_session (method)">#valid_shopify_session</a></span></p>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="create-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/shipments_controller.rb', line 145</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span> 
+	<span class='ivar'>@has_error</span> <span class='op'>=</span> <span class='kw'>false</span> 
+	<span class='ivar'>@aramex_error_msg</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+
+	<span class='ivar'>@shipment</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_shipments'>shipments</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:shipment</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+	
+	<span class='comment'># Get the order from order id
+</span>	<span class='ivar'>@order</span> <span class='op'>=</span> <span class='const'>ShopifyAPI</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_order_id'>order_id</span><span class='rparen'>)</span>
+
+	<span class='comment'># Automatically set the values for Good Origin Country, shippping and due datetime
+</span>	<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_goods_origin_country'>goods_origin_country</span> <span class='op'>=</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_country_code'>shipper_country_code</span>
+	<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipping_datetime'>shipping_datetime</span> <span class='op'>=</span> <span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_utc'>utc</span><span class='period'>.</span><span class='id identifier rubyid_xmlschema'>xmlschema</span>
+	<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_due_datetime'>due_datetime</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='const'>DateTime</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='int'>7</span><span class='period'>.</span><span class='id identifier rubyid_days'>days</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_utc'>utc</span><span class='period'>.</span><span class='id identifier rubyid_xmlschema'>xmlschema</span> 
+
+	<span class='comment'># Initialize empty string values to all the third_party values unless payment type = 3
+</span>
+	<span class='kw'>if</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>P</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>or</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>C</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_address_line1'>third_party_address_line1</span> <span class='op'>=</span>  <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_address_line2'>third_party_address_line2</span> <span class='op'>=</span>  <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_address_line3'>third_party_address_line3</span> <span class='op'>=</span>  <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_cellphone'>third_party_cellphone</span>  <span class='op'>=</span>  <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_company_name'>third_party_company_name</span> <span class='op'>=</span>  <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_country_code'>third_party_country_code</span> <span class='op'>=</span>  <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_email'>third_party_email</span> <span class='op'>=</span>  <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_person_name'>third_party_person_name</span> <span class='op'>=</span>  <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_post_code'>third_party_post_code</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+	<span class='kw'>end</span>
+
+	<span class='comment'># Set the other 2 account numbers to empty string 
+</span>	<span class='kw'>case</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span>
+	<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>P</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_account_number'>shipper_account_number</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_account_number'>account_number</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_consignee_account_number'>consignee_account_number</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_account_number'>third_party_account_number</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+	<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>C</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_account_number'>shipper_account_number</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_consignee_account_number'>consignee_account_number</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_account_number'>account_number</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_account_number'>third_party_account_number</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+	<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>3</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_account_number'>shipper_account_number</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_consignee_account_number'>consignee_account_number</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_account_number'>third_party_account_number</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_account_number'>account_number</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_options'>payment_options</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='comment'># Set by form in case of P and C 
+</span>	<span class='kw'>end</span>
+
+	<span class='comment'># debugger if Rails.env.development?
+</span>
+	<span class='kw'>if</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+		<span class='ivar'>@message_hash</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>client_info:</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_shipping_savon_hash'>shipping_savon_hash</span> <span class='rbrace'>}</span>
+		<span class='ivar'>@message_hash</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span>  <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_savon_hash'>savon_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_current_user'>current_user</span><span class='rparen'>)</span> 
+
+		<span class='comment'># debugger if Rails.env.development?
+</span>
+		<span class='id identifier rubyid_shipping_client'>shipping_client</span> <span class='op'>=</span> <span class='const'>Savon</span><span class='period'>.</span><span class='id identifier rubyid_client'>client</span><span class='lparen'>(</span><span class='label'>pretty_print_xml:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>ssl_verify_mode:</span> <span class='symbol'>:none</span><span class='rparen'>)</span> <span class='kw'>do</span>
+				<span class='id identifier rubyid_wsdl'>wsdl</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>ShopifyAramex</span><span class='op'>::</span><span class='const'>Application</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_shipping_wsdl'>shipping_wsdl</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+				<span class='id identifier rubyid_convert_request_keys_to'>convert_request_keys_to</span> <span class='symbol'>:camelcase</span>
+			<span class='kw'>end</span>
+		
+			<span class='ivar'>@response</span> <span class='op'>=</span> <span class='id identifier rubyid_shipping_client'>shipping_client</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='symbol'>:create_shipments</span><span class='comma'>,</span> <span class='label'>message:</span> <span class='ivar'>@message_hash</span><span class='rparen'>)</span>
+
+			<span class='comment'># Check if the response has errors 
+</span>			<span class='kw'>if</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='symbol'>:shipment_creation_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:has_errors</span><span class='rbracket'>]</span> 				
+				<span class='ivar'>@has_error</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+				<span class='comment'># Different errors return different kind of response
+</span>				<span class='kw'>if</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='symbol'>:shipment_creation_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:shipments</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+					<span class='comment'># Returned when login credentials are invalid
+</span>					<span class='ivar'>@notifications</span> <span class='op'>=</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='symbol'>:shipment_creation_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:notifications</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:notification</span><span class='rbracket'>]</span>
+				<span class='kw'>else</span>
+					<span class='ivar'>@notifications</span> <span class='op'>=</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='symbol'>:shipment_creation_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:shipments</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:processed_shipment</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:notifications</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:notification</span><span class='rbracket'>]</span>
+				<span class='kw'>end</span>
+
+
+				<span class='comment'># When there is only one error, response gives us a hash but for multiple errors, we 
+</span>				<span class='comment'># get an array of hashes. So, we convert hash in to array of hashes 
+</span>				<span class='kw'>if</span> <span class='ivar'>@notifications</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span>
+					<span class='ivar'>@notifications</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@notifications</span>
+				<span class='kw'>end</span>
+				<span class='ivar'>@notifications</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_notification'>notification</span><span class='op'>|</span>
+					<span class='ivar'>@aramex_error_msg</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_notification'>notification</span><span class='lbracket'>[</span><span class='symbol'>:message</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_content'> &lt;br /&gt;</span><span class='tstring_end'>&quot;</span></span>
+				<span class='kw'>end</span>	
+			<span class='kw'>else</span>
+				<span class='comment'># Get the AWB id and the label URL from here 
+</span>				<span class='comment'># debugger
+</span>				<span class='ivar'>@awb</span> <span class='op'>=</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:envelope</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:body</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:shipment_creation_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:shipments</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:processed_shipment</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
+				<span class='ivar'>@label_url</span> <span class='op'>=</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:envelope</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:body</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:shipment_creation_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:shipments</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:processed_shipment</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:shipment_label</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:label_url</span><span class='rbracket'>]</span>
+
+				<span class='comment'># The shipment model is only to properly place all the values. 
+</span>				<span class='comment'># We are only saving essential data in ShipmentStore
+</span>				<span class='ivar'>@shipment_store</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_shipment_stores'>shipment_stores</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>awb:</span> <span class='ivar'>@awb</span><span class='comma'>,</span> <span class='label'>label_url:</span> <span class='ivar'>@label_url</span><span class='comma'>,</span> <span class='label'>order_id:</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_order_id'>order_id</span><span class='comma'>,</span> <span class='label'>order_number:</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_order_number'>order_number</span><span class='comma'>,</span> <span class='label'>payment_type:</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span><span class='rparen'>)</span>
+
+				<span class='kw'>if</span> <span class='ivar'>@shipment_store</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+					<span class='ivar'>@has_error</span> <span class='op'>=</span> <span class='kw'>true</span>
+					<span class='ivar'>@aramex_error_msg</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Shipment was created on Aramax but we faced an error and couldn't save it &lt;br /&gt; </span><span class='embexpr_beg'>#{</span><span class='ivar'>@shipment_store</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_full_messages'>full_messages</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+				<span class='kw'>else</span>
+					<span class='comment'># Shipment was successful. Send a post request to the fulfillment api 
+</span>					<span class='ivar'>@line_items</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+					<span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_line_items'>line_items</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_item'>item</span><span class='op'>|</span> 
+						<span class='ivar'>@line_items</span> <span class='op'>&lt;&lt;</span> <span class='lbrace'>{</span> <span class='label'>id:</span> <span class='id identifier rubyid_item'>item</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='rbrace'>}</span>
+					<span class='kw'>end</span>
+					<span class='ivar'>@fulfillment</span> <span class='op'>=</span> <span class='const'>ShopifyAPI</span><span class='op'>::</span><span class='const'>Fulfillment</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>order_id:</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='label'>line_items:</span> <span class='ivar'>@line_items</span><span class='comma'>,</span> <span class='label'>tracking_number:</span> <span class='ivar'>@awb</span><span class='comma'>,</span> <span class='label'>notify_customer:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>tracking_company:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Aramex</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>tracking_url:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://www.aramex.com/track-results-multiple.aspx?ShipmentNumber=</span><span class='embexpr_beg'>#{</span><span class='ivar'>@awb</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+					<span class='ivar'>@fulfillment_response</span> <span class='op'>=</span> <span class='ivar'>@fulfillment</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+					<span class='comment'># debugger
+</span>				<span class='kw'>end</span>
+		<span class='kw'>end</span>
+	<span class='kw'>else</span>
+		<span class='ivar'>@has_error</span> <span class='op'>=</span> <span class='kw'>true</span>
+	<span class='kw'>end</span>
+
+	<span class='kw'>if</span> <span class='ivar'>@has_error</span>
+		<span class='comment'># debugger
+</span>		<span class='id identifier rubyid_flash'>flash</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Error in creating your shipment. Please fix it and try again. 
+						&lt;p&gt;&lt;strong&gt;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@aramex_error_msg</span><span class='rbrace'>}</span><span class='tstring_content'>&lt;/strong&gt;&lt;/p&gt;</span><span class='tstring_end'>&quot;</span></span>
+
+		<span class='kw'>if</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_product_group'>product_group</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DOM</span><span class='tstring_end'>&quot;</span></span>
+		 	<span class='ivar'>@product_type_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_domestic_product_type_hash'>domestic_product_type_hash</span>
+		<span class='kw'>else</span>
+			<span class='ivar'>@product_type_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_express_product_type_hash'>express_product_type_hash</span>
+		<span class='kw'>end</span>
+
+		<span class='comment'># Set the payment options hash according to the payment type
+</span>		<span class='kw'>if</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>P</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@payment_options_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_payment_options_hash'>shipper_payment_options_hash</span>
+		<span class='kw'>elsif</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>C</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@payment_options_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_consignee_payment_options_hash'>consignee_payment_options_hash</span>
+		<span class='kw'>end</span>
+			
+		<span class='id identifier rubyid_render'>render</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>new</span><span class='tstring_end'>'</span></span>
+	<span class='kw'>end</span>
+	<span class='comment'># debugger
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="new-instance_method">
+  
+    - (<tt>Object</tt>) <strong>new</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/shipments_controller.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
+	<span class='comment'># Get the order from order id
+</span>	<span class='ivar'>@order</span> <span class='op'>=</span> <span class='const'>ShopifyAPI</span><span class='op'>::</span><span class='const'>Order</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:order_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+	<span class='ivar'>@payment_type</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:payment_type</span><span class='rbracket'>]</span>
+
+	<span class='comment'># Redirect to root if order id and payment_type already exist  
+</span>	<span class='kw'>if</span> <span class='const'>ShipmentStore</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>order_id:</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='label'>payment_type:</span> <span class='ivar'>@payment_type</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+		<span class='ivar'>@shipment</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+		
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span> <span class='op'>=</span> <span class='ivar'>@payment_type</span>
+
+		<span class='comment'># Set values for shipper 
+</span>
+		<span class='kw'>case</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span>
+		<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>P</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipper_address</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span>
+			<span class='ivar'>@receiver_address</span> <span class='op'>=</span> <span class='const'>Address</span><span class='period'>.</span><span class='id identifier rubyid_from_order'>from_order</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_shipping_address'>shipping_address</span><span class='comma'>,</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_customer'>customer</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+			<span class='ivar'>@payment_options_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_payment_options_hash'>shipper_payment_options_hash</span>
+		<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>C</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipper_address</span> <span class='op'>=</span> <span class='const'>Address</span><span class='period'>.</span><span class='id identifier rubyid_from_order'>from_order</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_shipping_address'>shipping_address</span><span class='comma'>,</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_customer'>customer</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+			<span class='ivar'>@receiver_address</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span>
+			<span class='ivar'>@payment_options_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_consignee_payment_options_hash'>consignee_payment_options_hash</span>
+		<span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>3</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@receiver_address</span> <span class='op'>=</span> <span class='const'>Address</span><span class='period'>.</span><span class='id identifier rubyid_from_order'>from_order</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_shipping_address'>shipping_address</span><span class='comma'>,</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_customer'>customer</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+			<span class='ivar'>@third_party_address</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span>
+		<span class='kw'>end</span>
+
+		<span class='comment'># debugger if Rails.env.development?
+</span>
+		<span class='comment'># Lets set the shipper address to shipper in case of P and receiver in case of C
+</span>		<span class='comment'># In case of 3, shipper address will be blank. 
+</span>		<span class='kw'>unless</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>3</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_person_name'>shipper_person_name</span> <span class='op'>=</span> <span class='ivar'>@shipper_address</span><span class='period'>.</span><span class='id identifier rubyid_first_name'>first_name</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span> <span class='op'>+</span> <span class='ivar'>@shipper_address</span><span class='period'>.</span><span class='id identifier rubyid_last_name'>last_name</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_company_name'>shipper_company_name</span> <span class='op'>=</span> <span class='ivar'>@shipper_address</span><span class='period'>.</span><span class='id identifier rubyid_company'>company</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_cellphone'>shipper_cellphone</span> <span class='op'>=</span> <span class='ivar'>@shipper_address</span><span class='period'>.</span><span class='id identifier rubyid_phone'>phone</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_email'>shipper_email</span> <span class='op'>=</span> <span class='ivar'>@shipper_address</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_address_line1'>shipper_address_line1</span> <span class='op'>=</span> <span class='ivar'>@shipper_address</span><span class='period'>.</span><span class='id identifier rubyid_address1'>address1</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_address_line2'>shipper_address_line2</span> <span class='op'>=</span> <span class='ivar'>@shipper_address</span><span class='period'>.</span><span class='id identifier rubyid_address2'>address2</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_city'>shipper_city</span> <span class='op'>=</span> <span class='ivar'>@shipper_address</span><span class='period'>.</span><span class='id identifier rubyid_city'>city</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_post_code'>shipper_post_code</span> <span class='op'>=</span> <span class='ivar'>@shipper_address</span><span class='period'>.</span><span class='id identifier rubyid_zip'>zip</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_country_code'>shipper_country_code</span> <span class='op'>=</span> <span class='ivar'>@shipper_address</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span>
+		<span class='kw'>else</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_person_name'>shipper_person_name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_company_name'>shipper_company_name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_cellphone'>shipper_cellphone</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_email'>shipper_email</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_address_line1'>shipper_address_line1</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_address_line2'>shipper_address_line2</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_city'>shipper_city</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_post_code'>shipper_post_code</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_country_code'>shipper_country_code</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>end</span>
+
+		<span class='comment'># Set values for receiver address
+</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_receiver_person_name'>receiver_person_name</span> <span class='op'>=</span> <span class='ivar'>@receiver_address</span><span class='period'>.</span><span class='id identifier rubyid_first_name'>first_name</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span> <span class='op'>+</span> <span class='ivar'>@receiver_address</span><span class='period'>.</span><span class='id identifier rubyid_last_name'>last_name</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_receiver_company_name'>receiver_company_name</span> <span class='op'>=</span> <span class='ivar'>@receiver_address</span><span class='period'>.</span><span class='id identifier rubyid_company'>company</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_receiver_cellphone'>receiver_cellphone</span> <span class='op'>=</span> <span class='ivar'>@receiver_address</span><span class='period'>.</span><span class='id identifier rubyid_phone'>phone</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_receiver_email'>receiver_email</span> <span class='op'>=</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_customer'>customer</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_receiver_address_line1'>receiver_address_line1</span> <span class='op'>=</span> <span class='ivar'>@receiver_address</span><span class='period'>.</span><span class='id identifier rubyid_address1'>address1</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_receiver_address_line2'>receiver_address_line2</span> <span class='op'>=</span> <span class='ivar'>@receiver_address</span><span class='period'>.</span><span class='id identifier rubyid_address2'>address2</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_receiver_city'>receiver_city</span> <span class='op'>=</span> <span class='ivar'>@receiver_address</span><span class='period'>.</span><span class='id identifier rubyid_city'>city</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_receiver_post_code'>receiver_post_code</span> <span class='op'>=</span> <span class='ivar'>@receiver_address</span><span class='period'>.</span><span class='id identifier rubyid_zip'>zip</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_receiver_country_code'>receiver_country_code</span> <span class='op'>=</span> <span class='ivar'>@receiver_address</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span>
+
+		<span class='kw'>if</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_type'>payment_type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>3</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_person_name'>third_party_person_name</span> <span class='op'>=</span> <span class='ivar'>@third_party_address</span><span class='period'>.</span><span class='id identifier rubyid_first_name'>first_name</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span> <span class='op'>+</span> <span class='ivar'>@third_party_address</span><span class='period'>.</span><span class='id identifier rubyid_last_name'>last_name</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_company_name'>third_party_company_name</span> <span class='op'>=</span> <span class='ivar'>@third_party_address</span><span class='period'>.</span><span class='id identifier rubyid_company'>company</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_cellphone'>third_party_cellphone</span> <span class='op'>=</span> <span class='ivar'>@third_party_address</span><span class='period'>.</span><span class='id identifier rubyid_phone'>phone</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_email'>third_party_email</span> <span class='op'>=</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_customer'>customer</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_address_line1'>third_party_address_line1</span> <span class='op'>=</span> <span class='ivar'>@third_party_address</span><span class='period'>.</span><span class='id identifier rubyid_address1'>address1</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_address_line2'>third_party_address_line2</span> <span class='op'>=</span> <span class='ivar'>@third_party_address</span><span class='period'>.</span><span class='id identifier rubyid_address2'>address2</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_city'>third_party_city</span> <span class='op'>=</span> <span class='ivar'>@third_party_address</span><span class='period'>.</span><span class='id identifier rubyid_city'>city</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_post_code'>third_party_post_code</span> <span class='op'>=</span> <span class='ivar'>@third_party_address</span><span class='period'>.</span><span class='id identifier rubyid_zip'>zip</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_third_party_country_code'>third_party_country_code</span> <span class='op'>=</span> <span class='ivar'>@third_party_address</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span>
+		<span class='kw'>end</span>
+
+		<span class='comment'># debugger if Rails.env.development?
+</span>		<span class='comment'># To control what options product type select shows. Will only select the right 
+</span>		<span class='comment'># value in case of shipment types P and C 
+</span>
+		<span class='comment'># Also takes in to account default product group
+</span>		<span class='kw'>if</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_default_product_group'>default_product_group</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+			<span class='comment'># No default set 
+</span>			<span class='comment'># Set group based on receiver and shipper countries 
+</span>			<span class='kw'>if</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipper_country_code'>shipper_country_code</span> <span class='op'>==</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_receiver_country_code'>receiver_country_code</span>
+				<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_product_group'>product_group</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DOM</span><span class='tstring_end'>&quot;</span></span>
+			<span class='kw'>else</span>
+				<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_product_group'>product_group</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EXP</span><span class='tstring_end'>&quot;</span></span>
+			<span class='kw'>end</span>
+		<span class='kw'>else</span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_product_group'>product_group</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_default_product_group'>default_product_group</span>
+		<span class='kw'>end</span>
+
+		<span class='kw'>if</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_product_group'>product_group</span> <span class='op'>==</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DOM</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@product_type_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_domestic_product_type_hash'>domestic_product_type_hash</span>
+			<span class='ivar'>@selected_product_type</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_default_domestic_product_type'>default_domestic_product_type</span>
+		<span class='kw'>elsif</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_product_group'>product_group</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EXP</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@product_type_hash</span> <span class='op'>=</span> <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_express_product_type_hash'>express_product_type_hash</span>
+			<span class='ivar'>@selected_product_type</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_default_international_product_type'>default_international_product_type</span>
+		<span class='kw'>end</span>
+
+		<span class='kw'>if</span> <span class='ivar'>@payment_type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>P</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_payment_options'>payment_options</span> <span class='op'>=</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_default_prepaid_payment_option'>default_prepaid_payment_option</span>
+		<span class='kw'>end</span>
+
+		<span class='comment'># Set CODS service if product type is COD and group is DOM
+</span>		<span class='kw'>if</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_product_group'>product_group</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DOM</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>and</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_default_domestic_product_type'>default_domestic_product_type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CDA</span><span class='tstring_end'>&quot;</span></span>
+			<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_services'>services</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CODS</span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>end</span>
+
+		<span class='ivar'>@description</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+		<span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_line_items'>line_items</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_item'>item</span><span class='op'>|</span>
+			<span class='ivar'>@description</span> <span class='op'>+=</span> <span class='id identifier rubyid_item'>item</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span>
+		<span class='kw'>end</span>
+
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_description_of_goods'>description_of_goods</span> <span class='op'>=</span> <span class='ivar'>@description</span>
+
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_num_of_pieces'>num_of_pieces</span> <span class='op'>=</span> <span class='id identifier rubyid_calculate_total_quantity_from_order'>calculate_total_quantity_from_order</span><span class='lparen'>(</span><span class='ivar'>@order</span><span class='rparen'>)</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_actual_weight'>actual_weight</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_total_weight'>total_weight</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>1000</span> <span class='comment'># shopify returns wight in grams
+</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_order_id'>order_id</span> <span class='op'>=</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_order_number'>order_number</span> <span class='op'>=</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_order_number'>order_number</span>
+
+		<span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_customs_value_amount'>customs_value_amount</span> <span class='op'>=</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_cash_on_delivery'>cash_on_delivery</span> <span class='op'>=</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_insurance_amount'>insurance_amount</span> <span class='op'>=</span> <span class='ivar'>@shipment</span><span class='period'>.</span><span class='id identifier rubyid_collect_amount'>collect_amount</span> <span class='op'>=</span> <span class='int'>0</span>
+	<span class='kw'>else</span>
+		<span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>The order </span><span class='embexpr_beg'>#{</span><span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> already has a shipment of type </span><span class='embexpr_beg'>#{</span><span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_shipping_information_hash'>shipping_information_hash</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span><span class='lparen'>(</span><span class='ivar'>@payment_type</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
+		<span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_orders_path'>orders_path</span><span class='lparen'>(</span><span class='label'>shop:</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_shop_url'>shop_url</span><span class='comma'>,</span> <span class='label'>id:</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='rparen'>)</span>
+	<span class='kw'>end</span>
+
+	<span class='comment'># debugger
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="print_label-instance_method">
+  
+    - (<tt>Object</tt>) <strong>print_label</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/shipments_controller.rb', line 269</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_print_label'>print_label</span>
+	<span class='comment'># Get the shipment store from the shipment store id passed in the URL 
+</span>	<span class='ivar'>@shipment_store</span> <span class='op'>=</span> <span class='const'>ShipmentStore</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:shipment_store_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+	<span class='comment'># Check whether we have a ShipmentStore instance for this id. Otherwise 
+</span>	<span class='comment'># redirect to root_url
+</span>	<span class='kw'>if</span> <span class='ivar'>@shipment_store</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+		<span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>We did not find the shipment.</span><span class='tstring_end'>&quot;</span></span>
+		<span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_root_url'>root_url</span>
+	<span class='kw'>end</span>
+
+	<span class='comment'># Now check whether the shipment instance being accessed belongs to the current_user
+</span>	<span class='kw'>if</span> <span class='ivar'>@shipment_store</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span> <span class='op'>==</span> <span class='id identifier rubyid_current_user'>current_user</span>
+		<span class='id identifier rubyid_shipping_client'>shipping_client</span> <span class='op'>=</span> <span class='const'>Savon</span><span class='period'>.</span><span class='id identifier rubyid_client'>client</span> <span class='kw'>do</span>
+				<span class='id identifier rubyid_wsdl'>wsdl</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>ShopifyAramex</span><span class='op'>::</span><span class='const'>Application</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_shipping_wsdl'>shipping_wsdl</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+				<span class='id identifier rubyid_convert_request_keys_to'>convert_request_keys_to</span> <span class='symbol'>:camelcase</span>
+			<span class='kw'>end</span>
+
+			<span class='ivar'>@message_hash</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>client_info:</span> <span class='id identifier rubyid_current_user'>current_user</span><span class='period'>.</span><span class='id identifier rubyid_savon_hash'>savon_hash</span>  <span class='rbrace'>}</span>
+		<span class='ivar'>@message_hash</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span>  <span class='ivar'>@shipment_store</span><span class='period'>.</span><span class='id identifier rubyid_print_label_hash'>print_label_hash</span> 
+
+			<span class='ivar'>@response</span> <span class='op'>=</span> <span class='id identifier rubyid_shipping_client'>shipping_client</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='symbol'>:print_label</span><span class='comma'>,</span> <span class='label'>message:</span> <span class='ivar'>@message_hash</span><span class='rparen'>)</span>
+
+			<span class='comment'># debugger if Rails.env.development?
+</span>
+			<span class='comment'># Check if the response has errors 
+</span>			<span class='kw'>if</span> <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='symbol'>:label_printing_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:has_errors</span><span class='rbracket'>]</span> 				
+				<span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>There was some error in printing the label. Please contact Aramex Support</span><span class='tstring_end'>&quot;</span></span>
+				<span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_root_url'>root_url</span>
+			<span class='kw'>else</span>
+				<span class='ivar'>@label_url</span> <span class='op'>=</span>  <span class='ivar'>@response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='symbol'>:label_printing_response</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:shipment_label</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:label_url</span><span class='rbracket'>]</span>
+				<span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='ivar'>@label_url</span>
+			<span class='kw'>end</span>
+	<span class='kw'>else</span>
+		<span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>This shipment does not belong to you.</span><span class='tstring_end'>&quot;</span></span>
+		<span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_root_url'>root_url</span>
+	<span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="select_shipment_type-instance_method">
+  
+    - (<tt>Object</tt>) <strong>select_shipment_type</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/shipments_controller.rb', line 7</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_select_shipment_type'>select_shipment_type</span>
+	<span class='ivar'>@order_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:order_id</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Jul  8 14:12:09 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.4 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,1133 @@
+<%= simple_form_for @shipment, defaults:{wrapper: false}, url: '/shipments', html: { method: :post, class: 'form-horizontal', data: {validate: 'parsley'} } do |f| %> 
+<%#= debug @shipment %> 
+  <div class="create-shipping-blocks">
+      <div class="form-label-group aramex-input-block aramex-input-order-number">
+          <label for="orderNumber">Order Number <span>*</span></label>
+          <input type="text" id="orderNumber" class="form-control" value = "1009">
+      </div>
+      <!--shipper-->
+      <div class="create-shipping-block shipper">
+          <div class="create-shipping-block-top ">
+              <%= image_tag 'man.png',  :alt => "" %> 
+              <p class="top-line-title">Sender Details</p>
+              <p class="rounded-circle top-line-title-icon">?</p>
+              <p class='use-default'>Use default shipper details</p>
+              <div class="switcher active">
+                  <div class="rounded-circle inner-switcher">
+
+                  </div>                    	
+              </div>
+          </div>
+          <div class="create-shipping-block-body">
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :shipper_person_name  do%>
+                  Shipper Name <span>*</span>
+                <% end %>
+                <%= f.input :shipper_person_name, :input_html => {class: 'form-control valid', id: 'shipperName'}, label: false %>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :shipper_company_name  do%>
+                  Company Name <span>*</span>
+                <% end %>
+                <%= f.input :shipper_company_name, :input_html => {class: 'form-control valid', id: 'companyName'}, label: false %>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :shipper_email  do%>
+                  Email Address <span>*</span>
+                <% end %>
+                <%= f.input :shipper_email, :input_html => {class: 'form-control valid', id: 'emailAddress'}, label: false %>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :shipper_address_line1  do%>
+                  Address line 1 <span>*</span>
+                <% end %>
+                <%= f.input :shipper_address_line1, :input_html => {class: 'form-control valid', id: 'addressLine1'}, label: false %>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :shipper_address_line2  do%>
+                  Building number 2 <span>*</span>
+                <% end %>
+                <%= f.input :shipper_address_line2, :input_html => {class: 'form-control valid', id: 'addressLine2'}, label: false %>
+              </div>
+
+              <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                  <div class="block-left">
+                    <%= f.label :shipper_country_code  do%>
+                      Country <span>*</span>
+                    <% end %>
+                    <%= country_select("user", "shipper_country_code", {value: :iso2, priority_countries: ["IN", "US", "AE"]}, {class: 'custom-select inline-block', id: 'originCountry'})  %>
+                  </div>
+                  <div class="block-right block-right-shipment">
+                    <%= f.label :shipper_city  do%>
+                      City <span>*</span>
+                    <% end %>
+                    <%= f.input :shipper_city, :input_html => {class: 'form-control valid', id: 'originCity'}, label: false %>
+                  </div>
+              </div>
+
+              <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                  <div class="block-left">
+                    <%= f.label :shipper_state  do%>
+                      State <span>*</span>
+                    <% end %>
+                    <%= f.input :shipper_state, :input_html => {class: 'form-control valid', id:'originState'}, label: false %>
+                  </div><div class="block-right block-right-shipment">
+                    <%= f.label :shipper_post_code  do%>
+                      Zip Code <span>*</span>
+                    <% end %>
+                    <%= f.input :shipper_post_code, :input_html => {class: 'form-control valid', id:'originCode'}, label: false %>
+                  </div>
+              </div>
+
+              <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                  <div class="block-left">
+                    <%= f.label :shipper_cellphone  do%>
+                      Phone number <span>*</span>
+                    <% end %>
+                    <%= f.input :shipper_cellphone, :input_html => {class: 'form-control valid', id:'originPhone'}, label: false %>
+                  </div>
+                  <div class="block-right block-right-shipment">
+                    <%= f.label :shipper_phone_number  do%>
+                      Mobile Number <span>*</span>
+                    <% end %>
+                    <%= f.input :shipper_phone_number, :input_html => {class: 'form-control valid', id:'originMobile'}, label: false %>
+                  </div>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :shipper_tax_id_vat  do%>
+                  Tax ID / VAT / EIN number
+                <% end %>
+                <%= f.input :shipper_tax_id_vat, :input_html => {class: 'form-control', id:'taxNumber'}, label: false %>
+              </div>
+
+              <input class="main-red-button-shipment passive button-next" type="button" value="Next"/>
+          </div>
+      </div>
+
+      <!--reciver-->
+      <div class="create-shipping-block reciver" >
+          <div class="create-shipping-block-top receiver-details active">
+              <%= image_tag 'hand.png',  :alt => "" %> 
+              <p class="top-line-title">Receiver Details</p>
+              <p class="rounded-circle top-line-title-icon">?</p>
+              <p class='triangle active'></p>
+          </div>
+          <div class="create-shipping-block-body">
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :receiver_person_name  do%>
+                  Receiver Name <span>*</span>
+                <% end %>
+                <%= f.input :receiver_person_name, :input_html => {class: 'form-control valid', id:'receiverName'}, label: false %>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :receiver_company_name  do%>
+                  Company Name <span>*</span>
+                <% end %>
+                <%= f.input :receiver_company_name, :input_html => {class: 'form-control valid', id:'companyReciverName'}, label: false %>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :receiver_email  do%>
+                  Email Address <span>*</span>
+                <% end %>
+                <%= f.input :receiver_email, :input_html => {class: 'form-control valid', id:'emailReciverAddress'}, label: false %>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :receiver_address_line1  do%>
+                  Address line 1 <span>*</span>
+                <% end %>
+                <%= f.input :receiver_address_line1, :input_html => {class: 'form-control valid', id:'addressReciverLine1'}, label: false %>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :receiver_address_line2  do%>
+                  Building number 2 <span>*</span>
+                <% end %>
+                <%= f.input :receiver_address_line2, :input_html => {class: 'form-control valid', id:'addressReciverLine2'}, label: false %>
+              </div>
+
+
+              <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                  <div class="block-left">
+                    <%= f.label :receiver_country_code  do%>
+                      Country <span>*</span>
+                    <% end %>
+                    <%= country_select("user", "receiver_country_code", {value: :iso2, priority_countries: ["IN", "US", "AE"]}, {class: 'custom-select inline-block', id:'reciverCountry'})  %>
+                  </div>
+                  <div class="block-right block-right-shipment">
+                    <%= f.label :receiver_city  do%>
+                      City <span>*</span>
+                    <% end %>
+                    <%= f.input :receiver_city, :input_html => {class: 'form-control valid', id:'reciverCity'}, label: false %>
+                  </div>
+              </div>
+
+              <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                  <div class="block-left">
+                    <%= f.label :receiver_state  do%>
+                      State <span>*</span>
+                    <% end %>
+                    <%= f.input :receiver_state, :input_html => {class: 'form-control valid', id:'reciverState'}, label: false %>
+                  </div>
+                  <div class="block-right block-right-shipment">
+                    <%= f.label :receiver_post_code  do%>
+                      Zip Code <span>*</span>
+                    <% end %>
+                    <%= f.input :receiver_post_code, :input_html => {class: 'form-control valid', id:'reciverCode'}, label: false %>
+                  </div>
+              </div>
+
+              <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                  <div class="block-left">
+                    <%= f.label :receiver_cellphone  do%>
+                      Phone number <span>*</span>
+                    <% end %>
+                    <%= f.input :receiver_cellphone, :input_html => {class: 'form-control valid', id:'reciverPhone'}, label: false %>
+                  </div>
+                  <div class="block-right block-right-shipment">
+                    <%= f.label :receiver_phone_number  do%>
+                      Mobile number <span>*</span>
+                    <% end %>
+                    <%= f.input :receiver_phone_number, :input_html => {class: 'form-control valid', id:'reciverMobile'}, label: false %>
+                  </div>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :receiver_tax_id_vat  do%>
+                  Tax ID / VAT / EIN number
+                <% end %>
+                <%= f.input :receiver_tax_id_vat, :input_html => {class: 'form-control', id:'taxNumber'}, label: false %>
+              </div>
+
+              <input class="main-red-button-shipment passive button-next" type="button" value="Next"/>
+          </div>
+      </div>
+
+      <!--detailes-->
+      <div class="create-shipping-block detailes">
+          <div class="create-shipping-block-top ">
+              <%= image_tag 'box.png',  :alt => "" %> 
+              <p class="top-line-title">Shipment Details</p>
+              <p class="rounded-circle top-line-title-icon">?</p>
+              <p class='triangle'></p>
+          </div>
+          <div class="create-shipping-block-body" style="display:none">
+              <div class="form-label-group aramex-input-block2 amx-first aramex-shipment-dom-int">
+                  <div class="productGroup-first first">
+                      <label for="productGroup">Choose product group <span>*</span></label><br />
+                      <input id="productGroup" class="grey-button grey-button-border domestic-button" type="button" value="Domestic"/>
+                  </div>
+                  <div class="productType-first first">
+                      <input id="productType" class="grey-button international-button" type="button" value="International"/>
+                  </div>
+              </div>
+              <div class='domestic  shipment-padding' >
+
+                  <div id= "amx-1" class="form-label-group aramex-input-block2 aramex-shipment-block">
+                      <div class="economyParcel-first first">
+                          <label for="economyParcel">Product Type <span>*</span></label><br />
+                          <input id="economyParcel" class="grey-button domestic-button" type="button" value="Economy Parcel"/>
+                    
+                      </div>
+                      <div class="priorityParcel-first first">
+                          <input id="priorityParcel" class="grey-button domestic-button " type="button" value="Priority Parcel"/>
+                      </div>
+                      <div class="ecommerceParcel-first first">
+                          <input id="ecommerceParcel" class="grey-button domestic-button" type="button" value="E-commerce Parcel"/>
+                      </div>
+                  </div>
+
+                  <div id= "amx-2" class="form-label-group aramex-input-block2  aramex-shipment-block">
+                      <div class="cashOnDelivery-first first">
+                       
+                          <label for="cashOnDelivery_int">Services <span>*</span></label><br />
+                          <button id="cashOnDelivery" type="button" class="grey-button domestic-button  ">Cash on <br/> Delivery</button>
+                      </div>
+                      <div class="prepaid-first first">
+                          <button id="prepaid" type="button" class="grey-button domestic-button ">Prepaid<br/><br/></button>
+                      </div>
+                  </div>
+              </div>
+
+              <div class='international shipment-padding' style="display:none;">
+                  <div id= "amx-3" class="form-label-group aramex-input-block2 aramex-shipment-block">
+                      <div class="economyParcel-first first">
+                          <label for="economyParcel_int">Product Type <span>*</span></label><br />
+                          <input id="economyParcel_int" class="grey-button international-button" type="button" value="Economy Parcel"/>
+                      </div>
+                     
+                      <div class="priorityParcel-first first">
+                          <input id="priorityParcel_int" class="grey-button international-button" type="button" value="Priority Parcel"/>
+                      </div>
+                      <div class="ecommerceParcel-first first">
+                          <input id="ecommerceParcel_int" class="grey-button international-button" type="button" value="E-commerce Parcel"/>
+                      </div>
+                  </div>
+
+
+                  <div id= "amx-4" class="form-label-group aramex-input-block2 amx-4  aramex-shipment-block">
+                      <div class="cashOnDelivery-first first">
+                          <label for="cashOnDelivery_int">Services <span>*</span></label><br />
+                          <button id="cashOnDelivery_int" type="button" class="grey-button  international-button ">Cash on <br/> Delivery</button>
+                      </div>
+                      
+                      <div class="prepaid-first first">
+                          <button id="prepaid_int" type="button" class="grey-button  international-button ">Prepaid<br/><br/></button>
+                      </div>
+                  </div>
+
+
+                  <div id= "amx-5" class="form-label-group aramex-input-block2  aramex-shipment-block">
+                      <div class="cashOnDelivery-first first">
+                          <label for="deliveryDutyUnpaid">Additional Services <span>*</span></label><br />
+                          <button id="deliveryDutyUnpaid" type="button" class="grey-button  international-button">Delivery Duty<br/> Unpaid</button>
+                      </div>
+                       
+                      <div class="deliveryDutyPaid-first first">
+                          <button id="deliveryDutyPaid" type="button" class="grey-button  international-button ">Delivery Duty<br/> Paid</button>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-label-group aramex-input-block aramex-input-block-create">
+                <%= f.label :description_of_goods  do%>
+                  Goods Description <span>*</span>
+                <% end %>
+                <%= f.input :description_of_goods, :input_html => {class: 'form-control valid', maxlength: 100, id: 'goodsDescription'}, label: false %>
+              </div>
+              <div class="form-label-group  aramex-input-block aramex-input-block-create">
+
+                  <div class="block-left">
+                    <%= f.label :actual_weight  do%>
+                      Weight <span>*</span>
+                    <% end %>
+                    <div class="filter-block-select filter-block-select-shipment">
+                      <%= f.input :actual_weight, :input_html => {class: 'inner-select inline-block valid', id: 'weight'}, label: false %><p>KG</p>
+                    </div>
+                  </div>
+
+                  <div class="block-right shipment-right">
+                    <%= f.label :customs_value_amount  do%>
+                      Declared value <span>*</span>
+                    <% end %>
+                    <div class="filter-block-select filter-block-select-shipment">
+                      <%= f.input :customs_value_amount, :input_html => {class: 'inner-select inline-block valid', id: 'declaredValue'}, label: false %><p>USD</p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                  <div class="block-left">
+                    <%= f.label :number_pieces  do%>
+                      Number of pieces <span>*</span>
+                    <% end %>
+                    <div class="filter-block-select filter-block-select-shipment">
+                      <%= f.input :number_pieces, :input_html => {class: 'inner-select inline-block valid', id: 'numberPieces'}, label: false %>
+                    </div>
+                    <div class="block-insurance ">
+                    <label class="containerCheckbox containerCheckboxShipping">
+                        <input class="checkSingle" type="checkbox" >
+                        <span class="checkmark"></span>
+                    </label>
+                      <%= f.label :insurance_amount  do%>
+                        Insurance amount
+                      <% end %>
+                      <div class="filter-block-select filter-block-select-shipment" style="display:none;">
+                        <%= f.input :insurance_amount, :input_html => {class: 'inner-select inline-block', id: 'insuranceAmount'}, label: false %>
+                      </div>
+                    </div>   
+                  </div>                        
+
+                  <div class="block-right shipment-right">
+                    <div class="block-cod">
+                      <%= f.label :cash_on_delivery  do%>
+                        Cash on Delivery <span>*</span>
+                      <% end %>
+                      <div class="filter-block-select filter-block-select-shipment">
+                        <%= f.input :cash_on_delivery, :input_html => {class: 'inner-select inline-block valid', id: 'cod'}, label: false %><p>USD</p>
+                      </div>
+                    </div> 
+                  </div>
+
+              </div>
+  <!--Add attachments-->
+              <div class="form-label-group file-dounload">
+                  <button type="button" id="show_attachments_div_btn" class="btn btn-light add-attachments">Add attachments</button>
+
+              <div class="add-attachments-over" style="display:none;" id='attachments_div' data-attachments-count = "1">
+                  <div class="custom-file">
+                      <%= f.input :attachment1, :input_html => {class: 'custom-file-input', id: 'validatedCustomFile'}, as: "file"%>
+                      <label class="custom-file-label" for="validatedCustomFile"></label>
+                      <button type="button" class="close custom-file-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+              </div> 
+          <button type="button" style="display:none;" id="add_another_attachment_btn" class="btn btn-light btn-sm add-anoter-attachments add-attachments-small">Add Another Attachment</button>         
+              </div>
+              <input class="main-red-button-shipment passive  button-next" type="button" value="Next"/>
+          </div>
+      </div>
+
+      <!--Chargeable weight-->
+      <div class="create-shipping-block chargeable" >
+          <div class="create-shipping-block-top">
+              <%= image_tag 'block.png',  :alt => "" %>  
+              <p class="top-line-title">Chargeable weight</p>
+              <p class="rounded-circle top-line-title-icon">?</p>
+              <p class='triangle'></p>
+          </div>
+          <div class="create-shipping-block-body chargeable-body" style="display:none" >
+              <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                  <div class="block-left">
+                      <label for="totalPackagesWeight">Total Packages <span>*</span></label>
+                      <div class="filter-block-select filter-block-select-shipment totalPackagesWeight">
+                          <input type="text" class="inner-select inline-block valid" id="totalPackagesWeight" value='2'>
+                          <div class='total-arr-right'>
+                              <div class='first-arr altera acrescimo'></div>
+                              <div class='second-arr altera decrescimo'></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-label-group aramex-input-block2 amx-first aramex-shipment-dom-int aramex-shipment-metric-imperial">
+                  <div class="productGroup-first first">
+                      <label for="metric">Unit of measure <span>*</span></label><br />
+                      <input id="metric" class="grey-button grey-button-border" type="button" value="Metric"/>
+                  </div>
+                  <div class="productType-first first">
+                      <input id="imperial" class="grey-button" type="button" value="Imperial"/>
+                  </div>
+              </div>
+              <div class="weight-line-clone-over">
+                  <div class="form-label-group aramex-input-block weight-line weight-line-clone">
+                      <div class="package-big">
+                          <label for="package">Package <span>*</span></label>
+                          <input name ="package[0][package_name]" type="text" class="form-control inline-block filter-block-select-shipment valid package" id="package"  value=""></div><div class="package-small">
+                          <label for="packageWeight">Weight  <span>*</span></label>
+                          <div class="filter-block-select filter-block-select-shipment">
+                              <input name ="package[0][package_weight]" type="text" class="inner-select inline-block valid packageWeight" id="packageWeight" value=''><p class="p-weight">KG</p>
+                          </div>
+                      </div><div class="package-small">
+                          <label for="packageLength">Length  <span>*</span></label>
+                          <div class="filter-block-select filter-block-select-shipment">
+                              <input name ="package[0][package_lenght]" type="text" class="inner-select inline-block valid packageLength" id="packageLength" value=''><p lass="p-length">CM</p>
+                          </div>
+                      </div><div class="package-small">
+                          <label for="packageWidth">Width  <span>*</span></label>
+                          <div class="filter-block-select filter-block-select-shipment">
+                              <input name ="package[0][package_widht]" type="text" class="inner-select inline-block valid packageWidth" id="packageWidth" value=''><p lass="p-widht">CM</p>
+                          </div>
+                      </div><div class="package-small">
+                          <label for="packageHeight">Height  <span>*</span></label>
+                          <div class="filter-block-select filter-block-select-shipment">
+                              <input name ="package[0][package_height]" type="text" class="inner-select inline-block valid packageHeight" id="packageHeight" value=''><p lass="p-height">CM</p>
+                          </div>
+                      </div>              	
+                  </div>
+              </div>
+              <div class="form-label-group aramex-input-block weight-line">
+                    <input class="btn btn-light rate-calculator" type="button" value="Rate calculator"/>
+
+              </div>
+              <div class="form-label-group aramex-input-block weight-line">
+                  <label for="packageWidth">Contents Description</label><br />
+                  <textarea></textarea>
+              </div>
+              <input class="main-red-button-shipment passive  button-next  button-done" type="button" value="Done"/>
+          </div>
+      </div>
+  </div>
+  <% end %>
+
+
+<script>
+    $(document).ready(function () {
+
+
+        $(".add-attachments").click(function () {
+             $(this).hide();
+             $(".add-attachments-over").fadeIn('fast');
+             $(".add-attachments-small").fadeIn('fast');
+             
+        });
+                   
+        $(".custom-file-close").click(function () {
+            removeFiles($(this))
+        });
+
+
+$('#validatedCustomFile').on('change', function(){
+addLinkToDownload($(this))
+            })
+
+        $(".add-anoter-attachments").click(function () {
+            increaseFiles();
+        });
+
+       function addLinkToDownload(value) {
+                var fileName = value.val();
+                value.next('.custom-file-label').html(fileName);
+        }
+
+        function increaseFiles() {
+            var filefieldToClone = $(".add-attachments-over .custom-file").eq(0).clone();
+            
+            var totalFilestoClone = $(".custom-file");
+            if(totalFilestoClone.length > 4){
+                return false;
+            }
+            var i = totalFilestoClone.length;
+                 filefieldToClone.find('input').each(function () {
+                    this.name = this.name.replace('[0]', '[' + i + ']');
+                    $(this).next().text("");
+                     $(this).on('change', function(){
+                    addLinkToDownload($(this))
+            })
+                });
+                $('.add-attachments-over').append(filefieldToClone);
+                $(".custom-file-close").click(function () {
+                        removeFiles($(this))
+                });
+
+        }
+
+        function removeFiles(value) {
+            var totalFilestoClone = $(".custom-file");
+            if(totalFilestoClone.length < 2){
+                return false;
+            }
+            value.closest('.custom-file').remove();
+             addNameValues();
+        }
+
+        function addNameValues() {
+            var totalFilestoClone = $(".custom-file");
+            var max = totalFilestoClone.length;
+            var filefieldToClone = $(".add-attachments-over .custom-file");
+
+var i=0;
+                 filefieldToClone.find('input').each(function () {
+                    $(this).attr('name', 'shipments[' + i + ']');
+                    i++;
+                });
+
+        }
+
+
+        function makeValidation() {
+        var buttonsClick = [
+        ["packageWeight","Weight"],
+        ["packageLength", "Length"], 
+        ["packageWidth","Width"], 
+        ["packageHeight","Height"]
+        ];
+
+        /* Make All Buttons Active once click on buttons */
+        for (var s in buttonsClick) {
+            var id = buttonsClick[s][0];
+            var text = buttonsClick[s][1];
+            (function (class_text, text) {
+                $('.' + class_text).on("blur", function (e) {
+                    emptySpecial3Validation($(this), text);
+                });
+            }(id,text))
+        }
+
+        }
+    makeValidation();
+
+        function emptySpecial3Validation(value, label) {
+            var field = value.val();
+            if (field.trim().length == 0) {
+                value.parent().next('div.red').remove();
+                value.parent().after("<div class=\'red\'> Required</div>");
+                errors.push(value.attr('id') + "_required");
+            } else {
+                value.parent().next('div.red').remove();
+                errors = removeError(errors, value.attr('id') + "_required");
+            }
+            makeAllButtonsActive(value);
+        }
+
+        var $input = $("#totalPackagesWeight").val(1);
+        $(".altera").click(function () {
+            if ($(this).hasClass('acrescimo')) {
+                var newValue = parseInt($input.val()) + 1;
+                $input.val(newValue);
+                increaseLines();
+            } else if ($input.val() >= 2) {
+              var newValue = parseInt($input.val()) - 1;
+                $input.val(newValue);
+                decreaseLines();
+            }
+        });
+
+
+        function increaseLines() {
+            var packagestoClone = $(".weight-line-clone").eq(0).clone();
+            var totalPackagestoClone = $(".weight-line-clone");
+            var i = totalPackagestoClone.length;
+                 packagestoClone.find('input').each(function () {
+                    this.name = this.name.replace('[0]', '[' + i + ']');
+                });
+                $('.weight-line-clone-over').append(packagestoClone);
+                makeValidation();
+        }
+
+        function decreaseLines() {
+            var lastClone = $(".weight-line-clone:last-child").remove();
+        }
+
+
+        $('#metric').click(function () {
+          var packages = $(".weight-line-clone");
+            $(this).addClass('grey-button-border');
+            $('#imperial').removeClass('grey-button-border');
+            packages.find('p').each(function () {
+                if ($(this).attr('class') !== "p-weight") {
+                    $(this).text("CM");
+                } else {
+                    $(this).text("KG");
+                }
+            });
+
+        });
+
+        $('#imperial').click(function () {
+          var packages = $(".weight-line-clone");
+            $(this).addClass('grey-button-border');
+            $('#metric').removeClass('grey-button-border');
+            packages.find('p').each(function () {
+                if ($(this).attr('class') !== "p-weight") {
+                    $(this).text("IN");
+                } else {
+                    $(this).text("lbs");
+                }
+            });
+        });
+
+        /* Open first tab with cleaning of values */
+        $('.switcher').click(function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $('.shipper .create-shipping-block-top').addClass('active');
+                $('.shipper .create-shipping-block-body').fadeIn("slow");
+                $('.shipper .create-shipping-block-body').find(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio').val('');
+            } else {
+                $(this).addClass('active');
+                $('.shipper .create-shipping-block-top').removeClass('active');
+                $('.shipper .create-shipping-block-body').hide();
+
+            }
+        });
+        /* Clicking on button Next */
+        $('.button-next').click(function () {
+            if ($("#orderNumber").val().trim() === "") {
+                $("html, body").animate({scrollTop: 0}, "slow");
+            }
+            makeAllButtonsActive($(this));
+            if (!$(this).hasClass('passive')) {
+                $(this).parent().parent().find('.create-shipping-block-top').removeClass('active');
+                $(this).parent().hide();
+                $(this).parent().parent().find('.create-shipping-block-top').find('.triangle').removeClass('active');
+                $(this).parent().parent().next().find('.create-shipping-block-body').fadeIn("slow");
+                $(this).parent().parent().next().find('.create-shipping-block-top').addClass('active');
+                $(this).parent().parent().next().find('.create-shipping-block-top').find('.triangle').addClass('active');
+                $(this).parent().parent().next().find('.create-shipping-block-body').find("#goodsDescription").focus();
+                $(this).parent().parent().next().find('.create-shipping-block-body').find("#totalPackagesWeight").focus();
+            }
+        });
+
+
+        /* Buttons actions*/
+        if ($('#productGroup').hasClass('grey-button-border')) {
+            $('.international').hide();
+            $('.domestic').fadeIn("slow");
+        }
+        if ($('#productType').hasClass('grey-button-border')) {
+            $('.domestic').hide();
+            $('.international').fadeIn("slow");
+        }
+
+        if ($('#cashOnDelivery').hasClass('grey-button-border') ) {
+            $('.block-cod').fadeIn("slow");
+        }
+        if ($('#prepaid').hasClass('grey-button-border')) {
+            $('.block-cod').hide();
+        }
+
+        $('#productGroup').click(function () {
+            $(this).addClass('grey-button-border');
+            $('#productType').removeClass('grey-button-border');
+            $('.international').hide();
+            $('.domestic').fadeIn("slow")
+        });
+
+        $('#productType').click(function () {
+            $(this).addClass('grey-button-border');
+            $('#productGroup').removeClass('grey-button-border');
+            $('.domestic').hide();
+            $('.international').fadeIn("slow");
+                    if ($('#cashOnDelivery_int').hasClass('grey-button-border') ) {
+            $('.block-cod').fadeIn("slow");
+        }
+        if ($('#prepaid_int').hasClass('grey-button-border')) {
+            $('.block-cod').hide();
+        }
+        });
+
+        $('#cashOnDelivery').click(function () {
+            $('.block-cod').fadeIn("slow");
+        });
+
+        $('#prepaid').click(function () {
+            $('.block-cod').hide("slow");
+        });
+        $('#cashOnDelivery_int').click(function () {
+            $('.block-cod').fadeIn("slow");
+        });
+        
+        $('#prepaid_int').click(function () {
+            $('.block-cod').hide("slow");
+        });
+
+        $('.grey-button').click(function () {
+            $(this).closest('.aramex-input-block2').find(".grey-button").removeClass('grey-button-border')
+            $(this).addClass('grey-button-border')
+        });
+
+        /* Shipper validation "1858867134513" */
+if($("#orderNumber").val() === ""){
+  $("#orderNumber").focus();
+}
+        
+    
+
+        var errors = [];
+
+        $("#orderNumber").blur(function () {
+            emptyValidation($(this), 'Order Number');
+
+$.ajax({
+      type: "GET",
+      contentType: "application/json; charset=utf-8",
+      url: "/order_by_number",
+      data: { order_number: $(this).val()},
+      dataType: "json",
+      success: function(data){
+ console.log(data);       
+
+if(data.error){
+alert("not correct Order Number");
+return
+}
+
+
+//window.location.href = window.location.protocol+'//' + window.location.host + '/shipments/new?order_id='+ data.id;
+
+
+
+
+$("#shipperName").val();
+$("#companyName").val();
+$("#emailAddress").val();
+$("#addressLine1").val();
+$("#addressLine2").val();
+$("#originCountry").val();
+$("#originCity").val();
+$("#State").val();
+$("#originCode").val();
+$("#originPhone").val();
+$("#originMobile").val();
+$("#taxNumber").val();
+
+
+$("#receiverName").val(data.shipping_address.name);
+$("#companyReciverName").val(data.shipping_address.country);
+$("#emailReciverAddress").val(data.customer.email);
+$("#addressReciverLine1").val(data.shipping_address.address1);
+$("#addressReciverLine2").val(data.shipping_address.address2);
+$("#reciverCountry").val(data.shipping_address.country_code);
+$("#reciverCity").val(data.shipping_address.city);
+$("#reciverState").val(data.shipping_address.province);
+$("#reciverCode").val(data.shipping_address.zip);
+$("#reciverPhone").val(data.shipping_address.phone);
+$("#reciverMobile").val(data.shipping_address.phone);
+
+if("EPX"){
+$("#economyParcel").addClass("grey-button-border");
+$("#product_type").val("EPX");
+}
+if("PPX"){
+$("#priorityParcel").addClass("grey-button-border");
+$("#product_type").val("PPX");
+}
+if("CDS"){
+$("#ecommerceParcel").addClass("grey-button-border");
+$("#product_type").val("CDS");
+}
+if("CODS"){
+$("#cashOnDelivery").addClass("grey-button-border");
+$("#services").val("CODS");
+}
+if("EPX"){
+$("#prepaid").addClass("grey-button-border");
+$("#services").val("EPX");
+}
+if("CDS"){
+$("#economyParcel_int").addClass("grey-button-border");
+$("#product_type_int").val("CDS");
+}
+if("PPX"){
+$("#priorityParcel_int").addClass("grey-button-border");
+$("#product_type_int").val("PPX");
+}
+if("CDS"){
+$("#ecommerceParcel_int").addClass("grey-button-border");
+$("#product_type_int").val("CDS");
+}
+if("CODS"){
+$("#cashOnDelivery_int").addClass("grey-button-border");
+$("#services_int").val("CODS");
+}
+if("P"){
+$("#prepaid_int").addClass("grey-button-border");
+$("#services_int").val("P");
+}
+if("DDU"){
+$("#deliveryDutyUnpaid").addClass("grey-button-border");
+$("#services_adt").val("DDU");
+}
+if("DDP"){
+$("#services_adt").val("DDU");
+}
+
+var description;
+data.line_items.forEach(function(item, i, arr) {
+  description = " " + i + ": " + item.name;
+});
+
+$("#goodsDescription").val(description);
+$("#weight").val(data.total_weight);
+$("#declaredValue").val(data.total_price);
+$("#numberPieces").val("1");
+if(data.payment_gateway_names[0] === "Cash on Delivery (COD)"){
+  $("#cod").val(data.total_price);
+}
+
+
+},
+error: function(request, errorThrown){
+  alert("not correct Order Number");
+console.log(request, errorThrown);
+}
+}); 
+
+
+
+
+
+        });
+
+        $("#shipperName").blur(function () {
+            emptyValidation($(this), 'Shipper Name');
+        });
+        $("#companyName").blur(function () {
+            emptyValidation($(this), 'Company Name');
+        });
+
+        $("#emailAddress").blur(function () {
+            emptyValidation($(this), 'Email Address');
+            emailValidation($(this), 'Email Address');
+        });
+
+        $("#addressLine1").blur(function () {
+            emptyValidation($(this), 'Address line 1');
+        });
+
+        $("#State").blur(function () {
+            emptyValidation($(this), 'State');
+        });
+
+        $("#originCode").blur(function () {
+            emptyValidation($(this), 'Zip Code');
+        });
+
+        $("#originCity").blur(function () {
+            emptyValidation($(this), 'City');
+        });
+        $("#originPhone").blur(function () {
+            emptySpecialValidation($(this), 'Phone number');
+        });
+
+        $("#originMobile").blur(function () {
+            emptySpecialValidation($(this), 'Mobile Number');
+        });
+
+
+        $("#reciverPhone").blur(function () {
+            emptySpecialValidation($(this), 'Phone number');
+        });
+
+        $("#reciverMobile").blur(function () {
+            emptySpecialValidation($(this), 'Mobile Number');
+        });
+
+
+var filesExt = ['exe']; // validate .exe files
+
+$('input[type=file]').change(function(){
+    var parts = $(this).val().split('.');
+    if(filesExt.join().search(parts[parts.length - 1]) != -1){
+      $(this).val("");
+      $(this).next().text("");
+        alert('.exe files are not allowed to download!');
+        return false;
+    } 
+})
+
+
+        var emptyValidationFields = 
+        [
+        ["reciverCity","City"],
+        ["reciverCode", 'Zip Code'],
+        ["reciverState", 'State'],   
+        ["addressReciverLine1", 'Address line 1'],
+        ["emailReciverAddress", 'Email Address'],  
+        ["companyReciverName", 'Company Name'],
+        ["receiverName", 'Receiver Name'],
+        ];
+
+        /* Make All Buttons Active once click on buttons */
+        for (var s in emptyValidationFields) {
+            var id = emptyValidationFields[s][0];
+            var text = emptyValidationFields[s][1];
+            (function (id_text, text) {
+                $('#' + id_text).on("blur", function (e) {
+                    emptyValidation($(this), text);
+                });
+            }(id,text))
+        }
+
+        /* Reciver validation */
+        $("#emailReciverAddress").blur(function () {
+          // emptyValidation($(this), 'Email Address');
+            emailValidation($(this), 'Email Address');
+        });
+
+        /* Shipment Details validation */
+        $("#goodsDescription").blur(function () {
+            emptyValidation($(this), 'Goods Description');
+        });
+
+        $("#weight").blur(function () {
+            emptySpecialValidation($(this), 'Weight');
+        });
+
+        $("#declaredValue").blur(function () {
+            emptySpecialValidation($(this), 'Declared value');
+        });
+
+        $("#cod").blur(function () {
+            emptySpecialValidation($(this), 'Cash on Delivery');
+        });
+
+        $("#numberPieces").blur(function () {
+            emptyValidation($(this), 'Number of pieces');
+        });
+
+
+        /* Chargeable weight validation */
+
+        $("#totalPackagesWeight").blur(function () {
+            emptytotalPackageValidation($(this), 'Total Packages');
+        });
+        
+        $("#package").blur(function () {
+            emptyValidation($(this), 'Package');
+        });
+
+
+        function emptyValidation(value, label) {
+            var field = value.val();
+            if (field.trim().length == 0) {
+                value.next('div.red').remove();
+                value.after("<div class=\'red\'>" + "\'" + label + "\' is Required</div>");
+                errors.push(value.attr('id') + "_required");
+            } else {
+                value.next('div.red').remove();
+                errors = removeError(errors, value.attr('id') + "_required");
+            }
+            makeAllButtonsActive(value);
+        }
+
+        function emailValidation(value, label) {
+
+            var field = value.val();
+            var re = /\S+@\S+\.\S+/;
+            if ((!re.test(field)) && (field.trim().length != 0)) {
+                value.next('div.red').remove();
+                value.after("<div class=\'red\'>" + "\'" + label + "\' is not correct</div>");
+                errors.push(value.attr('id') + "_not_valid");
+            } else {
+                errors = removeError(errors, value.attr('id') + "_not_valid");
+            }
+            makeAllButtonsActive(value);
+        }
+
+        function digitsValidation(value, label) {
+            var field = value.val();
+            var onlyDigits = /^\d*$/;
+            if ((!onlyDigits.test(field)) && (field.trim().length != 0)) {
+                value.next('div.red').remove();
+                value.after("<div class=\'red\'>" + "\'" + label + "\' . Only numbers are allowed.</div>");
+                errors.push(value.attr('id') + "_not_valid");
+            } else {
+                errors = removeError(errors, value.attr('id') + "_not_valid");
+            }
+            makeAllButtonsActive(value);
+        }
+
+
+        function emptySpecialValidation(value, label) {
+            var field = value.val();
+            if (field.trim().length == 0) {
+                value.parent().next('div.red').remove();
+                value.parent().after("<div class=\'red\'>" + "\'" + label + "\' is Required</div>");
+                errors.push(value.attr('id') + "_required");
+            } else {
+                value.parent().next('div.red').remove();
+                errors = removeError(errors, value.attr('id') + "_required");
+            }
+            makeAllButtonsActive(value);
+        }
+        function emptySpecial2Validation(value, label) {
+            var field = value.val();
+            if (field.trim().length == 0) {
+                value.parent().parent().next('div.red').remove();
+                value.parent().parent().after("<div class=\'red\'>" + "\'" + label + "\' is Required</div>");
+                errors.push(value.attr('id') + "_required");
+            } else {
+                value.parent().parent().next('div.red').remove();
+                errors = removeError(errors, value.attr('id') + "_required");
+            }
+            makeAllButtonsActive(value);
+        }
+        function emptytotalPackageValidation(value, label) {
+            var field = value.val();
+            if (field.trim().length == 0) {
+                value.parent().next('div.red').remove();
+                value.parent().after("<div class=\'red\'>" + "\'" + label + "\' is Required</div>");
+                errors.push(value.attr('id') + "_required");
+            } else {
+                value.parent().next('div.red').remove();
+                errors = removeError(errors, value.attr('id') + "_required");
+            }
+            makeAllButtonsActive(value);
+        }
+
+        function removeError(newArray, removeItem) {
+            var newArray = jQuery.grep(newArray, function (value) {
+                return value != removeItem;
+            });
+            return newArray;
+        }
+
+        function makeAllButtonsActive(value) {
+
+            if ($("#orderNumber").val().trim() === "") {
+                $("html, body").animate({scrollTop: 0}, "slow");
+            }
+
+            var empty = false;
+            if (value.attr('id') == 'orderNumber') {
+                value = $("#receiverName")
+            }
+
+            value.closest('.create-shipping-block-body').find('input[type="text"], input[type="tel"]').each(function () {
+
+              console.log($(this).attr('id'));
+              console.log($(this).val());
+
+                if ($(this).val().trim() == "" && $(this).hasClass('valid')) {
+                    empty = true;
+                    return false;
+                }
+            });
+
+                 if (errors.length === 0 && empty === false) {
+
+                    value.closest('.create-shipping-block-body').find(".button-next").removeClass('passive');
+                    value.closest('.create-shipping-block').find(".create-shipping-block-top").addClass('unblocked');
+                    value.closest('.create-shipping-block').prev().find(".create-shipping-block-top").addClass('unblocked');
+                } else {
+                    value.closest('.create-shipping-block-body').find(".button-next").addClass('passive');
+
+                }
+        }
+
+    makeAllButtonsActive($("#receiverName"));
+
+        $(".reciver .main-red-button-shipment").click(function () {
+      makeAllButtonsActive($("#goodsDescription"));
+        }); 
+
+        $(".detailes .main-red-button-shipment").click(function () {
+      makeAllButtonsActive($("#totalPackagesWeight"));
+        }); 
+
+
+        $(".create-shipping-block-top").click(function () {
+          if($(this).hasClass('unblocked')){
+            if ($(this).hasClass('active-top')) {
+                $(this).removeClass('active-top').removeClass('active');
+                $(this).next().hide();
+                $(this).find('.triangle').removeClass('active');
+
+            } else {
+                $(this).addClass('active-top').addClass('active');
+                $(this).next().fadeIn("slow");
+                $(this).find('.triangle').addClass('active');
+
+            }
+          }
+        }); 
+
+
+        $(".checkSingle").click(function () {
+          if ($(this).attr('checked') !== "checked") {
+        $(this).attr('checked', true);
+        $(".block-insurance .filter-block-select").fadeIn("fast");
+          }else{
+        $(this).attr('checked', false); 
+        $(".block-insurance .filter-block-select").hide();
+          }
+        }); 
+
+
+        $("#reciverPhone").intlTelInput({
+            // options here
+        });
+        // jQuery 
+        $("#reciverMobile").intlTelInput({
+            // options here
+        });
+        // jQuery 
+        $("#originPhone").intlTelInput({
+            // options here
+        });
+        // jQuery 
+        $("#originMobile").intlTelInput({
+            // options here
+        });
+    });
+
+
+
+</script>

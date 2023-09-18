@@ -1,0 +1,188 @@
+<div class="row">
+
+  <div class="span11 offset1">
+    <div id="index_top">
+      <%= link_to "Schedule Pickup", new_pickup_path, class: "btn" %>
+    </div>
+
+    <div class="search-container">
+      <h2>Search By Order Number</h2>
+      <form method="get" action="search-by-order-number">
+        <input type="text" id="search_by_order_number" name="order_number">
+        <input type="submit" value="Search" class="btn btn-primary" >
+      </form>
+    </div>
+
+    <div class="search-container">
+      <h2>Search By Waybill Number</h2>
+      <form method="get" action="search-by-awb">
+        <input type="text" id="search_by_awb" name="awb">
+        <input type="submit" value="Search" class="btn btn-primary" >
+      </form>
+    </div>
+
+    <div class="search-container">
+      <h2>Search By Fulfillment Status</h2>
+      <form method="get" action="search-by-fullfil">
+		<select id="search_by_fullfil" name="fulfilled">
+			<option></option>		
+			<option value="ful">Fulfilled</option>
+			<option value="unful">Not Fulfilled</option>
+			<option value="all">All</option>
+		</select>
+        <input type="submit" value="Search" class="btn btn-primary" >
+      </form>
+    </div>
+	
+    <h2>Recent orders</h2>
+
+    <% if @orders.blank? %>
+      <table class="table table-striped">
+        <tr>
+          <td><em>There are no orders in your store.</em></td>
+        </tr>
+      </table>
+
+    <% else %>
+	    <% if current_user.nil?  %>
+			<p style="color:red;">Aramex "account" has not created yet. You should fill in 'Account Information' page and push "Submit" button.</p>
+
+		<% else %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Order </th>
+            <th>Placed by</th>
+            <th>Paid</th>
+            <th>Fulfillment</th>
+            <th></th>
+          </tr>
+        </thead>
+		
+      <% @orders.each do |order| %>
+	  
+
+	  
+
+		
+		
+		<% if defined?(params[:fulfilled]) and params[:fulfilled] == "ful" %>
+		<% if order.fulfillment_status %>
+        <tr>
+          <td><%= link_to order.name, orders_path(shop: current_user.shop_url, id: order.id ) %></td>
+          <td><%= order.billing_address.name unless order %></td>
+          <td>
+            <span class="label  <% if order.financial_status  == 'paid' %>label-success<% end %> <% if order.financial_status  == 'pending' %>label-warning<% end %> <% if order.financial_status  == 'refunded' %>label-important<% end %>"><%= order.financial_status %>
+            </span>
+          </td>
+          <td>
+            <% if !order.fulfillment_status %>
+            <span class="label">Not Fulfilled</span>
+            <% else %>
+            <span class="label label-success">Fulfilled</span>
+            <% end %>
+          </td>
+
+          <td id="homepage_button_container">
+
+          <% shipment_store = ShipmentStore.find_by_order_id order.id  %>
+            <% if shipment_store.nil? %>
+              <%= link_to "Create Shipment", select_shipment_type_path(order_id: order.id), class: "btn btn-primary" %>
+              <%= link_to "Calculate Rate", rate_calculator_shipment_type_path(order_id: order.id), class: "btn"%>
+            <% else %>
+              <!-- These 2 options should only come for orders which have an entry in shipment_store -->
+              <%= link_to "Print Label", print_label_path(shipment_store_id: shipment_store.id), target: "_blank", class: "btn"%>
+              <%= link_to "Track Shipment", track_shipment_path(shipment_store_id: shipment_store.id), class: "btn"%>
+              <%= link_to "Calculate Rate", rate_calculator_shipment_type_path(order_id: order.id), class: "btn"%>
+            <% end %>
+          </td>
+        </tr>	
+		<% end %>
+		
+		
+		<% elsif defined?(params[:fulfilled]) and params[:fulfilled] == "unful" %>
+		<% if !order.fulfillment_status %>
+        <tr>
+          <td><%= link_to order.name, orders_path(shop: current_user.shop_url, id: order.id ) %></td>
+          <td><%= order.billing_address.name unless order %></td>
+          <td>
+            <span class="label  <% if order.financial_status  == 'paid' %>label-success<% end %> <% if order.financial_status  == 'pending' %>label-warning<% end %> <% if order.financial_status  == 'refunded' %>label-important<% end %>"><%= order.financial_status %>
+            </span>
+          </td>
+          <td>
+            <% if !order.fulfillment_status %>
+            <span class="label">Not Fulfilled</span>
+            <% else %>
+            <span class="label label-success">Fulfilled</span>
+            <% end %>
+          </td>
+
+          <td id="homepage_button_container">
+
+          <% shipment_store = ShipmentStore.find_by_order_id order.id  %>
+            <% if shipment_store.nil? %>
+              <%= link_to "Create Shipment", select_shipment_type_path(order_id: order.id), class: "btn btn-primary" %>
+              <%= link_to "Calculate Rate", rate_calculator_shipment_type_path(order_id: order.id), class: "btn"%>
+            <% else %>
+              <!-- These 2 options should only come for orders which have an entry in shipment_store -->
+              <%= link_to "Print Label", print_label_path(shipment_store_id: shipment_store.id), target: "_blank", class: "btn"%>
+              <%= link_to "Track Shipment", track_shipment_path(shipment_store_id: shipment_store.id), class: "btn"%>
+              <%= link_to "Calculate Rate", rate_calculator_shipment_type_path(order_id: order.id), class: "btn"%>
+            <% end %>
+          </td>
+        </tr>	
+		<% end %>
+		<% else %>
+		
+		
+		
+		
+        <tr>
+          <td><%= link_to order.name, orders_path(shop: current_user.shop_url, id: order.id ) %></td>
+          <td><%= order.billing_address.name unless order %></td>
+          <td>
+            <span class="label  <% if order.financial_status  == 'paid' %>label-success<% end %> <% if order.financial_status  == 'pending' %>label-warning<% end %> <% if order.financial_status  == 'refunded' %>label-important<% end %>"><%= order.financial_status %>
+            </span>
+          </td>
+          <td>
+            <% if !order.fulfillment_status %>
+            <span class="label">Not Fulfilled</span>
+            <% else %>
+            <span class="label label-success">Fulfilled</span>
+            <% end %>
+          </td>
+
+          <td id="homepage_button_container">
+
+          <% shipment_store = ShipmentStore.find_by_order_id order.id  %>
+            <% if shipment_store.nil? %>
+              <%= link_to "Create Shipment", select_shipment_type_path(order_id: order.id), class: "btn btn-primary" %>
+              <%= link_to "Calculate Rate", rate_calculator_shipment_type_path(order_id: order.id), class: "btn"%>
+            <% else %>
+              <!-- These 2 options should only come for orders which have an entry in shipment_store -->
+              <%= link_to "Print Label", print_label_path(shipment_store_id: shipment_store.id), target: "_blank", class: "btn"%>
+              <%= link_to "Track Shipment", track_shipment_path(shipment_store_id: shipment_store.id), class: "btn"%>
+              <%= link_to "Calculate Rate", rate_calculator_shipment_type_path(order_id: order.id), class: "btn"%>
+            <% end %>
+          </td>
+        </tr>	
+
+
+
+		
+		<% end %>
+		
+		
+      <% end %>
+      </table>
+
+	        <% end %>
+	  
+	  
+    <% end %>
+
+    <br/>
+
+  </div> <!-- span8 / right-column -->
+
+</div>

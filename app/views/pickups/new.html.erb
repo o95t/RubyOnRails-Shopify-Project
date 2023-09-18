@@ -1,0 +1,487 @@
+    <%= simple_form_for @pickup, defaults:{wrapper: false}, url: pickups_path, html: { method: :post, class: 'form-horizontal' } , size: false do |f| %>
+                    <div class="create-shipping-blocks">
+                        <!--shipper-->
+                        <div class="create-shipping-block shipper">
+                            <div class="create-shipping-block-top ">
+                                <%= image_tag 'man.png',  :alt => "" %> 
+                                <p class="top-line-title">Address Details</p>
+                                <p class="rounded-circle top-line-title-icon">?</p>
+                                <p class='use-default'>Use default shipper details</p>
+                                <div class="switcher active">
+                                    <div class="rounded-circle inner-switcher">
+
+                                    </div>                    	
+                                </div>
+                            </div>
+                            <div class="create-shipping-block-body">
+                                <div class="form-label-group aramex-input-block aramex-input-block-create">
+                                    <label for="shipperName">Shipper Name <span>*</span></label>
+                                    <%= f.input :pickup_person_name,  label: false, input_html: { size: 0, style: "width:100%", wrap:false, class: "form-control valid" , id: "shipperName"} %>
+                                </div>
+                                <div class="form-label-group aramex-input-block aramex-input-block-create">
+                                    <label for="companyName">Company Name <span>*</span></label>
+                                    <%= f.input :pickup_company_name,  label: false, input_html: { size: 0, style: "width:100%", wrap:false, class: "form-control valid" , id: "companyName"} %>                                </div>
+
+                                <div class="form-label-group aramex-input-block aramex-input-block-create">
+                                    <label for="emailAddress">Email Address <span>*</span></label>
+                                    <%= f.input :pickup_email,  label: false, input_html: { size: 0, style: "width:100%", wrap:false, class: "form-control valid" , id: "emailAddress"} %>
+                                </div>
+
+                                <div class="form-label-group aramex-input-block aramex-input-block-create">
+                                    <label for="addressLine1">Address line 1 <span>*</span></label>
+                                    <%= f.input :pickup_address_line1,  label: false, input_html: { size: 0, style: "width:100%", wrap:false, class: "form-control valid" , id: "addressLine1"} %>
+                                </div>
+
+                                <div class="form-label-group aramex-input-block aramex-input-block-create">
+                                    <label for="addressLine2">Building number 2 <span>*</span></label>
+                                     <%= f.input :pickup_address_line2,  label: false, input_html: { size: 0, style: "width:100%", wrap:false, class: "form-control valid" , id: "addressLine2"} %>
+                                </div>
+
+                                <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                                    <div class="block-left">
+                                        <label for="originCountry">Country <span>*</span></label>
+						<% unless @countries.nil? -%>
+							<%= f.select( :pickup_country_code,  @countries.map { |c| [c[:name], c[:code]] } , {}, {:class=>"custom-select inline-block", :id=>"originCountry"}) %>
+						<% else -%>
+							<%= country_select("pickup", "pickup_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])  %>
+						<% end -%>
+
+                                    </div><div class="block-right block-right-shipment">
+                                        <label for="originCity">City <span>*</span></label>
+                                    <%= f.input :pickup_city,  label: false, input_html: { size: 0, style: "form-control valid", wrap:false, class: "form-control valid" , id: "originCity"} %>
+                                    </div>
+                                </div>
+
+                                <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                                    <div class="block-left">
+                                        <label for="originState">State <span>*</span></label>
+                                        <input id="State"  type="text" class="form-control valid" value="Amman">
+                                    </div><div class="block-right block-right-shipment">
+                                        <label for="originCode">Zip Code <span>*</span></label>
+                                    <%= f.input :pickup_post_code,  label: false, input_html: { size: 0, style: "form-control valid", wrap:false, class: "form-control valid" , id: "originCode"} %>
+                                    </div>
+                                </div>
+
+                                <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                                    <div class="block-left">
+                                        <label for="originPhone">Phone number <span>*</span></label>
+                                    <%= f.input :pickup_cellphone,  label: false, input_html: { size: 0, style: "form-control valid", wrap:false, class: "form-control valid" , id: "originPhone"} %>
+                                    </div><div class="block-right block-right-shipment">
+                                        <label for="originMobile">Mobile Number <span>*</span></label>
+                                        <input id="originMobile"  type="text" class="form-control valid" value="+962 796018186">
+                                    </div>
+                                </div>
+
+                                <div class="form-label-group aramex-input-block aramex-input-block-create">
+                                    <label for="taxNumber">Tax ID / VAT / EIN number</label>
+                                    <input id="taxNumber" class="form-control" value="">
+                                </div>
+
+                                <input class="main-red-button-shipment passive button-next" type="button" value="Next"/>
+                            </div>
+                        </div>
+
+                        <!--reciver-->
+                        <div class="create-shipping-block reciver" >
+                            <div class="create-shipping-block-top active">
+                                <%= image_tag 'hand.png',  :alt => "" %> 
+                                <p class="top-line-title">Pickup Details</p>
+                                <p class="rounded-circle top-line-title-icon">?</p>
+                                <p class='triangle active'></p>
+                            </div>
+                            <div class="create-shipping-block-body">
+                                <div class="form-label-group aramex-input-block aramex-input-block-create">
+                                    <label for="pickupDate">Date <span>*</span></label>
+                                    <div class="filter-block-select">
+
+  <div style="display:none;">                                     
+ <%= f.input :pickup_datetime, :input_html => {class: 'inner-select inline-block', id: "pickupDate"}, label: false  %>     </div>                                    
+<input type="text" name="pickup_datetime" class="inner-select inline-block" id="pickupDate1">
+
+                                        <%= image_tag 'arr.png',  :alt => "" , :class => "arr" %> 
+                                    </div>
+                                </div>
+                                <div class="form-label-group aramex-input-block aramex-input-block-create">
+                                    <label for="pickUpTime ">Pick up Time window </label>
+                                    <div id="time-range">
+                                        <div  class="slider-time-top" > 
+                                            <p class="slider-time">9:00 AM</p>
+                                            <p class="slider-time-silver">Ready Time </p>
+                                        </div>    
+                                        <div  class="slider-time-bottom"> 
+                                            <p class="slider-time2"> 5:00 PM</p>
+                                            <p class="slider-time-silver">Latest Time</p>
+                                        </div>
+                                    </div>
+                                    <div class="sliders_step1">
+                                        <div id="slider-range"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-label-group aramex-input-block aramex-input-block-create location-block">
+                                    <label for="pickupLocation">Location </label>
+                                     <%= f.input :pickup_location,  label: false, input_html: { size: 0,  class: "form-control" , id: "pickupLocation"} %>  
+                                      <p class="rounded-circle top-line-title-icon" data-toggle="tooltip" data-html="true" data-placement="right" 
+                                      title="Reception, Security etc.">?</p>
+
+                                </div>
+
+                                <div class="form-label-group aramex-input-block aramex-input-block-create">
+                                    <label for="referenceNumber">Reference number</label>
+                                     <%= f.input :reference1,  label: false, input_html: { size: 0,  class: "form-control" , id: "referenceNumber"} %>                                      
+                                </div>
+                                <div class="form-label-group  aramex-input-block aramex-input-block-create">
+                                    <div class="block-left">
+                                        <label for="numberShipments">Number of Shipments <span>*</span></label>
+                                        <div class="filter-block-select filter-block-select-shipment numberShipments">
+                                      <%= f.input :number_of_shipments,  label: false, input_html: { size: 0, class: "inner-select inline-block valid" , id: "numberShipments"} %>                                              
+                                           
+                                            <div class='total-arr-right-number'>
+                                                <div class='first-arr altera acrescimo'></div>
+                                                <div class='second-arr altera decrescimo'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+            <div style= "display:none">
+                <%= f.input :ready_time, as: :time  %>
+                <%= f.input :closing_time, as: :time %>
+                <%= f.input :status, input_html: {value: 'Picked-up'} %>
+            
+                <%= f.input :product_group, collection: Shipment.product_groups_hash.sort.map { |k, v| [k,v] }, selected: current_user.default_product_group  %>
+                <%= f.input :product_type, input_html: {value: current_user.default_international_product_type}  %>
+                <%= f.input :payment, input_html: {value: 'P'} %>
+                <%= f.input :number_of_pieces, input_html: {value: 2}  %>
+                <%= f.input :pickup_address_line3 %>
+                <%= f.input :pickup_post_code_required %>
+            </div>
+
+                                <%= f.submit "Done", class: "main-red-button-shipment button-done", disable_with: "Creating..." %>
+                            </div>
+                        </div>
+
+
+					
+      
+
+                    </div>
+		<% end %>
+<script>
+    $(document).ready(function () {
+        $('#pickupDate1').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            "startDate": moment(),
+            "endDate": moment().add(7, 'days'),
+            "locale": {
+                format: 'DD MMM'
+            }
+        }, function (start, end, label) {
+
+            $("select[name='pickup[pickup_datetime(1i)]']").find('option').removeAttr("selected");
+            $("select[name='pickup[pickup_datetime(2i)]']").find('option').removeAttr("selected");
+            $("select[name='pickup[pickup_datetime(3i)]']").find('option').removeAttr("selected");
+            var year  = start.format('YYYY');
+            var month = start.format('MM').replace(/^0+/, '');
+            var day = start.format('DD').replace(/^0+/, '');
+            $("select[name='pickup[pickup_datetime(1i)]']").val(year).find("option[value=" + year +"]").attr('selected', true);
+            $("select[name='pickup[pickup_datetime(2i)]']").val(month).find("option[value=" + month +"]").attr('selected', true);
+            $("select[name='pickup[pickup_datetime(3i)]']").val(day).find("option[value=" + day +"]").attr('selected', true);
+            console.log('New date range selected: ' + start.format('DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+            $("select[name='pickup[pickup_datetime(1i)]']").find('option').removeAttr("selected");
+            $("select[name='pickup[pickup_datetime(2i)]']").find('option').removeAttr("selected");
+            $("select[name='pickup[pickup_datetime(3i)]']").find('option').removeAttr("selected");
+            var year  = moment().format('YYYY');
+            var month = moment().format('MM').replace(/^0+/, '');
+            var day = moment().format('DD').replace(/^0+/, '');
+            $("select[name='pickup[pickup_datetime(1i)]']").val(year).find("option[value=" + year +"]").attr('selected', true);
+            $("select[name='pickup[pickup_datetime(2i)]']").val(month).find("option[value=" + month +"]").attr('selected', true);
+            $("select[name='pickup[pickup_datetime(3i)]']").val(day).find("option[value=" + day +"]").attr('selected', true);
+            console.log('New date range selected:');
+
+
+
+
+
+
+
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 1440,
+            step: 15,
+            values: [540, 1020],
+            slide: function (e, ui) {
+                if (ui.values[0] < 540 || ui.values[1] > 1020)
+                    return false;
+
+                var hours1 = Math.floor(ui.values[0] / 60).toString();
+                var minutes1 = ui.values[0] - (hours1 * 60).toString();
+
+                if (hours1.length == 1)
+                    hours1 = '0' + hours1;
+                if (minutes1.length == 1)
+                    minutes1 = '0' + minutes1;
+                if (minutes1 == 0)
+                    minutes1 = '00';
+                $("#pickup_ready_time_4i").find('option').removeAttr("selected");
+                $("#pickup_ready_time_4i").val(hours1).find("option[value=" + hours1 +"]").attr('selected', true);
+                $("#pickup_ready_time_5i").find('option').removeAttr("selected");
+                $("#pickup_ready_time_5i").val(minutes1).find("option[value=" + minutes1 +"]").attr('selected', true);
+
+                if (hours1 >= 12) {
+                    if (hours1 == 12) {
+                        hours1 = hours1;
+                        minutes1 = minutes1 + " PM";
+                    } else {
+                        hours1 = hours1 - 12;
+                        minutes1 = minutes1 + " PM";
+                    }
+                } else {
+                    hours1 = hours1;
+                    minutes1 = minutes1 + " AM";
+                }
+                if (hours1 == 0) {
+                    hours1 = 12;
+                    minutes1 = minutes1;
+                }
+
+                $('.slider-time').html(hours1 + ':' + minutes1);
+
+                var hours2 = Math.floor(ui.values[1] / 60).toString();
+                var minutes2 = ui.values[1] - (hours2 * 60).toString();
+
+                if (hours2.length == 1)
+                    hours2 = '0' + hours2;
+                if (minutes2.length == 1)
+                    minutes2 = '0' + minutes2;
+                if (minutes2 == 0)
+                    minutes2 = '00';
+
+                $("#pickup_closing_time_4i").find('option').removeAttr("selected");
+                $("#pickup_closing_time_4i").val(hours2).find("option[value=" + hours2 +"]").attr('selected', true);
+                $("#pickup_closing_time_5i").find('option').removeAttr("selected");
+                $("#pickup_closing_time_5i").val(minutes2).find("option[value=" + minutes2 +"]").attr('selected', true);
+
+                if (hours2 >= 12) {
+                    if (hours2 == 12) {
+                        hours2 = hours2;
+                        minutes2 = minutes2 + " PM";
+                    } else if (hours2 == 24) {
+                        hours2 = 11;
+                        minutes2 = "59 PM";
+                    } else {
+                        hours2 = hours2 - 12;
+                        minutes2 = minutes2 + " PM";
+                    }
+                } else {
+                    hours2 = hours2;
+                    minutes2 = minutes2 + " AM";
+                }
+
+                $('.slider-time2').html(hours2 + ':' + minutes2);
+            }
+        });
+
+                $("#pickup_ready_time_4i").find('option').removeAttr("selected");
+                $("#pickup_ready_time_4i").val("09").find("option[value=09]").attr('selected', true);
+                $("#pickup_ready_time_5i").find('option').removeAttr("selected");
+                $("#pickup_ready_time_5i").val("00").find("option[value=00]").attr('selected', true);
+
+                $("#pickup_closing_time_4i").find('option').removeAttr("selected");
+                $("#pickup_closing_time_4i").val("17").find("option[value=17]").attr('selected', true);
+                $("#pickup_closing_time_5i").find('option').removeAttr("selected");
+                $("#pickup_closing_time_5i").val("00").find("option[value=00]").attr('selected', true);  
+
+        var $input = $("#numberShipments").val(1);
+
+        $(".altera").click(function () {
+            if ($(this).hasClass('acrescimo'))
+                $input.val(parseInt($input.val()) + 1);
+            else if ($input.val() >= 2)
+                $input.val(parseInt($input.val()) - 1);
+        });
+
+        /* Open first tab with cleaning of values */
+        $('.switcher').click(function () {
+            $(".button-done").removeClass('active').addClass('passive');
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $('.shipper .create-shipping-block-top').addClass('active');
+                $('.shipper .create-shipping-block-body').fadeIn("slow");
+                $('.shipper .create-shipping-block-body').find(':input').not(':button, :submit, :reset, :hidden, :checkbox, :radio').val('');
+            } else {
+                $(this).addClass('active');
+                $('.shipper .create-shipping-block-top').removeClass('active');
+                $('.shipper .create-shipping-block-body').hide();
+
+            }
+        });
+
+        /* Clicking on button Next */
+        $('.button-next').click(function () {
+            $(".button-done").removeClass('passive').addClass('active');
+            makeAllButtonsActive($(this));
+            if (!$(this).hasClass('passive')) {
+                $(this).parent().parent().find('.create-shipping-block-top').removeClass('active');
+                $(this).parent().hide();
+                $(this).parent().parent().find('.create-shipping-block-top').find('.triangle').removeClass('active');
+                $(this).parent().parent().next().find('.create-shipping-block-body').fadeIn("slow");
+                $(this).parent().parent().next().find('.create-shipping-block-top').addClass('active');
+                $(this).parent().parent().next().find('.create-shipping-block-top').find('.triangle').addClass('active');
+                $(this).parent().parent().next().find('.create-shipping-block-body').find("#goodsDescription").focus();
+                $(this).parent().parent().next().find('.create-shipping-block-body').find("#totalPackagesWeight").focus();
+            }
+        });
+
+
+        /* Shipper validation */
+
+        $("#orderNumber").focus();
+        var errors = [];
+
+        $("#orderNumber").blur(function () {
+            emptyValidation($(this), 'Order Number');
+        });
+
+        $("#shipperName").blur(function () {
+            emptyValidation($(this), 'Shipper Name');
+        });
+        $("#companyName").blur(function () {
+            emptyValidation($(this), 'Company Name');
+        });
+
+        $("#emailAddress").blur(function () {
+            emptyValidation($(this), 'Email Address');
+            emailValidation($(this), 'Email Address');
+        });
+
+        $("#addressLine1").blur(function () {
+            emptyValidation($(this), 'Address line 1');
+        });
+
+        $("#State").blur(function () {
+            emptyValidation($(this), 'State');
+        });
+
+        $("#originCode").blur(function () {
+            emptyValidation($(this), 'Zip Code');
+        });
+
+        $("#originCity").blur(function () {
+            emptyValidation($(this), 'City');
+        });
+        $("#originPhone").blur(function () {
+            emptySpecialValidation($(this), 'Phone number');
+        });
+
+        $("#originMobile").blur(function () {
+            emptySpecialValidation($(this), 'Mobile Number');
+        });
+
+        function emptyValidation(value, label) {
+            var field = value.val();
+            if (field.trim().length == 0) {
+                value.next('div.red').remove();
+                value.after("<div class=\'red\'>" + "\'" + label + "\' is Required</div>");
+                errors.push(value.attr('id') + "_required");
+            } else {
+                value.next('div.red').remove();
+                errors = removeError(errors, value.attr('id') + "_required");
+            }
+            makeAllButtonsActive(value);
+        }
+
+        function emailValidation(value, label) {
+            var field = value.val();
+            var re = /\S+@\S+\.\S+/;
+            if ((!re.test(field)) && (field.trim().length != 0)) {
+                value.next('div.red').remove();
+                value.after("<div class=\'red\'>" + "\'" + label + "\' is not correct</div>");
+                errors.push(value.attr('id') + "_not_valid");
+            } else {
+                errors = removeError(errors, value.attr('id') + "_not_valid");
+            }
+            makeAllButtonsActive(value);
+        }
+
+        function digitsValidation(value, label) {
+            var field = value.val();
+            var onlyDigits = /^\d*$/;
+            if ((!onlyDigits.test(field)) && (field.trim().length != 0)) {
+                value.next('div.red').remove();
+                value.after("<div class=\'red\'>" + "\'" + label + "\' . Only numbers are allowed.</div>");
+                errors.push(value.attr('id') + "_not_valid");
+            } else {
+                errors = removeError(errors, value.attr('id') + "_not_valid");
+            }
+            makeAllButtonsActive(value);
+        }
+
+        function emptySpecialValidation(value, label) {
+            var field = value.val();
+            if (field.trim().length == 0) {
+                value.parent().next('div.red').remove();
+                value.parent().after("<div class=\'red\'>" + "\'" + label + "\' is Required</div>");
+                errors.push(value.attr('id') + "_required");
+            } else {
+                value.parent().next('div.red').remove();
+                errors = removeError(errors, value.attr('id') + "_required");
+            }
+            makeAllButtonsActive(value);
+        }
+        function emptySpecial2Validation(value, label) {
+            var field = value.val();
+            if (field.trim().length == 0) {
+                value.parent().parent().next('div.red').remove();
+                value.parent().parent().after("<div class=\'red\'>" + "\'" + label + "\' is Required</div>");
+                errors.push(value.attr('id') + "_required");
+            } else {
+                value.parent().parent().next('div.red').remove();
+                errors = removeError(errors, value.attr('id') + "_required");
+            }
+            makeAllButtonsActive(value);
+        }
+
+        function removeError(newArray, removeItem) {
+            var newArray = jQuery.grep(newArray, function (value) {
+                return value != removeItem;
+            });
+            return newArray;
+        }
+
+        function makeAllButtonsActive(value) {
+            var empty = false;
+
+            value.closest('.create-shipping-block-body').find('input[type="text"]').each(function () {
+                console.log("value:", $(this).val());
+                if ($(this).val().trim() == "" && $(this).hasClass('valid')) {
+                    empty = true;
+                    return false;
+                }
+
+            });
+            if (errors.length === 0 && empty === false) {
+                value.closest('.create-shipping-block-body').find(".button-next").removeClass('passive');
+            } else {
+                value.closest('.create-shipping-block-body').find(".button-next").addClass('passive');
+            }
+        }
+
+        // jQuery 
+        $("#originPhone").intlTelInput({
+            // options here
+        });
+        // jQuery 
+        $("#originMobile").intlTelInput({
+            // options here
+        });
+
+    });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+</script>

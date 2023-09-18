@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="span12">
+		<h2>Rate Calculator</h2>
+
+		<p> The rate for your shipment is <strong><%= "#{@currency_code} #{@amount}"  %></strong> </p>
+
+		<div id="action_successful_buttons_container">
+			<%= link_to "Back to Order", orders_path(shop: current_user.shop_url, id: @order_id ), class: "btn"  %>
+
+			<a href="<%= root_url %>" class="btn">
+				Back to Home
+			</a>
+		</div>
+	</div>
+</div>

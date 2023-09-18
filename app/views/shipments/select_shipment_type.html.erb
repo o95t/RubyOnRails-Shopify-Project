@@ -1,0 +1,31 @@
+<div class="row">
+
+	<div class="span12 offset1">
+		<form accept-charset="UTF-8" action="/shipments/new" class="simple_form form-horizontal" id="select_shipment_type" method="get">
+			<div style="margin:0;padding:0;display:inline">
+
+				<fieldset>
+					<legend>Select Shipment Type</legend>
+					<div class="control-group select required">
+						<label class="select required control-label" for="shipment_payment_type">
+							<abbr title="required">*</abbr> Shipping Information
+						</label>
+						<div class="controls">
+							<select class="select required" id="payment_type" name="payment_type">
+								<option value="C">Consignee</option>
+								<option value="P" selected="selected">Shipper</option>
+								<option value="3">Third Party</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+
+			<input type="hidden" name="order_id" value="<%= @order_id %>">
+			<input class="btn btn-primary" data-disable-with="Continuing..." name="commit" type="submit" value="Continue">
+		</form>
+
+		<div id="create_pickup_first">
+			<!-- Do you want to add this shipment to a pickup? First <%#= link_to "Schedule Pickup", new_pickup_path, class: "btn" %> and then create a shipment. -->
+		</div>
+	</div>
+</div>

@@ -1,0 +1,156 @@
+<div class="step-tab">
+	<div class="step1-top">
+			<%= image_tag("logo.png", class: "logo") %>
+			<%= image_tag("shop.png", class: "shop-img") %>
+	</div>    
+
+	<%= simple_form_for(@user, html: { class: 'form-signin', data: {validate: 'parsley'}}) do |f| %>
+		
+		<div class="step1" >
+			<p class="title-tab"><span>Step 1</span> Aramex account Details</p>
+			<p class="sub-title-tab">Integrate your shopify account with aramex to access discounted rates and streamline your shipping.</p>
+			<p class="sub-sub-title-tab">Please enter your Aramex account details:</p>
+			
+			<div class="form-label-group aramex-input-block">
+				<%= f.label :email  do%>
+					Email <span>*</span>
+				<% end %>
+				<%= f.input :email, :input_html => {class: 'form-control to-valid'}, label: false %>
+			</div>
+			<div class="form-label-group aramex-input-block">
+				<%= f.label :password  do%>
+					Password <span>*</span>
+				<% end %>                       
+				<%= f.input :password, :input_html => {class: 'form-control to-valid'}, label: false %>
+			</div>
+			<div class="form-label-group aramex-input-block">
+				<%= f.label :account_number  do%>
+					Account Number <span>*</span>
+				<% end %>               
+				<%= f.input :account_number, :input_html => {class: 'form-control to-valid'}, label: false %>
+			</div>
+			<div class="form-label-group aramex-input-block">
+				<%= f.label :account_pin  do%>
+					Account Pin <span>*</span>
+				<% end %>   
+				<%= f.input :account_pin, :input_html => {class: 'form-control to-valid'}, label: false %>
+			</div>
+
+			<div class="form-label-group  aramex-input-block">
+					<div class="block-left">
+						<%= f.label :account_entity  do%>
+							Account Entity <span>*</span>
+						<% end %>   
+						<%= f.input :account_entity, :input_html => { minlength: 3, maxlength: 3, class: 'form-control inline-block'  }, label: false %>
+					</div>
+					<div class="block-right">
+						<%= f.label :account_country_code  do%>
+							Account Country <span>*</span>
+						<% end %>
+						<%= country_select("user", "account_country_code", {value: :iso2, priority_countries: ["IN", "US", "AE"]}, {class: 'custom-select inline-block'})  %>
+					</div>
+			</div>
+
+			<div class="form-label-group  button-block">
+					<input class="red-button big-button passive" type="button" value="Next"/>
+			</div>
+			<p class="sign-up">Don`t have an account with Aramex! </p>
+			<p class="sign-up-bottom"><a href="https://www.aramex.com/sign-up" target="_blank" >Sign up now</a></p>
+		</div>
+
+		<div class="step2" style='display:none;'>
+			
+			<p class="title-tab"><span>Step 2</span> Default Shipping Details</p>
+			<p class="sub-title-tab">Integrate your shopify account with aramex to access discounted rates and streamline your shipping.</p>
+			<p class="sub-sub-title-tab">Please fill the below needed details</p>
+
+			<div class="form-label-group aramex-input-block2 amx-first">
+				<div class="productGroup-first first">
+					<label for="productGroup">Choose product group <span>*</span></label><br />
+					<input id="productGroup" class="grey-button" type="button" value="Domestic"/>
+				</div>
+				<div class="productType-first first">
+					<input id="productType" class="grey-button" type="button" value="International"/>
+				</div>
+			</div>
+			
+			<div class='domestic' style='display:none;'>
+				<div id= "amx-1" class="form-label-group aramex-input-block2 ">
+					<div class="economyParcel-first first">
+						<label for="economyParcel">Product Type <span>*</span></label><br />
+						<input id="economyParcel" class="grey-button" type="button" data-type="EPX" value="Economy Parcel"/>
+					</div>
+					<div class="priorityParcel-first first">
+						<input id="priorityParcel" class="grey-button " type="button" data-type="PPX" value="Priority Parcel"/>
+					</div>
+					<div class="ecommerceParcel-first first">
+						<input id="ecommerceParcel" class="grey-button " type="button" data-type="CDS" value="E-commerce Parcel"/>
+					</div>
+				</div>
+
+				<div id= "amx-2" style= "display: none" class="form-label-group aramex-input-block2 ">
+					<div class="cashOnDelivery-first first">
+						<label for="cashOnDelivery">Services <span>*</span></label><br />
+						<button id="cashOnDelivery" type="button" data-type="CODS" class="grey-button">Cash on <br/> Delivery</button>
+					</div>
+					<div class="prepaid-first first">
+						<button id="prepaid" type="button" data-type="P" class="grey-button">Prepaid<br/><br/></button>
+					</div>
+				</div>
+
+				<div  class="form-label-group aramex-input-block2 amx-forth" style='height: 107px'></div>
+			</div>
+
+			<div class='international' style='display:none;'>
+
+				<div id= "amx-3" class="form-label-group aramex-input-block2 ">
+					<div class="economyParcel-first first">
+						<label for="economyParcel">Product Type <span>*</span></label><br />
+						<input id="economyParcel" class="grey-button" type="button" data-type="EPX" value="Economy Parcel"/>
+					</div>
+					<div class="priorityParcel-first first">
+						<input id="priorityParcel" class="grey-button " type="button" data-type="PPX" value="Priority Parcel"/>
+					</div>
+					<div class="ecommerceParcel-first first">
+						<input id="ecommerceParcel" class="grey-button " type="button"  data-type="CDS" value="E-commerce Parcel"/>
+					</div>
+				</div>
+
+				<div id= "amx-4" style='display:none' class="form-label-group aramex-input-block2 amx-4">
+					<div class="cashOnDelivery-first first">
+						<label for="cashOnDelivery">Services <span>*</span></label><br />
+						<button id="cashOnDelivery" type="button" data-type="CODS"  class="grey-button">Cash on <br/> Delivery</button>
+					</div>
+					<div class="prepaid-first first">
+						<button id="prepaid" type="button" data-type="P" class="grey-button">Prepaid<br/><br/></button>
+					</div>
+				</div>
+
+				<div id= "amx-5" style='display:none' class="form-label-group aramex-input-block2">
+					<div class="cashOnDelivery-first first">
+						<label for="deliveryDutyUnpaid">Additional Services <span>*</span></label><br />
+						<button id="deliveryDutyUnpaid" type="button" data-type="DDU" class="grey-button">Delivery Duty<br/> Unpaid</button>
+					</div>
+					<div class="deliveryDutyPaid-first first">
+						<button id="deliveryDutyPaid" type="button" data-type="DDP" class="grey-button">Delivery Duty<br/> Paid</button>
+					</div>
+				</div>
+			</div>
+
+			<div style="display:none" >
+				<%= f.hidden_field :default_product_group, :multiple => true %>
+				<%= f.hidden_field :default_domestic_product_type, :multiple => true %>
+				<%= f.hidden_field :default_international_product_type, :multiple => true %>
+				<%= f.hidden_field :default_domestic_services, :multiple => true %>
+				<%= f.hidden_field :default_international_services, :multiple => true %>
+				<%= f.hidden_field :default_prepaid_payment_option, :multiple => true %>		
+			</div>
+
+			<div class="form-label-group  button-block button-block-pair button-top-bottom" >
+				<input class="red-button  button-back" type="button" value="Back"/>
+				<%= f.submit  'Done', class: "red-button button-done passive" %>
+			</div>
+		</div>
+		</div>
+	<% end %>	
+</div>

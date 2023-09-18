@@ -1,0 +1,425 @@
+<div class="row">
+
+	<div class="span12 offset1">
+		<h2> Rate Calculator </h2>
+		<%= simple_form_for @rate_calculator_form, url: '/rate-calculator/post', html: { method: :post, class: 'form-horizontal', data: {validate: 'parsley'} } do |f| %>
+
+			<!-- Use a hidden field for payment type  -->
+			<%= f.hidden_field :payment_type, value: @rate_calculator_form.payment_type %>
+
+			<fieldset>
+				<legend>Origin Information</legend>
+				<%= f.input :origin_address_line1, label: "Address Line1" %>
+				<%= f.input :origin_address_line2, label: "Address Line2" %>
+				<%= f.input :origin_address_line3, label: "Address Line3" %>
+				<%#= f.input :origin_city %>
+				<%#= f.input :origin_post_code %>
+				<%#= f.input :origin_country_code, as: :string %>
+				<!-- <div class="control-group">
+					<label class="control-label">Origin Country</label>
+					<div class="controls">
+						<%#= country_select("rate_calculator_form", "origin_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])   %>
+					</div>
+				</div> -->
+				<div class="control-group">
+					<label class="control-label">Country</label>
+					<div class="controls">
+						<% unless @countries.nil? -%>
+							<%= f.select :origin_country_code, @countries.map{ |c| [c[:name], c[:code]] } %>
+						<% else -%>
+							<%= country_select("rate_calculator_form", "origin_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])   %>
+						<% end -%>
+						<!-- aramex_country_ar -->
+					</div>
+				</div>
+				<%= f.input :origin_post_code, label: "Origin Post Code" %>
+				<%= f.input :origin_city, label: "Origin City" %>
+				<%= f.input :origin_post_code_required, :as => :hidden %>
+
+			</fieldset>
+
+			<fieldset>
+				<legend>Destination Information</legend>
+				<%= f.input :destination_address_line1, label: "Address Line1" %>
+				<%= f.input :destination_address_line2, label: "Address Line2" %>
+				<%= f.input :destination_address_line3, label: "Address Line3" %>
+				<%#= f.input :destination_city %>
+				<%#= f.input :destination_post_code %>
+				<%#= f.input :destination_country_code, as: :string %>
+
+				<!-- <div class="control-group">
+					<label class="control-label">Destination Country</label>
+					<div class="controls">
+						<%#= country_select("rate_calculator_form", "destination_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])  %>
+					</div>
+				</div> -->
+				<div class="control-group">
+					<label class="control-label">Country</label>
+					<div class="controls">
+						<% unless @countries.nil? -%>
+							<%= f.select :destination_country_code, @countries.map{ |c| [c[:name], c[:code]] } %>
+						<% else -%>
+							<%= country_select("rate_calculator_form", "destination_country_code", value: :iso2, priority_countries: ["IN", "US", "AE"])   %>
+						<% end -%>
+						<!-- aramex_country_ar -->
+					</div>
+				</div>
+				<%= f.input :destination_post_code, label: "Destination Post Code" %>
+				<%= f.input :destination_city, label: "Destination City" %>
+				<%= f.input :destination_post_code_required, :as => :hidden %>
+
+			</fieldset>
+
+			<fieldset>
+				<legend>Shipment Details</legend>
+				<%= f.input :product_group, label: "Product Group", collection: Shipment.product_groups_hash.sort.map { |k, v| [k,v] }, selected: @rate_calculator_form.product_group %>
+				<%= f.input :product_type, label: "Product Type", collection: current_user.default_product_type_hash.sort.map { |k, v| [k,v] } %>
+				<%#= f.input :product_type, label: "Product Type", collection: @product_type_hash.sort.map { |k, v| [k,v] }, selected: @product_type_hash.first.last %>
+				<%= f.input :description_of_goods, input_html: { maxlength: 100 }, label: "Description of Goods" %>
+			</fieldset>
+
+			<%= f.hidden_field :num_of_pieces, value: @rate_calculator_form.num_of_pieces %>
+			<%= f.hidden_field :actual_weight, value: @rate_calculator_form.actual_weight %>
+			<%= f.hidden_field :order_id, value: @order.id %>
+
+			<%= f.submit "Calculate Rate", class: "btn btn-primary btn-large form-submit", disable_with: "Calculating..." %>
+
+		<% end %>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var origin_country_code = $("#rate_calculator_form_origin_country_code").val();
+	var destination_country_code = $("#rate_calculator_form_destination_country_code").val();
+	$(document).ready( function(){
+		// console.log(origin_country_code, '***********', destination_country_code );
+		// if(!origin_country_code){
+			
+		$.ajax({
+			type: "GET",
+			url: "/pickups/aramex_country_code",
+			data: { country_code : origin_country_code},
+			dataType: "json",
+			success: function(origin_country){
+				for( var j in origin_country){
+					$("#rate_calculator_form_origin_post_code_required").val(origin_country[j][0]) 
+					// console.log(country[j][0]);	
+				}
+			},
+			error: function(request, errorThrown){
+				console.log(request, errorThrown);
+			}
+		});
+		// }
+		
+		// if(!destination_country_code){
+		$.ajax({
+			type: "GET",
+			url: "/pickups/aramex_country_code",
+			data: { country_code : destination_country_code},
+			dataType: "json",
+			success: function(destination_country){
+				for( var k in destination_country){
+					$("#rate_calculator_form_destination_post_code_required").val(destination_country[k][0]) 
+					// console.log(country[j][0]);	
+				}
+			},
+			error: function(request, errorThrown){
+				console.log(request, errorThrown);
+			}
+		});
+		// }
+
+	});
+
+	////////////////////// Origin country /////////////////////
+
+	// Executing code on rate_calculator_form of origin country code change
+  
+	$('#rate_calculator_form_origin_country_code').on('change', function(){
+
+		$("#rate_calculator_form_origin_post_code").removeAttr('value');
+		$("#rate_calculator_form_origin_city").removeAttr('value'); 
+		$("#rate_calculator_form_origin_post_code").val = "";
+		$("#rate_calculator_form_origin_city").val = "";
+		var origin_country_code = $("#rate_calculator_form_origin_country_code").val();
+		$.ajax({
+			type: "GET",
+			url: "/pickups/aramex_country_code",
+			data: { country_code : origin_country_code},
+			dataType: "json",
+			success: function(ocountry){
+				for( var j in ocountry){
+					$("#rate_calculator_form_origin_post_code_required").val(ocountry[j][0]);
+				}
+				ocode_required = $("#rate_calculator_form_origin_post_code_required").val();
+				if(ocode_required == 'false'){
+					$("#rate_calculator_form_origin_post_code").removeAttr('value');
+					$("#rate_calculator_form_origin_city").removeAttr('value');
+
+					$("#rate_calculator_form_origin_city").focus();
+					$("#rate_calculator_form_origin_post_code").css("border-color","");
+					$("#rate_calculator_form_origin_post_code").css("box-shadow", "");
+
+					$("#rate_calculator_form_origin_city").css("border-color","#b94a48");
+					$("#rate_calculator_form_origin_city").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+
+					
+				}else{
+					$("#rate_calculator_form_origin_post_code").removeAttr('value');
+					$("#rate_calculator_form_origin_city").removeAttr('value');
+					
+					$("#rate_calculator_form_origin_post_code").focus();
+					$("#rate_calculator_form_origin_post_code").css("border-color","#b94a48");
+					$("#rate_calculator_form_origin_post_code").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+					
+					$("#rate_calculator_form_origin_city").css("border-color","#b94a48");
+					$("#rate_calculator_form_origin_city").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+				}
+			},
+			error: function(request, errorThrown){
+				console.log(request, errorThrown);
+			}
+		});	
+
+	});
+
+
+
+	
+	// Executing code on rate_calculator_form of origin Post code change
+	$('#rate_calculator_form_origin_post_code').on('change', function(){
+		var origin_post_code_required = $("#rate_calculator_form_origin_post_code_required").val();
+		var origin_country_code = $("#rate_calculator_form_origin_country_code").val();
+
+		if (origin_post_code_required == 'true' && $(this).val()) {
+			$.ajax({
+				type: "GET",
+				contentType: "application/json; charset=utf-8",
+				url: "/pickups/aramex_address_validate/json",
+				data: { country_code: origin_country_code, post_code: $(this).val()},
+				dataType: "json",
+				success: function(oaddress){
+					var ocity_lists = "";
+					var ro = [];
+					for( var oadd in oaddress){
+						var oad = oaddress[oadd];
+						if(oad['city']){
+							ocity_lists = "<option value='" + oad['city'] +"'>" + oad['city'] + "</option>";
+							ro.push(ocity_lists);
+						}
+						for(var i = 0; i < oad.length; i++){
+							ocity_lists = "<option value='" + oad[i]['city'] +"'>" + oad[i]['city'] + "</option>";
+							ro.push(ocity_lists);
+						}
+						var origcity = document.getElementById("rate_calculator_form_origin_city");
+						new Awesomplete(origcity, {list: ro});
+						origcity.focus();
+						return false;
+					}
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});	
+		}
+	});	
+
+//End of post code change code
+
+
+function debounce(fn, delay) {
+  var timer = null;
+  return function () {
+    var context = this, args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      fn.apply(context, args);
+    }, delay);
+  };
+}
+
+$('input#rate_calculator_form_origin_city').keypress(debounce(function(event) {
+  origin_code_required = $("#rate_calculator_form_origin_post_code_required").val();
+	var origin_country_code = $("#rate_calculator_form_origin_country_code").val();
+	if (origin_code_required == 'false'){
+		var origin_city = document.getElementById("rate_calculator_form_origin_city");
+		var origawesome = new Awesomplete(origin_city);
+		var originval =  $('#rate_calculator_form_origin_city ').val().replace(/ /g, '').length;
+		if(originval > 3){
+			$.ajax({
+				type: "GET",
+				contentType: "application/json; charset=utf-8",
+				url: "/pickups/aramex_country_city/json",
+				data: { country_code: origin_country_code, country_city: $(this).val() },
+				dataType: "json",
+				success: function(ocities){
+					var ocitylist = [];
+					if(ocities == null ){
+						return false;
+					}
+					if (typeof ocities == 'object') {
+						$.each(ocities, function(ok,ov){
+							ocitylist.push(ov);
+						}); 	
+						origawesome.list = ocitylist;
+					}else{
+						if(ocities === false){
+							console.log(ocities);
+						}else{
+							ocitylist.push(ocities);
+							origawesome.list = ocitylist;
+						}
+					}
+					return false;
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});	
+			$("#rate_calculator_form_origin_city").focus();
+  	}
+	}
+}, 700));
+
+
+
+////////////////////// Destination country /////////////////////
+
+	// Executing code on rate_calculator_form of destination country code change
+  
+	$('#rate_calculator_form_destination_country_code').on('change', function(){
+
+		$("#rate_calculator_form_destination_post_code").removeAttr('value');
+		$("#rate_calculator_form_destination_city").removeAttr('value'); 
+		$("#rate_calculator_form_destination_post_code").val = "";
+		$("#rate_calculator_form_destination_city").val = "";
+		var destination_country_code = $("#rate_calculator_form_destination_country_code").val();
+		$.ajax({
+			type: "GET",
+			url: "/pickups/aramex_country_code",
+			data: { country_code : destination_country_code},
+			dataType: "json",
+			success: function(dcountry){
+				for( var k in dcountry){
+					$("#rate_calculator_form_destination_post_code_required").val(dcountry[k][0]);
+				}
+				dcode_required = $("#rate_calculator_form_destination_post_code_required").val();
+				if(dcode_required == 'false'){
+					$("#rate_calculator_form_destination_post_code").removeAttr('value');
+					$("#rate_calculator_form_destination_city").removeAttr('value');
+
+					// $('#new_pickup .control-group').removeClass('error');			
+					$("#rate_calculator_form_destination_city").focus();
+					$("#rate_calculator_form_destination_post_code").css("border-color","");
+					$("#rate_calculator_form_destination_post_code").css("box-shadow", "");
+
+					$("#rate_calculator_form_destination_city").css("border-color","#b94a48");
+					$("#rate_calculator_form_destination_city").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+					
+				}else{
+					$("#rate_calculator_form_destination_post_code").removeAttr('value');
+					$("#rate_calculator_form_destination_city").removeAttr('value');
+					
+					$("#rate_calculator_form_destination_post_code").focus();
+					$("#rate_calculator_form_destination_post_code").css("border-color","#b94a48");
+					$("#rate_calculator_form_destination_post_code").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+					
+					$("#rate_calculator_form_destination_city").css("border-color","#b94a48");
+					$("#rate_calculator_form_destination_city").css("box-shadow", "inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #d59392");
+				}
+			},
+			error: function(request, errorThrown){
+				console.log(request, errorThrown);
+			}
+		});	
+
+	});
+
+// Executing code on rate_calculator_form of destination Post code change
+	
+	$('#rate_calculator_form_destination_post_code').on('change', function(){
+		var destination_post_code_required = $("#rate_calculator_form_destination_post_code_required").val();
+		var destination_country_code = $("#rate_calculator_form_destination_country_code").val();
+		if (destination_post_code_required == 'true' && $(this).val()) {
+			$.ajax({
+				type: "GET",
+				contentType: "application/json; charset=utf-8",
+				url: "/pickups/aramex_address_validate/json",
+				data: { country_code: destination_country_code, post_code: $(this).val()},
+				dataType: "json",
+				success: function(daddress){
+					var dcity_lists = "";
+					var rd = [];
+					for( var dadd in daddress){
+						var dad = daddress[dadd];
+						if(dad['city']){
+							dcity_lists = "<option value='" + dad['city'] +"'>" + dad['city'] + "</option>";
+							rd.push(dcity_lists);
+						}
+						for(var t = 0; t < dad.length; t++){
+							dcity_lists = "<option value='" + dad[t]['city'] +"'>" + dad[t]['city'] + "</option>";
+							rd.push(dcity_lists);
+						}
+						var destcity = document.getElementById("rate_calculator_form_destination_city");
+						new Awesomplete(destcity, {list: rd});
+						destcity.focus();
+						return false;
+					}
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});	
+		}
+	});
+//End of post code change code
+
+
+$('input#rate_calculator_form_destination_city').keypress(debounce(function(event){
+  var destination_code_required = $("#rate_calculator_form_destination_post_code_required").val();
+	var destination_country_code = $("#rate_calculator_form_destination_country_code").val();
+
+	if (destination_code_required == 'false'){
+		var destination_city = document.getElementById("rate_calculator_form_destination_city");
+		var destawesome = new Awesomplete(destination_city);
+		var destval =  $('#rate_calculator_form_destination_city ').val().replace(/ /g, '').length;
+		if(destval > 3){
+			$.ajax({
+				type: "GET",
+				contentType: "application/json; charset=utf-8",
+				url: "/pickups/aramex_country_city/json",
+				data: { country_code: destination_country_code, country_city: $(this).val() },
+				dataType: "json",
+				success: function(ocities){
+					var ocitylist = [];
+					if(ocities == null ){
+						return false;
+					}
+					if (typeof ocities == 'object') {
+						$.each(ocities, function(ok,ov){
+							ocitylist.push(ov);
+						}); 	
+						destawesome.list = ocitylist;
+					}else{
+						if(ocities === false){
+							console.log(ocities);
+						}else{
+							ocitylist.push(ocities);
+							destawesome.list = ocitylist;
+						}
+					}
+					return false;
+				},
+				error: function(request, errorThrown){
+					console.log(request, errorThrown);
+				}
+			});	
+			$("#rate_calculator_form_destination_city").focus();
+  	}
+	}
+}, 700));
+
+
+	
+</script>

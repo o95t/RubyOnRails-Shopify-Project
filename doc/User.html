@@ -1,0 +1,710 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: User
+  
+    &mdash; Documentation by YARD 0.8.7.4
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!User.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (U)</a> &raquo;
+    
+    
+    <span class="title">User</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: User
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
+          
+            <li class="next">User</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/models/user.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h2>Schema Information</h2>
+
+<p>Table name: users</p>
+
+<pre class="code ruby"><code class="ruby">id                                 :integer          not null, primary key
+shop_name                          :string(255)
+shop_url                           :string(255)
+account_country_code               :string(255)
+account_entity                     :string(255)
+account_number                     :string(255)
+account_pin                        :string(255)
+email                              :string(255)
+password                           :string(255)
+created_at                         :datetime         not null
+updated_at                         :datetime         not null
+remember_token                     :string(255)
+shipper_name                       :string(255)
+company_name                       :string(255)
+cellphone                          :string(255)
+shopify_email                      :string(255)
+address_line1                      :string(255)
+city                               :string(255)
+post_code                          :string(255)
+province                           :string(255)
+country_code                       :string(255)
+shopify_id                         :string(255)
+currency_code                      :string(255)
+default_domestic_product_type      :string(255)
+default_international_product_type :string(255)
+default_prepaid_payment_option     :string(255)
+default_product_group              :string(255)
+default_payment_type               :string(255)</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_shopify_information-instance_method" title="#update_shopify_information (instance method)">- (Object) <strong>update_shopify_information</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute update_shopify_information.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#address-instance_method" title="#address (instance method)">- (Object) <strong>address</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>This method will return an address object similar to the address objects
+returned by the Shopify API.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_product_type-instance_method" title="#default_product_type (instance method)">- (Object) <strong>default_product_type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The default product type for this user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_product_type_hash-instance_method" title="#default_product_type_hash (instance method)">- (Object) <strong>default_product_type_hash</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The default product type hash for this user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#savon_hash-instance_method" title="#savon_hash (instance method)">- (Object) <strong>savon_hash</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Savon_hash will be included in all requests as client_info.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#shipping_savon_hash-instance_method" title="#shipping_savon_hash (instance method)">- (Object) <strong>shipping_savon_hash</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="update_shopify_information=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="update_shopify_information-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_shopify_information</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute update_shopify_information</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update_shopify_information'>update_shopify_information</span>
+  <span class='ivar'>@update_shopify_information</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="address-instance_method">
+  
+    - (<tt>Object</tt>) <strong>address</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>This method will return an address object similar to the address objects
+returned by the Shopify API</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_address'>address</span>
+  <span class='id identifier rubyid_addr'>addr</span> <span class='op'>=</span> <span class='const'>Address</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  
+  <span class='id identifier rubyid_name_array'>name_array</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_shipper_name'>shipper_name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_first_name'>first_name</span> <span class='op'>=</span> <span class='id identifier rubyid_name_array'>name_array</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span> <span class='comment'># Returns the first name
+</span>  <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_last_name'>last_name</span> <span class='op'>=</span> <span class='id identifier rubyid_name_array'>name_array</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_company'>company</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_company_name'>company_name</span>
+  <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_phone'>phone</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cellphone'>cellphone</span>
+  <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_shopify_email'>shopify_email</span>
+  <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_address1'>address1</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_address_line1'>address_line1</span>
+  <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_address2'>address2</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_zip'>zip</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_post_code'>post_code</span>
+  <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span>
+  <span class='id identifier rubyid_addr'>addr</span><span class='period'>.</span><span class='id identifier rubyid_city'>city</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_city'>city</span>
+
+  <span class='id identifier rubyid_addr'>addr</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="default_product_type-instance_method">
+  
+    - (<tt>Object</tt>) <strong>default_product_type</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>This depends on the default product group again, If that is not set, 
+assumes it to be DOM</p>
+</div>
+  </div>
+
+
+<p>Returns The default product type for this user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The default product type for this user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118
+119
+120
+121
+122
+123</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 117</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_default_product_type'>default_product_type</span>
+  <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_default_product_group'>default_product_group</span> <span class='op'>==</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EXP</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_default_international_product_type'>default_international_product_type</span>
+  <span class='kw'>else</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_default_domestic_product_type'>default_domestic_product_type</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="default_product_type_hash-instance_method">
+  
+    - (<tt>Object</tt>) <strong>default_product_type_hash</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>This depends on the default product group. If that is not set,  assumes it
+to be DOM</p>
+</div>
+  </div>
+
+
+<p>Returns The default product type hash for this user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>The default product type hash for this user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108
+109
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_default_product_type_hash'>default_product_type_hash</span>
+  <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_default_product_group'>default_product_group</span> <span class='op'>==</span>  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>EXP</span><span class='tstring_end'>&quot;</span></span>
+    <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_express_product_type_hash'>express_product_type_hash</span>
+  <span class='kw'>else</span>
+    <span class='const'>Shipment</span><span class='period'>.</span><span class='id identifier rubyid_domestic_product_type_hash'>domestic_product_type_hash</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="savon_hash-instance_method">
+  
+    - (<tt>Object</tt>) <strong>savon_hash</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Savon_hash will be included in all requests as client_info</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_savon_hash'>savon_hash</span>
+  <span class='lbrace'>{</span> 
+    <span class='label'>user_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_email'>email</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>password:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_password'>password</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>version:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1.0</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>account_number:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account_number'>account_number</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>account_pin:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account_pin'>account_pin</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>account_entity:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account_entity'>account_entity</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>account_country_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account_country_code'>account_country_code</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="shipping_savon_hash-instance_method">
+  
+    - (<tt>Object</tt>) <strong>shipping_savon_hash</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 69</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_shipping_savon_hash'>shipping_savon_hash</span> 
+  <span class='lbrace'>{</span>
+    <span class='label'>user_name:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_email'>email</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>password:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_password'>password</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>version:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1.0</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>account_number:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account_number'>account_number</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>account_pin:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account_pin'>account_pin</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>account_entity:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account_entity'>account_entity</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+    <span class='label'>account_country_code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_account_country_code'>account_country_code</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='label'>source:</span> <span class='int'>32</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Jul  8 14:12:08 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.4 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

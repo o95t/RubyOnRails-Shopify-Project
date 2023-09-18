@@ -1,0 +1,50 @@
+<div class="row">
+	<div class="span12">
+		<h2>Tracking information for Waybill Number <%= @shipment_store.awb %></h2>
+
+		<table class="table table-striped">
+	        <thead>
+	          <tr>
+	            <th>Location</th>
+	            <th>Date</th>
+	            <th>Activity</th>
+	            <!-- <th>Location</th>
+	            <th>Comments</th>
+	            <th>Problem Code</th> -->
+	          </tr>
+	        </thead>
+                <% unless @tracking_array[0].nil? %>
+		   		
+	       	    <% @tracking_array.each do |row| %>
+		        <tr>
+		        	<td><%= row[:update_location] %></td>
+		        	<%
+		        		track_date = row[:update_date_time]
+		        	%>
+		        	<td><%= track_date.strftime("%m/%d/%Y  %I:%M:%S %p") %></td>
+		        	<td><%= row[:update_description] %></td>
+
+		        	<!-- <td><%#= row[:update_code] %></td>
+		        	<td><%#= row[:comments].to_s %></td>
+		        	<td><%#= row[:problem_code].to_s %></td> -->
+		        </tr>
+      		   <% end %>
+		<%- else %>
+	          <tr>
+		    <td><%= @tracking_array[:update_location] %></td>
+                     <% track_date = @tracking_array[:update_date_time]%>
+		    <td><%= track_date.strftime("%m/%d/%Y %I:%M:%S %p")%></td>
+		    <td> <%= @tracking_array[:update_description] %> </td>
+		   </tr>
+	       <% end %>
+        </table>
+
+		<div id="action_successful_buttons_container">
+			<%= link_to "Back to Order", orders_path(shop: current_user.shop_url, id: @shipment_store.order_id ), class: "btn"  %>
+
+			<a href="/" class="btn">
+				Back to Home
+			</a>
+		</div>
+	</div>
+</div>

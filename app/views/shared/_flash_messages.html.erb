@@ -1,0 +1,10 @@
+<div id="flash_msg_container">
+  <% flash.each do |key, value| %>
+  	<% if [:notice, :success, :error, :alert].include? key %>
+	    <div class="<%= flash_class(key) %> fade in">
+	      <a href="#" data-dismiss="alert" class="close">×</a>
+	      <%= value.html_safe %>
+	    </div>
+	<% end %>
+  <% end %>
+</div>

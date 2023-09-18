@@ -1,0 +1,41 @@
+// Place all the styles related to the orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order_info {
+	padding-bottom: 15px;
+
+	.order_label{
+		font-weight: bold;
+		display: inline-block;
+		width: 200px;
+	}
+
+	#order_shipping_address {
+		display: inline-block;
+		vertical-align: text-top;
+	}
+}
+
+#order_button_container {
+	padding-top: 30px;
+	a{
+		margin-right: 30px;
+	}
+}
+
+#order_information{
+	display: inline-block;
+	margin-right: 100px;
+}
+
+#shipment_information {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.individual_shipment_info{
+	border: 1px solid #666;
+	padding: 20px;
+	margin-bottom: 30px;
+}

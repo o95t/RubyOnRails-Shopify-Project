@@ -1,0 +1,456 @@
+    <div class="step1-title"> 
+        <div class="step1-title-block step1-title-block1"> 
+          <p>Account Details</p>
+          <div class='step1-title-block-line active'></div>
+        </div>
+        <div class="step1-title-block step1-title-block2"> 
+          <p>Shipping Details</p>
+          <div class='step1-title-block-line' ></div>
+        </div>
+    </div>
+
+    <p class="sub-sub-title-tab sub-sub-title-settings">Please enter your Aramex account details:</p>              
+      <div class="create-shipping-blocks settings">
+        <%= simple_form_for(@user, html: { class: 'form-signin', data: {validate: 'parsley', method: :put }}) do |f| %>
+          <div class="step1" >
+            <div class="form-label-group aramex-input-block">
+              <%= f.label :email  do%>
+                Email <span>*</span>
+              <% end %>
+              <%= f.input :email, :input_html => {class: 'form-control to-valid', id: 'inputEmail'}, label: false %>
+            </div>
+            <div class="form-label-group aramex-input-block">
+              <%= f.label :password  do%>
+                Password <span>*</span>
+              <% end %>                       
+              <%= f.input :password, :input_html => {class: 'form-control to-valid', id: 'inputPassword'}, label: false %>
+            </div>
+            <div class="form-label-group aramex-input-block">
+              <%= f.label :account_number  do%>
+                Account Number <span>*</span>
+              <% end %>               
+              <%= f.input :account_number, :input_html => {class: 'form-control to-valid', id: 'accountNumber'}, label: false %>
+            </div>
+            <div class="form-label-group aramex-input-block">
+              <%= f.label :account_pin  do%>
+                Account Pin <span>*</span>
+              <% end %>   
+              <%= f.input :account_pin, :input_html => {class: 'form-control to-valid', id: 'accountPin'}, label: false %>
+            </div>
+
+            <div class="form-label-group  aramex-input-block">
+              <div class="block-left">
+                <%= f.label :account_entity  do%>
+                  Account Entity <span>*</span>
+                <% end %>   
+                <%= f.input :account_entity, :input_html => { minlength: 3, maxlength: 3, class: 'form-control inline-block'  }, label: false %>
+              </div>
+              <div class="block-right">
+                <%= f.label :account_country_code  do%>
+                  Account Country <span>*</span>
+                <% end %>
+                <%= country_select("user", "account_country_code", {value: :iso2, priority_countries: ["IN", "US", "AE"]}, {class: 'custom-select inline-block'})  %>
+              </div>
+            </div>
+            <div class="form-label-group  button-block">
+              <%= f.button :submit, 'Save', id: 'submit', class: "red-button big-button passive" %>
+            </div>
+            <% end %>
+          </div>
+          <%= simple_form_for(@user, html: { class: 'form-signin', data: {validate: 'parsley', method: :put }}) do |f| %>
+          <div class="step2" style='display:none;'>
+            <div class="form-label-group aramex-input-block2 amx-first">
+				<div class="productGroup-first first">
+					<label for="productGroup">Choose product group <span>*</span></label><br />
+					<input id="productGroup" class="grey-button" data-type="DOM" type="button" value="Domestic"/>
+				</div>
+				<div class="productType-first first">
+					<input id="productType" class="grey-button" data-type="EXP" type="button" value="International"/>
+				</div>
+			</div>
+			
+			<div class='domestic' style='display:none;'>
+				<div id= "amx-1" class="form-label-group aramex-input-block2 ">
+					<div class="economyParcel-first first">
+						<label for="economyParcel">Product Type <span>*</span></label><br />
+						<input id="economyParcel" class="grey-button" type="button" data-type="EPX" value="Economy Parcel"/>
+					</div>
+					<div class="priorityParcel-first first">
+						<input id="priorityParcel" class="grey-button " type="button" data-type="PPX" value="Priority Parcel"/>
+					</div>
+					<div class="ecommerceParcel-first first">
+						<input id="ecommerceParcel" class="grey-button " type="button" data-type="CDS" value="E-commerce Parcel"/>
+					</div>
+				</div>
+
+				<div id= "amx-2" style= "display: none" class="form-label-group aramex-input-block2 ">
+					<div class="cashOnDelivery-first first">
+						<label for="cashOnDelivery">Services <span>*</span></label><br />
+						<button id="cashOnDelivery" type="button" data-type="CODS" class="grey-button">Cash on <br/> Delivery</button>
+					</div>
+					<div class="prepaid-first first">
+						<button id="prepaid" type="button" data-type="P" class="grey-button">Prepaid<br/><br/></button>
+					</div>
+				</div>
+
+				<div  class="form-label-group aramex-input-block2 amx-forth" style='height: 107px'></div>
+			</div>
+
+			<div class='international' style='display:none;'>
+
+				<div id= "amx-3" class="form-label-group aramex-input-block2 ">
+					<div class="economyParcel-first first">
+						<label for="economyParcel">Product Type <span>*</span></label><br />
+						<input id="economyParcel" class="grey-button" type="button" data-type="EPX" value="Economy Parcel"/>
+					</div>
+					<div class="priorityParcel-first first">
+						<input id="priorityParcel" class="grey-button " type="button" data-type="PPX" value="Priority Parcel"/>
+					</div>
+					<div class="ecommerceParcel-first first">
+						<input id="ecommerceParcel" class="grey-button " type="button"  data-type="CDS" value="E-commerce Parcel"/>
+					</div>
+				</div>
+
+				<div id= "amx-4" style='display:none' class="form-label-group aramex-input-block2 amx-4">
+					<div class="cashOnDelivery-first first">
+						<label for="cashOnDelivery">Services <span>*</span></label><br />
+						<button id="cashOnDelivery" type="button" data-type="CODS"  class="grey-button">Cash on <br/> Delivery</button>
+					</div>
+					<div class="prepaid-first first">
+						<button id="prepaid" type="button" data-type="P" class="grey-button">Prepaid<br/><br/></button>
+					</div>
+				</div>
+
+				<div id= "amx-5" style='display:none' class="form-label-group aramex-input-block2">
+					<div class="cashOnDelivery-first first">
+						<label for="deliveryDutyUnpaid">Additional Services <span>*</span></label><br />
+						<button id="deliveryDutyUnpaid" type="button" data-type="DDU" class="grey-button">Delivery Duty<br/> Unpaid</button>
+					</div>
+					<div class="deliveryDutyPaid-first first">
+						<button id="deliveryDutyPaid" type="button" data-type="DDP" class="grey-button">Delivery Duty<br/> Paid</button>
+					</div>
+				</div>
+        <div style="display:block" >
+            <%= f.hidden_field :default_product_group, :multiple => true %>
+            <%= f.hidden_field :default_domestic_product_type, :multiple => true %>
+            <%= f.hidden_field :default_international_product_type, :multiple => true %>
+            <%= f.hidden_field :default_domestic_services, :multiple => true %>
+            <%= f.hidden_field :default_international_services, :multiple => true %>
+            <%= f.hidden_field :default_prepaid_payment_option, :multiple => true %>	
+          </div>
+          <div class="form-label-group  button-block">
+               <%= f.submit 'Save', class: "red-button big-button passive button-done" %>
+          </div>
+<% end %>
+			</div>
+          </div>
+          
+         
+            </div>
+          
+        </div>
+
+<script>
+    $(document).ready(function () {
+        $("#inputEmail").focus();
+
+
+
+var user_default_product_group = $("#user_default_product_group").val().slice(2,-2);
+$("input[data-type='" + user_default_product_group +"']").addClass("grey-button-border");
+
+var user_default_domestic_product_type = $("#user_default_domestic_product_type").val().slice(2,-2);
+console.log("user_default_domestic_product_type", user_default_domestic_product_type);
+$("input[data-type='" + user_default_domestic_product_type +"']").addClass("grey-button-border");
+
+var user_default_international_product_type = $("#user_default_international_product_type").val().slice(2,-2);
+$("input[data-type='" + user_default_international_product_type +"']").addClass("grey-button-border");
+
+var user_default_domestic_services = $("#user_default_domestic_services").val().slice(2,-2);
+$("input[data-type='" + user_default_domestic_services +"']").addClass("grey-button-border");
+
+var user_default_international_services = $("#user_default_international_services").val().slice(2,-2);
+$("input[data-type='" + user_default_international_services +"']").addClass("grey-button-border");
+
+var user_default_prepaid_payment_option = $("#user_default_prepaid_payment_option").val().slice(2,-2);
+$("input[data-type='" + user_default_prepaid_payment_option +"']").addClass("grey-button-border");
+
+
+
+    });
+
+
+
+
+                     $("#amx-1  input").click(function () {
+                        $("#user_default_product_group").val($(this).attr("data-type"));
+                      });
+
+                      $("#amx-2  button").click(function () {
+                        $("#user_default_domestic_services").val($(this).attr("data-type"));
+                      });
+
+                      $("#amx-3  input").click(function () {
+                        $("#user_default_international_product_type").val($(this).attr("data-type"));
+                      });
+
+                      $("#amx-4  button").click(function () {
+                        $("#user_default_international_services").val($(this).attr("data-type"));
+                      });
+
+                      $("#amx-5  button").click(function () {
+                        $("#user_default_prepaid_payment_option").val($(this).attr("data-type"));
+                      });
+
+
+
+
+
+
+                    var errors = [];
+                    $("#inputEmail").blur(function () {
+                        var email = $('#inputEmail').val();
+                        var re = /\S+@\S+\.\S+/;
+                        if (email.trim().length == 0) {
+                            $('#inputEmail').next('div.red').remove();
+                            $('#inputEmail').after('<div class="red">\'Email\' is Required</div>');
+                            errors.push("email_required");
+                        } else if (!re.test(email)) {
+                            $('#inputEmail').next('div.red').remove();
+                            $('#inputEmail').after('<div class="red">\'Email\' is not correct</div>');
+                            errors.push("email_not_valid");
+                        } else {
+                            $(this).next('div.red').remove();
+                            errors = removeError(errors, "email_required");
+                            errors = removeError(errors, "email_not_valid");
+                        }
+                        makeActive();
+                    });
+
+                    $("#inputPassword").blur(function () {
+                        var password = $('#inputPassword').val();
+                        if (password.trim().length == 0) {
+                            $('#inputPassword').next('div.red').remove();
+                            $('#inputPassword').after('<div class="red">\'Password\' is Required</div>');
+                            errors.push("password_required");
+                        } else {
+                            $('#inputPassword').next('div.red').remove();
+                            errors = removeError(errors, "password_required");
+                        }
+                        makeActive();
+                    });
+
+                    $("#accountNumber").blur(function () {
+                        var accountNumber = $('#accountNumber').val();
+                        var onlyDigits = /^\d*$/;
+                        if (accountNumber.trim().length == 0) {
+                            $('#accountNumber').next('div.red').remove();
+                            $('#accountNumber').after('<div class="red">\'Account Number\' is Required</div>');
+                            errors.push("accountNumber_required");
+                        } else if (!onlyDigits.test(accountNumber)) {
+                            $('#accountNumber').next('div.red').remove();
+                            $('#accountNumber').after('<div class="red">\'Account Number\' is not correct. Only numbers are allowed.</div>');
+                            errors.push("accountNumber_not_valid");
+                        } else {
+                            $('#accountNumber').next('div.red').remove();
+                            errors = removeError(errors, "accountNumber_required");
+                            errors = removeError(errors, "accountNumber_not_valid");
+                        }
+                        makeActive();
+                    });
+                    
+
+                    $("#accountPin").blur(function () {
+                        var accountPin = $('#accountPin').val();
+                        var onlyDigits = /^\d*$/;
+                        if (accountPin.trim().length == 0) {
+                            $('#accountPin').next('div.red').remove();
+                            $('#accountPin').after('<div class="red">\'Account Pin\' is Required</div>');
+                            errors.push("accountPin_required");
+                        } else if (!onlyDigits.test(accountPin)) {
+                            $('#accountPin').next('div.red').remove();
+                            $('#accountPin').after('<div class="red">\'Account Pin\' is not correct. Only numbers are allowed.</div>');
+                            errors.push("accountPin_not_valid");
+                        } else {
+                            $(this).next('div.red').remove();
+                            errors = removeError(errors, "accountPin_required");
+                            errors = removeError(errors, "accountPin_not_valid");
+                        }
+                        makeActive();
+                    });
+
+                    function removeError(newArray, removeItem) {
+                        var newArray = jQuery.grep(newArray, function (value) {
+                            return value != removeItem;
+                        });
+                        return newArray;
+                    }
+
+                     $("#amx-1  input").click(function () {
+                        $("#user_default_product_group").val($(this).attr("data-type"));
+                      });
+
+                      $("#amx-2  button").click(function () {
+                        $("#user_default_domestic_services").val($(this).attr("data-type"));
+                      });
+
+                      $("#amx-3  input").click(function () {
+                        $("#user_default_international_product_type").val($(this).attr("data-type"));
+                      });
+
+                      $("#amx-4  button").click(function () {
+                        $("#user_default_international_services").val($(this).attr("data-type"));
+                      });
+
+                      $("#amx-5  button").click(function () {
+                        $("#user_default_prepaid_payment_option").val($(this).attr("data-type"));
+                      });
+
+                    function makeActive() {
+
+                        var empty = false;
+                        $('.to-valid').each(function () {
+                          console.log($(this).val());
+                        console.log("empty", empty);
+
+                            if ($(this).val().trim() === "") {
+                                empty = true;
+                            }
+                        });
+
+                        if (errors.length === 0 && empty === false) {
+                            if ($('.big-button').hasClass('passive')) {
+                                $('.big-button').removeClass('passive')
+                            }
+
+                        } else {
+                            if (!$('.big-button').hasClass('passive')) {
+                                $('.big-button').addClass('passive')
+                            }
+                        }
+                    }
+
+                    $('.step1-title-block1 p').click(function() {
+                      var empty = allValid();
+                      console.log(errors);
+                      if (errors.length === 0 && empty === false) {
+               if (!$(this).next('.step1-title-block-line').hasClass('active')) {
+                 $(this).next('.step1-title-block-line').addClass('active');
+                 $('.step1-title-block2 .step1-title-block-line').removeClass('active');
+                            $('.step2').hide();
+                           $('.step1').fadeIn("slow");
+                        }
+                    }
+            });
+
+                    $('.step1-title-block2 p').click(function() {
+                      var empty = allValid();
+            if (errors.length === 0 && empty === false) {
+
+               if (!$(this).next('.step1-title-block-line').hasClass('active')) {
+                 $(this).next('.step1-title-block-line').addClass('active');
+                 $('.step1-title-block1 .step1-title-block-line').removeClass('active');
+                           $('.step1').hide();
+                           $('.step2').fadeIn("slow");
+                        }
+                        }
+            });
+          $('#productGroup').click(function() {
+
+                        $('.international').hide();
+                        $('.domestic').fadeIn("slow")
+                        $('#amx-1').fadeIn("slow")
+                        $('.button-block-pair').removeClass('button-top-bottom')
+                        
+            });
+
+                    $('#amx-1').click(function() {
+                        $('#amx-2').fadeIn("slow")
+                       
+                    });
+          $('#productType').click(function() {
+
+                        $('.domestic').hide();
+                        $('.international').fadeIn("slow")
+                        $('#amx-3').fadeIn("slow")
+                        $('.button-block-pair').removeClass('button-top-bottom')
+                       
+            });
+                    $('#amx-3').click(function() {
+                        $('#amx-4').fadeIn("slow")
+                       
+                    });
+                    $('#amx-4').click(function() {
+                        $('#amx-5').fadeIn("slow")
+                       
+                    });
+
+            var validErrors = [];
+
+            $('.grey-button').click(function() {
+                        $(this).closest('.aramex-input-block2').find(".grey-button").removeClass('grey-button-border')
+                        $(this).addClass('grey-button-border')
+
+                        if(typeof $(this).closest('.aramex-input-block2').attr('id') !== "undefined")
+                {
+                    validErrors = checkAllSelected($(this).closest('.aramex-input-block2').attr('id'));
+                } 
+
+            });	
+
+                    function checkAllSelected(removeItem) {
+                        var newArray = jQuery.grep(validErrors, function (value) {
+                            return value != removeItem;
+                        });
+                        newArray.push(removeItem);
+                        console.log('newArray', newArray);
+
+                        if(newArray.length === 5){
+                          $('.button-done').removeClass('passive')
+                        }
+                        return newArray;
+                    }    
+
+                    function allValid() {
+                        var empty = false;
+                        $('.aramex-input-block input').each(function () {
+                            if ($(this).val().trim() === "") {
+                                empty = true;
+                            }
+                        });
+                        return empty;
+                    }  
+</script>
+
+
+
+
+<!-- New Changes
+<script type="text/javascript">
+
+  $(document).ready(function() {
+
+    $('#user_email').change(function(){
+      var email = $('#user_email').val();
+      if(validateEmail(email)){
+        $("#flash_msg_container").html("");
+      }else{
+        $("#flash_msg_container").html("<div class='alert alert-error fade in'> <a href='#' data-dismiss='alert' class='close'>×</a> This value should be a valid email.</div>");
+        $('#user_email').focus();
+      }
+    });
+
+     function validateEmail(email){
+      var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,16}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      var valid = emailReg.test(email);
+
+      if(!valid) {
+          return false;
+      } else {
+        return true;
+      }
+    }
+  });
+
+</script>
+ -->
